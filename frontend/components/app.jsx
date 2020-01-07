@@ -11,7 +11,7 @@ const App = () => (
             <NavBar />
         </header>
 
-        
+        <Footer />
     </div>
 )
 
