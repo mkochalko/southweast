@@ -1,17 +1,33 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
+    constructor(props) {
+        super(props)
+
+    }
 
     render() {
+        const loggedInMessage = () => (
+            <ul className="user-auth">
+                <li>Hi, {this.props.currentUser.first_name}</li>
+                <li>Points: {this.props.currentUser.points}</li>
+                <li><Link to={`/users/${this.props.currentUser.id}`}>My Account</Link></li>
+                <button onClick={this.props.logout}>Log Out</button>
+            </ul>
+        );
+        const loggedOutMessage = () => (
+            <ul className="user-auth">
+                <li>Log In</li>
+                <li><Link to="/signup">Enroll</Link></li>
+            </ul>
+        );
         return (
             <header>
                 <div className="navbar">
                     <h1>Southwest</h1>
                     <div className="navbar-buttons">
-                        <ul className="user-auth">
-                            <li>Log In</li>
-                            <li>Enroll</li>
-                        </ul>
+                        {this.props.currentUser ? loggedInMessage() : loggedOutMessage()}
 
                         <ul className="navbar-links">
                             <li>FLIGHT</li>

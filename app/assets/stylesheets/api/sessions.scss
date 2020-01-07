@@ -1,3 +1,35 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.forms-container {
+    background-color: #f5f5f5;
+}
+
+.personal-info {
+    border: 1px solid black;
+    margin: 0 30px;
+    background-color: white;
+}
+
+.personal-info-name-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.forms-container input {
+    border: 1px solid #E6E7E8;
+}
+
+// .personal-info-name-input label {
+//     display: flex;
+//     width: 221px;
+//     margin: 0;
+// }
+
+.first-name {
+    display: block;
+    width: 230px;
+    margin: 0;
+}

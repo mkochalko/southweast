@@ -32,7 +32,11 @@ class Footer extends React.Component {
                                 <img src="https://image.flaticon.com/icons/svg/2111/2111432.svg" alt="GitHub"/>
                             </a>
                         </li>
-                        <li className="personal-site"><img src="https://image.flaticon.com/icons/svg/747/747376.svg" alt="Matt's Personal Site"/></li>
+                        <li className="personal-site">
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/mkochalko/">
+                                <img src="https://image.flaticon.com/icons/svg/747/747376.svg" alt="Matt's Personal Site" />
+                            </a> 
+                        </li>
                     </ul>
                 </div>
             </div>
