@@ -1,0 +1,83 @@
+header {
+    font-family: Arial;
+    color: #304CB2;;
+}
+
+h1  {
+    // color: blue;
+}
+
+li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 12px;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid black;
+    height: 100px;
+    margin: 0 auto;
+    width: 930px
+}
+
+.navbar-buttons {
+    display: flex;
+    flex-direction: column;
+    // border: 1px solid black;
+    justify-content: space-between;
+}
+
+.navbar h1 {
+    width: 223px;
+    height: 34px;
+    font-size: 34px;
+    font-family: Arial;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 50px;
+}
+
+.user-auth {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.user-auth li {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid blue;
+    margin-top: 10px;
+}
+
+.user-auth li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.user-auth li:last-child {
+    border: none;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar-links li {
+    padding-left: 7px;
+    padding-right: 7px;
+    border-right: 2px solid blue;
+}
+
+.navbar-links li:last-child {
+    border: none;
+}
+
