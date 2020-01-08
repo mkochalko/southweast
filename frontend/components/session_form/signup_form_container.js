@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
         middleName: '',
         lastName: '',
         birthdate: '',
-        streetAddress: '',
+        address: '',
         city: '',
         state: '',
         zipCode: '',
@@ -16,6 +16,7 @@ const mapStateToProps = state => ({
         email: '',
         username: '',
         password: '',
+        points: ''
     },
     formType: 'Create accout'
 });
