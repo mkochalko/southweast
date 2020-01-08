@@ -30,7 +30,7 @@ li {
     justify-content: space-between;
 }
 
-.navbar h1 {
+.navbar > h1 {
     width: 223px;
     height: 34px;
     font-size: 34px;
@@ -55,9 +55,18 @@ li {
     margin-top: 10px;
 }
 
+.user-auth-login-button {
+    position: relative;
+}
+
 .user-auth li:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.user-auth li span {
+    text-decoration: none;
+    cursor: default;
 }
 
 .user-auth li:last-child {
@@ -81,3 +90,6 @@ li {
     border: none;
 }
 
+.user-auth ul li span {
+    position: absolute;
+}

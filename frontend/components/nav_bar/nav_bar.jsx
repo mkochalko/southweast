@@ -1,11 +1,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import LoginContainer from './login_container';
+
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props)
+        this.state = { isToggled: false }
 
+        this.handleClick = this.handleClick.bind(this);
+        this.setRef = this.setRef.bind(this);
     }
+
+    componentDidMount() {
+        document.addEventListener('click', this.handleClick);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClick);
+    }
+
+    setRef(node) {
+        this.wrapperRef = node;
+    }
+
+    handleClick(e) {
+        if (this.wrapperRef.contains(e.target)) {
+            this.setState({ isToggled: true })
+        } else {
+            this.setState({ isToggled: false })
+        }
+    }
+
 
     render() {
         const loggedInMessage = () => (
@@ -18,14 +44,16 @@ class NavBar extends React.Component {
         );
         const loggedOutMessage = () => (
             <ul className="user-auth">
-                <li>Log In</li>
+                <li className="user-auth-login-button"ref={this.setRef}>Log In<span>{login}</span></li>
                 <li><Link to="/signup">Enroll</Link></li>
+                
             </ul>
         );
+        let login = this.state.isToggled ? <LoginContainer/>  : null 
         return (
             <header>
                 <div className="navbar">
-                    <h1>Southwest</h1>
+                    <h1>SouthWeast</h1>
                     <div className="navbar-buttons">
                         {this.props.currentUser ? loggedInMessage() : loggedOutMessage()}
 
