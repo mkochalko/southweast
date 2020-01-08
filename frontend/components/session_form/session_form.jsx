@@ -6,7 +6,7 @@ class SessionForm extends React.Component {
         super(props) 
 
         this.state = this.props.user;
-        this.state.points = 100000;
+        this.state.points = "100000";
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -19,17 +19,17 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
+    
         this.props.action(this.state)
-        // this.props.history.push(`/users/${this.props.user.id}`)
+        this.props.history.push(`/`)
     }
 
     render() {
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-        const day = document.getElementById("dob-day");
-        const month = document.getElementById("dob-month");
-        const year = document.getElementById("dob-year");
-        const birthdate = `${year}/${day}/${months[month] + 1 < 10 ? '0' + months[month] + 1 : months[month] + 1}`
+        // const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        // const day = document.getElementById("dob-day");
+        // const month = document.getElementById("dob-month");
+        // const year = document.getElementById("dob-year");
+        // const birthdate = `${year}/${day}/${months[month] + 1 < 10 ? '0' + months[month] + 1 : months[month] + 1}`
         
         return (
             <div className='signup'>
@@ -85,7 +85,7 @@ class SessionForm extends React.Component {
                                 <label><h6>Street Address<span className="required-marker">*</span></h6>
                                     <input type="text" 
                                         value={this.state.address}
-                                        onChange={this.handleChange("streetAddress")}
+                                        onChange={this.handleChange("address")}
                                     />
                                 </label>
                             </div>

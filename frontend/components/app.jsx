@@ -3,7 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import NavBarContainer from './nav_bar/nav_bar_container';
 import Footer from './footer';
 import SignUpContainer from "./session_form/signup_form_container"
-// import UsersShowContainer from ''
+import UsersShowContainer from './users_page/users_container';
+import Home from './home';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+
 
 const App = () => (
     <div>
@@ -11,8 +14,9 @@ const App = () => (
             <NavBarContainer />
         </header>
         <Switch>
-            <Route path="/signup" component={SignUpContainer}/>
-            {/* <Route path="/users/:userId" component={UsersShowContainer}/> */}
+            <Route exact path='/' component={Home}/>
+            <AuthRoute path="/signup" component={SignUpContainer}/>
+            <Route path="/users/:userId" component={UsersShowContainer}/>
         </Switch>
         <Footer />
     </div>
