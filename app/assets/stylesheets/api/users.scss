@@ -4,9 +4,47 @@
 
 .user-info-page {
     border: 1px solid black;
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+    width: 960px;
+}
+
+.user-info-header {
+    width: 228px;
+    margin: 0;
 }
 
 .user-info-tab-section {
     border: 1px solid black;
     display: flex;
+    height: 540px;
+}
+
+.user-info-tab-headers ul {
+    width: 228px;
+}
+
+.user-info-tab-content {
+    width: 710px;
+    
+}
+
+.user-info-tab-headers ul li {
+    height: 120px;
+    width: 228px;
+    padding: 30px;
+    border: 1px solid black;
+}
+
+.user-info-tab-headers ul li:first-child {
+    background-color: #111b40;
+    color: #FFF;
+    font-size: 22px;
+    font-family: Arial;
+}
+
+.user-info-tab-headers ul li span {
+    color: #ffbf27;
+    font-style: italic;
 }

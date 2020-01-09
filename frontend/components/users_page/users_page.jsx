@@ -1,4 +1,5 @@
 import React from 'react'
+import TripContainer from './trip_container.jsx';
 
 class UsersPage extends React.Component {
 
@@ -15,14 +16,14 @@ class UsersPage extends React.Component {
                 <section className="user-info-tab-section">
                     <div className="user-info-tab-headers">
                         <ul>
-                            <li>My Trips</li>
+                            <li><span>My</span><br/>Trips</li>
                             <li>Upcoming</li>
                             <li>Past</li>
                             <li>Watchlist</li>
                         </ul>
                     </div>
                     <div className="user-info-tab-content">
-                        
+                        {<TripContainer user={this.props.user}/>}
                     </div>
                 </section>
             </div>
