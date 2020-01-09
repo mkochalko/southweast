@@ -16,10 +16,6 @@ class NavBar extends React.Component {
         document.addEventListener('click', this.handleClick);
     }
 
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleClick);
-    }
-
     setRef(node) {
         this.wrapperRef = node;
     }
