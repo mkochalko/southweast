@@ -10,7 +10,12 @@ class LoginDropDown extends React.Component {
         this.handleDemo = this.handleDemo.bind(this)
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors()
+    }
+
     handleDemo() {
+        this.setState({ username: '', password: ''})
         let user = ['D', 'e', 'm', 'o', ' ', 'U', 's', 'e', 'r'];
         for (let i = 0; i < user.length; i++) {
             setTimeout((y) => {
@@ -42,39 +47,40 @@ class LoginDropDown extends React.Component {
     render() {
 
         return (
+            <div className="dropdown-outer-border">
+                <div className="dropdown">
+                    <div className="pointer"></div>
+                    <div className='dropdown-contents'>
+                        <h1>Log in</h1>
+                        <section className="form-contents">
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="userAuth-input-fields">
+                                    <label><span>Username</span>
+                                        <input type="text"
+                                            value={this.state.username}
+                                            onChange={this.handleChange("username")}
+                                        />
+                                    </label>
+                                </div>
 
-            <div className="dropdown">
-                <div className="pointer"></div>
-                <div className='dropdown-contents'>
-                    <h1>Log in</h1>
-                    <section className="form-contents">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="userAuth-input-fields">
-                                <label><span>Username</span>
-                                    <input type="text"
-                                        value={this.state.username}
-                                        onChange={this.handleChange("username")}
-                                    />
-                                </label>
-                            </div>
-
-                            <div className="userAuth-input-fields">
-                                <label><span>Password</span>
-                                    <input type="password"
-                                        value={this.state.password}
-                                        onChange={this.handleChange("password")}
-                                    />
-                                </label>
-                            </div>
-                            <div className="error-message">
-                                {this.props.errors}
-                            </div>
-                            <div className="login-buttons">
-                                <input onClick={this.handleDemo} type="button" value="Demo User"/>
-                                <input type="submit" id="login" value="Log In"/>
-                            </div>
-                        </form>
-                    </section>
+                                <div className="userAuth-input-fields">
+                                    <label><span>Password</span>
+                                        <input type="password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange("password")}
+                                        />
+                                    </label>
+                                </div>
+                                <div className="error-message">
+                                    {this.props.errors}
+                                </div>
+                                <div className="login-buttons">
+                                    <input onClick={this.handleDemo} type="button" value="Demo User"/>
+                                    <input type="submit" id="login" value="Log In"/>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
                 </div>
             </div>
         )
