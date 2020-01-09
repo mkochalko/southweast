@@ -20,21 +20,6 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-        
-=======
-        debugger
->>>>>>> dev
-=======
-    
->>>>>>> dev
-=======
-        console.log(this.state)
-        console.log(this.props)
->>>>>>> dev
         this.props.action(this.state)
         // this.props.history.push(`/users/${this.state.id}`)
         // debugger
