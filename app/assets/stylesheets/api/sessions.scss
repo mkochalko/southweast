@@ -24,18 +24,21 @@
 }
 
 .forms-container {
-    background-color: #f5f5f5;
     font-family: Arial;
-    padding: 30px;
     padding-bottom: 0;
     margin-top: 30px;
 }
 
 .personal-info {
-    border: 1px solid black;
+    border: 30px solid #f5f5f5;
+    border-bottom: 0;
     padding: 25px;
     padding-bottom: 0;
     background-color: white;
+}
+
+form section.personal-info:nth-child(3) {
+    border: 30px solid #f5f5f5;
 }
 
 .personal-info-name-input {
@@ -55,11 +58,22 @@
     margin: 0;
     text-transform: uppercase;
     font-size: 11px;
-    margin-bottom: 9px;
+    margin-bottom: 25px;
+}
+
+.email-container > .first-name {
+    padding-bottom: 25px;
+    margin-bottom: 0;
 }
 
 .first-name input {
     font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    border-top-color: #8f8f8f;
+    box-shadow: inset 0 2px 0 rgba(0,0,0,0.05);
+    min-height: 32px;
+    padding: 2px 3px 2px 8px;
 }
 
 .first-name label h6 {
@@ -96,7 +110,55 @@
     font-size: 11px;
 }
 
-.controls select option {
-    
+.email-container {
+    border-top: 1px solid #e6e7e8;
+    margin-bottom: 25;
 }
 
+.birthdate-container > .first-name {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+}
+
+.create-account-button {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+.create-account-button > input {
+    font-size: 17px;
+    font-weight: bold;
+    font-family: Arial;
+    color: #111B40;
+    border-color: #FAD101 #FAD101 #D2AF01;
+    background-color: #FFBF27;
+    min-width: 75px;
+    min-height: 48px;
+    border: 1px solid #E5E5E5;
+    border-radius: 2px;
+    padding: 0 18px;
+}
+
+.create-account-disclaimer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 15px 20px 15px 0;
+}
+
+.create-account-disclaimer > p {
+    color: #636363;
+    font-size: 11px;
+    width: 245px;
+    text-align: end;
+    font-family: Arial;
+}
+
+.signup-errors {
+    color: #d5152e;
+    padding-top: 3px;
+    text-transform: none;
+    font-size: 13px;
+    min-height: 18px;
+}

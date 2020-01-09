@@ -25,7 +25,6 @@ class LoginDropDown extends React.Component {
         }, 1500)
 
         setTimeout(() => {
-            console.log(this.state)
             document.getElementById("login").click()
         }, 3000)
     }
@@ -66,6 +65,9 @@ class LoginDropDown extends React.Component {
                                         onChange={this.handleChange("password")}
                                     />
                                 </label>
+                            </div>
+                            <div className="error-message">
+                                {this.props.errors}
                             </div>
                             <div className="login-buttons">
                                 <input onClick={this.handleDemo} type="button" value="Demo User"/>

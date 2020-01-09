@@ -5,7 +5,8 @@ const mapStateToProps = state => ({
     credentials: {
         username: "",
         password: ""
-    }
+    },
+    errors: state.errors.session
 })
 
 const mapDispatchToProps = dispatch => ({

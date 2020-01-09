@@ -36,7 +36,7 @@ class NavBar extends React.Component {
     render() {
         const loggedInMessage = () => (
             <ul className="user-auth">
-                <li>Hi, {this.props.currentUser.first_name}</li>
+                <li>Hi, {this.props.currentUser.firstName}</li>
                 <li>Points: {this.props.currentUser.points}</li>
                 <li><Link to={`/users/${this.props.currentUser.id}`}>My Account</Link></li>
                 <button onClick={this.props.logout}>Log Out</button>
@@ -48,12 +48,13 @@ class NavBar extends React.Component {
                 <li><Link to="/signup">Enroll</Link></li>
                 
             </ul>
+            
         );
         let login = this.state.isToggled ? <LoginContainer/>  : null 
         return (
             <header>
                 <div className="navbar">
-                    <h1>SouthWeast</h1>
+                    <h1>SouthWeast<img src="http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430" alt="southweast" height="18px" width="15px"/></h1>
                     <div className="navbar-buttons">
                         {this.props.currentUser ? loggedInMessage() : loggedOutMessage()}
 

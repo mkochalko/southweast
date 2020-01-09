@@ -18,7 +18,8 @@ const mapStateToProps = state => ({
         password: '',
         points: ''
     },
-    formType: 'Create accout'
+    formType: 'Create account',
+    errors: state.errors.session
 });
 
 const mapDispatchToProps = dispatch => ({
