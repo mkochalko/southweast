@@ -1,6 +1,16 @@
 class User < ApplicationRecord
-    validates :username, :email, presence: true, uniqueness: true
-    validates :first_name, :last_name, :birthdate, :address, :city, :state, :zip_code, :phone_number, :points, :password_digest, :session_token, presence: true
+    validates :username, :email, uniqueness: true
+    validates :username, :presence => { message: "Enter username please."}
+    validates :email, :presence => { message: "Enter email address."}
+    validates :first_name, :presence => { message: "Enter first name."}
+    validates :last_name, :presence => { message: "Enter last name."}
+    validates :birthdate, :presence => { message: "Enter date of birth."}
+    validates :address, :presence => { message: "Enter street address."}
+    validates :city, :presence => { message: "Enter city or town."}
+    validates :state, :presence => { message: "Enter state name."}
+    validates :zip_code, :presence => { message: "Enter zip code."}
+    validates :phone_number, :presence => { message: "Enter phone number."}
+    validates :points, :password_digest, :session_token, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
     after_initialize :ensure_session_token
 

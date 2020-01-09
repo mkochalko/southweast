@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
         this.state.points = "100000";
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.sortErrors = this.sortErrors.bind(this);
     }
     
     
@@ -21,6 +22,7 @@ class SessionForm extends React.Component {
         e.preventDefault();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         
 =======
@@ -29,17 +31,50 @@ class SessionForm extends React.Component {
 =======
     
 >>>>>>> dev
+=======
+        console.log(this.state)
+        console.log(this.props)
+>>>>>>> dev
         this.props.action(this.state)
-        this.props.history.push(`/`)
+        // this.props.history.push(`/users/${this.state.id}`)
+        // debugger
+        // if (this.props.errors.length === 0 ) {
+        //     this.props.history.push(`/users/${this.state.id}`)
+        //     this.setState({
+        //         user: {
+        //             firstName: '',
+        //             middleName: '',
+        //             lastName: '',
+        //             birthdate: '',
+        //             address: '',
+        //             city: '',
+        //             state: '',
+        //             zipCode: '',
+        //             phoneNumber: '',
+        //             email: '',
+        //             username: '',
+        //             password: '',
+        //             points: ''
+        //         }
+        //     })
+        // } else {
+        //     this.props.history.push('/signup')
+        // }
+    }
+
+    sortErrors(form) {
+        for (let i = 0; i < this.props.errors.length; i++) {
+            let error = this.props.errors[i].split(" ")[1]
+            if ( error === form && error === 'too') {
+                return "Enter password, must be at least 6 characters.";
+            } else if (error === form ) {
+                return this.props.errors[i]
+            }
+        }
     }
 
     render() {
-        // const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-        // const day = document.getElementById("dob-day");
-        // const month = document.getElementById("dob-month");
-        // const year = document.getElementById("dob-year");
-        // const birthdate = `${year}/${day}/${months[month] + 1 < 10 ? '0' + months[month] + 1 : months[month] + 1}`
-        
+
         return (
             <div className='signup'>
                 <h1>Create Account</h1>
@@ -61,6 +96,9 @@ class SessionForm extends React.Component {
                                             onChange={this.handleChange("firstName")}
                                         />
                                     </label>
+                                <div className="signup-errors">
+                                    {this.sortErrors("first")}
+                                </div>
                                 </div>
 
                                 <div className="first-name">
@@ -79,89 +117,140 @@ class SessionForm extends React.Component {
                                             onChange={this.handleChange("lastName")}
                                         />
                                     </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("last")}
+                                    </div>
                                 </div>
                             </div>
-                            <div className="personal-info-birthdate">
-                                <input type="date" name="" value={this.state.birthdate} onChange={this.handleChange("birthdate")}/>
+                            <div className="birthdate-container">
+                                <div className="first-name">
+                                    <label><h6>Birthdate <span className="required-marker">*</span></h6>
+                                        <input type="date" name="" value={this.state.birthdate} onChange={this.handleChange("birthdate")}/>
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("date")}
+                                    </div>
+                                </div>
                             </div>
                         </section>
 
-                        <section>
-                        </section>
+                        <section className="personal-info">
+                            <div className="personal-info-header">
+                                <h2>How can we contact you?</h2>
+                            </div>
 
-                        <section className="contact-info">
-                            <div className="contact-info-address">
-                                <label><h6>Street Address<span className="required-marker">*</span></h6>
+                            <div className="first-name">
+                                <label><h6>Street Address<span className="required-marker"> *</span></h6>
                                     <input type="text" 
                                         value={this.state.address}
                                         onChange={this.handleChange("address")}
                                     />
                                 </label>
+                                <div className="signup-errors">
+                                    {this.sortErrors("street")}
+                                </div>
                             </div>
-                            <div className="contact-info-city">
-                                <label><h6>City/Town<span className="required-marker">*</span></h6>
-                                    <input type="text"
-                                        value={this.state.city}
-                                            onChange={this.handleChange("city")}
-                                    />
-                                </label>
-                            </div>
-                            <div className="contact-info-state">
-                                <label><h6>State<span className="required-marker">*</span></h6>
-                                    <input type="text" 
-                                        value={this.state.state}
-                                        onChange={this.handleChange("state")}
-                                    />
-                                </label>
-                            </div>
+                            <div className="personal-info-name-input">
+                                <div className="first-name">
+                                    <label><h6>City/Town<span className="required-marker"> *</span></h6>
+                                        <input type="text"
+                                            value={this.state.city}
+                                                onChange={this.handleChange("city")}
+                                        />
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("city")}
+                                    </div>
+                                </div>
+                                <div className="first-name">
+                                    <label><h6>State<span className="required-marker"> *</span></h6>
+                                        <input type="text" 
+                                            value={this.state.state}
+                                            onChange={this.handleChange("state")}
+                                        />
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("state")}
+                                    </div>
+                                </div>
 
-                            <div className="contact-info-zip-code">
-                                <label><h6>Zip Code<span className="required-marker">*</span></h6>
-                                    <input type="number" 
-                                        value={this.state.zipCode}
-                                        onChange={this.handleChange("zipCode")}
-                                    />
-                                </label>
+                                <div className="first-name">
+                                    <label><h6>Zip Code<span className="required-marker"> *</span></h6>
+                                        <input type="number" 
+                                            value={this.state.zipCode}
+                                            onChange={this.handleChange("zipCode")}
+                                        />
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("zip")}
+                                    </div>
+                                </div>
                             </div>
-                            <div className="contact-info-phone">
-                                <label><h6>Phone Number<span className="required-marker">*</span></h6>
+                            
+                            <div className="first-name">
+                                <label><h6>Phone Number<span className="required-marker"> *</span></h6>
                                     <input type="text" 
                                         value={this.state.phoneNumber}
                                         onChange={this.handleChange("phoneNumber")}
                                     />
                                 </label>
+                                <div className="signup-errors">
+                                    {this.sortErrors("phone")}
+                                </div>
                             </div>
-                            <div className="contact-info-email">
-                                <label><h6>Eamil Address<span className="required-marker">*</span></h6>
-                                    <input type="text" 
-                                        value={this.state.email}
-                                        onChange={this.handleChange("email")}
-                                    />
-                                </label>
+                            <div className="email-container">
+                                <div className="first-name">
+                                    <label><h6>Email Address<span className="required-marker"> *</span></h6>
+                                        <input type="text" 
+                                            value={this.state.email}
+                                            onChange={this.handleChange("email")}
+                                        />
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("email")}
+                                    </div>
+                                </div>
                             </div>
-                            
                         </section>
 
-                        <section className="userAuth-info">
-                            <div className="contact-info-username">
-                                <label><h6>Username<span className="required-marker">*</span></h6>
-                                    <input type="text" 
-                                        value={this.state.username}
-                                        onChange={this.handleChange("username")}
-                                    />
-                                </label>
+                        <section className="personal-info">
+                            <div className="personal-info-header">
+                                <h2>Create your username & password</h2>
                             </div>
-                            <div className="contact-info-password">
-                                <label><h6>Password<span className="required-marker">*</span></h6>
-                                    <input type="password" 
-                                        value={this.state.password}
-                                        onChange={this.handleChange("password")}
-                                    />
-                                </label>
+
+                            <div className="personal-info-name-input">
+                                <div className="first-name">
+                                    <label><h6>Username<span className="required-marker"> *</span></h6>
+                                        <input type="text" 
+                                            value={this.state.username}
+                                            onChange={this.handleChange("username")}
+                                        />
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("username")}
+                                    </div>
+                                </div>
+                                <div className="first-name">
+                                    <label><h6>Password<span className="required-marker"> *</span></h6>
+                                        <input type="password" 
+                                            value={this.state.password}
+                                            onChange={this.handleChange("password")}
+                                        />
+                                    </label>
+                                    <div className="signup-errors">
+                                        {this.sortErrors("too")}
+                                    </div>
+                                </div>
                             </div>
                         </section>
-                        <input type="hidden" value="100000"/>
-                        <input type="submit" value={this.props.formType}/>
+                        <div className="create-account-disclaimer">
+                            <p>
+                                By clicking 'Create accout' you agree to be enrolled in Patrick Rewards and agree to be all about the memes
+                            </p>
+                        </div>
+                        <div className="create-account-button">
+                            <input type="submit" value={this.props.formType}/>
+                        </div>
                     </form>
                 </main>
             </div>
