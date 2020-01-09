@@ -10,6 +10,10 @@ class LoginDropDown extends React.Component {
         this.handleDemo = this.handleDemo.bind(this)
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors()
+    }
+
     handleDemo() {
         this.setState({ username: '', password: ''})
         let user = ['D', 'e', 'm', 'o', ' ', 'U', 's', 'e', 'r'];
