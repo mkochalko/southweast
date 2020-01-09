@@ -24,10 +24,7 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-<<<<<<< HEAD
-=======
         this.props.clearErrors()
->>>>>>> dev
         this.props.action(this.state)
     }
 
