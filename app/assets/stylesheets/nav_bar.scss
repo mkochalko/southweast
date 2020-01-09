@@ -24,25 +24,27 @@ li {
     flex-direction: column;
     // border: 1px solid black;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
-.navbar > h1 {
-    width: 223px;
-    height: 34px;
-    font-size: 34px;
+.navbar > a > h1 {
+    width: 280px;
+    height: 40px;
+    font-size: 35px;
     font-family: Arial;
     font-weight: bold;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-end;
     padding-top: 100px;
 }
 
-.navbar > h1 > img {
-    height: 38px;
-    width: 25px;
+.patrick-img {
+    display: flex;
+    height: 40px;
+    width: 27px;
     padding-bottom: 4px;
-    padding-left: 4px;
+    padding-left: 2px;
 }
 
 
@@ -53,8 +55,8 @@ li {
 .navbar-links {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
+    align-items: flex-end;
+    width: 230px;
 }
 
 .navbar-links li {
@@ -65,6 +67,7 @@ li {
 
 .navbar-links li:last-child {
     border: none;
+    padding-right: 0;
 }
 
 .user-auth-logged-out ul li span {
@@ -74,13 +77,11 @@ li {
 .user-auth-logged-out {
     display: flex;
     justify-content: flex-end;
-    padding-right: 10px;
 }
 
 .user-auth-logged-in {
     display: flex;
     justify-content: flex-end;
-    padding-right: 10px;
 }
 
 .user-auth-logged-out li {
@@ -91,8 +92,6 @@ li {
 }
 
 .user-auth-logged-in li {
-    padding-left: 10px;
-    padding-right: 10px;
     margin-top: 10px;
 }
 
@@ -103,7 +102,6 @@ li {
 
 .user-auth-logged-in button {
     padding-left: 10px;
-    padding-right: 10px;
     margin-top: 10px;
     font-size: 12px;
     font-weight: bold;
@@ -121,6 +119,7 @@ li {
 
 .user-auth-logged-out li:last-child {
     border: none;
+    padding-right: 0;
 }
 
 .user-auth-logged-in li:last-child {
@@ -130,14 +129,20 @@ li {
 .logged-in-name {
     font-style: italic;
     font-weight: lighter;
+    padding: 0;
+    padding-right: 8px;
 }
 
 .logged-in-points {
     font-weight: lighter;
+    padding: 0;
+    padding-right: 15px;
 }
 
 .logged-in-account-link {
     border-right: 1px solid blue;
+    padding: 0;
+    padding-right: 10px;
 }
 
 .logged-in-account-link:hover {

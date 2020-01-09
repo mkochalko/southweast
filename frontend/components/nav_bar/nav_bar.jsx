@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import LoginContainer from './login_container';
+import { withRouter } from 'react-router';
 
 
 class NavBar extends React.Component {
@@ -28,7 +29,7 @@ class NavBar extends React.Component {
         }
     }
 
-
+    
     render() {
         const loggedInMessage = () => (
             <ul className="user-auth-logged-in">
@@ -50,10 +51,12 @@ class NavBar extends React.Component {
         return (
             <header>
                 <div className="navbar">
-                    <h1>SouthWeast<img src="http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430" alt="southweast" height="18px" width="15px"/></h1>
+                    <Link to='/'><h1>SouthWeast<img className="patrick-img" src="http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430" alt="southweast" /></h1></Link>
                     <div className="navbar-buttons">
 
-                        {this.props.currentUser ? loggedInMessage() : loggedOutMessage()}
+                        {
+                            this.props.location.pathname === '/signup' ? <span></span> : (this.props.currentUser ? loggedInMessage() : loggedOutMessage())
+                        }
 
                         <ul className="navbar-links">
                             <li>FLIGHT</li>
@@ -77,4 +80,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

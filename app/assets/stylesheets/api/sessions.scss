@@ -94,6 +94,7 @@ form section.personal-info:nth-child(3) {
     margin: 2px 0 13px;
     font-size: 13px;
     font-weight: normal;
+    color: #636363;
 }
 
 .personal-info-header h2 {
@@ -101,6 +102,10 @@ form section.personal-info:nth-child(3) {
     font-weight: bold;
     font-size: 22px;
     margin-bottom: 11px;
+}
+
+.personal-info-header p {
+    color: #636363;
 }
 
 .controls select{
@@ -163,4 +168,12 @@ form section.personal-info:nth-child(3) {
     text-transform: none;
     font-size: 13px;
     min-height: 18px;
+}
+
+.selected-border {
+    border: 2px solid !important;
+    border-color:rgba(82,168,236,0.8) !important;
+    box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6) !important;
+    outline:0 !important;
+    transition:border linear .1s, box-shadow linear .1s !important;
 }

@@ -12,7 +12,6 @@ class SessionForm extends React.Component {
         this.sortErrors = this.sortErrors.bind(this);
     }
     
-    
 
     handleChange(form) {
         return (e) => this.setState({ [form]: e.currentTarget.value })
@@ -20,8 +19,6 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state)
-        console.log(this.props)
         this.props.action(this.state)
     }
 
@@ -57,6 +54,7 @@ class SessionForm extends React.Component {
                                         <input type="text"
                                             value={this.state.firstName}
                                             onChange={this.handleChange("firstName")}
+                                            
                                         />
                                     </label>
                                 <div className="signup-errors">
@@ -118,7 +116,7 @@ class SessionForm extends React.Component {
                                     <label><h6>City/Town<span className="required-marker"> *</span></h6>
                                         <input type="text"
                                             value={this.state.city}
-                                                onChange={this.handleChange("city")}
+                                            onChange={this.handleChange("city")}
                                         />
                                     </label>
                                     <div className="signup-errors">
@@ -139,7 +137,7 @@ class SessionForm extends React.Component {
 
                                 <div className="first-name">
                                     <label><h6>Zip Code<span className="required-marker"> *</span></h6>
-                                        <input type="number" 
+                                        <input type="number"
                                             value={this.state.zipCode}
                                             onChange={this.handleChange("zipCode")}
                                         />
