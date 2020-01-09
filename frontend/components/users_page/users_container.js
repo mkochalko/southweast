@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import UsersPage from './users_page';
 
 const mapStateToProps = (state) => ({
-    user: state.entities.users[ownProps.match.params.userId]
+    user: state.entities.users[state.session.currentUser]
 })
 
 const mapDispatchToProps = dispatch => ({
