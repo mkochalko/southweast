@@ -3,10 +3,6 @@ header {
     color: #304CB2;;
 }
 
-h1  {
-    // color: blue;
-}
-
 li {
     list-style: none;
     font-weight: bold;
@@ -39,7 +35,7 @@ li {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .navbar > h1 > img {
@@ -49,35 +45,9 @@ li {
     padding-left: 4px;
 }
 
-.user-auth {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-
-.user-auth li {
-    padding-left: 10px;
-    padding-right: 10px;
-    border-right: 1px solid blue;
-    margin-top: 10px;
-}
 
 .user-auth-login-button {
     position: relative;
-}
-
-.user-auth li:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.user-auth li span {
-    text-decoration: none;
-    cursor: default;
-}
-
-.user-auth li:last-child {
-    border: none;
 }
 
 .navbar-links {
@@ -97,6 +67,79 @@ li {
     border: none;
 }
 
-.user-auth ul li span {
+.user-auth-logged-out ul li span {
     position: absolute;
+}
+
+.user-auth-logged-out {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.user-auth-logged-in {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.user-auth-logged-out li {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid blue;
+    margin-top: 10px;
+}
+
+.user-auth-logged-in li {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.user-auth-logged-out li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.user-auth-logged-in button {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.user-auth-logged-in button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.user-auth-logged-out li span {
+    text-decoration: none;
+    cursor: default;
+}
+
+.user-auth-logged-out li:last-child {
+    border: none;
+}
+
+.user-auth-logged-in li:last-child {
+    border: none;
+}
+
+.logged-in-name {
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.logged-in-points {
+    font-weight: lighter;
+}
+
+.logged-in-account-link {
+    border-right: 1px solid blue;
+}
+
+.logged-in-account-link:hover {
+    text-decoration: underline;
 }

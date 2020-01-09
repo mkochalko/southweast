@@ -16,10 +16,6 @@ class NavBar extends React.Component {
         document.addEventListener('click', this.handleClick);
     }
 
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleClick);
-    }
-
     setRef(node) {
         this.wrapperRef = node;
     }
@@ -35,15 +31,15 @@ class NavBar extends React.Component {
 
     render() {
         const loggedInMessage = () => (
-            <ul className="user-auth">
-                <li>Hi, {this.props.currentUser.firstName}</li>
-                <li>Points: {this.props.currentUser.points}</li>
-                <li><Link to={`/users/${this.props.currentUser.id}`}>My Account</Link></li>
+            <ul className="user-auth-logged-in">
+                <li className="logged-in-name">Hi, {this.props.currentUser.firstName}</li>
+                <li className="logged-in-points">{this.props.currentUser.points} points</li>
+                <li className="logged-in-account-link"><Link to={`/users/${this.props.currentUser.id}`}>My Account</Link></li>
                 <button onClick={this.props.logout}>Log Out</button>
             </ul>
         );
         const loggedOutMessage = () => (
-            <ul className="user-auth">
+            <ul className="user-auth-logged-out">
                 <li className="user-auth-login-button"ref={this.setRef}>Log In<span>{login}</span></li>
                 <li><Link to="/signup">Enroll</Link></li>
                 
@@ -56,6 +52,7 @@ class NavBar extends React.Component {
                 <div className="navbar">
                     <h1>SouthWeast<img src="http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430" alt="southweast" height="18px" width="15px"/></h1>
                     <div className="navbar-buttons">
+
                         {this.props.currentUser ? loggedInMessage() : loggedOutMessage()}
 
                         <ul className="navbar-links">

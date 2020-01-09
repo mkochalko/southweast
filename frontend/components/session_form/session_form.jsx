@@ -21,30 +21,6 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state)
-        // this.props.history.push(`/users/${this.state.id}`)
-        // debugger
-        // if (this.props.errors.length === 0 ) {
-        //     this.props.history.push(`/users/${this.state.id}`)
-        //     this.setState({
-        //         user: {
-        //             firstName: '',
-        //             middleName: '',
-        //             lastName: '',
-        //             birthdate: '',
-        //             address: '',
-        //             city: '',
-        //             state: '',
-        //             zipCode: '',
-        //             phoneNumber: '',
-        //             email: '',
-        //             username: '',
-        //             password: '',
-        //             points: ''
-        //         }
-        //     })
-        // } else {
-        //     this.props.history.push('/signup')
-        // }
     }
 
     sortErrors(form) {
