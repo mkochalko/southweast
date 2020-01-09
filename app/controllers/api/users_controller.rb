@@ -7,16 +7,8 @@ class Api::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-<<<<<<< HEAD
-        
-=======
 
-<<<<<<< HEAD
->>>>>>> dev
-        if @user 
-=======
         if @user.save
->>>>>>> dev
             login(@user)
             render :show
         else
