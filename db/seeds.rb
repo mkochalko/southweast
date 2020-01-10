@@ -8,3 +8,9 @@
 
 
     User.create(username: 'Demo User', password: 'testing', first_name: 'Orville', last_name: 'Wright', birthdate: '1871/09/19', address: '52 Ohio Blvd', city: 'Dayton', state: 'Ohio', zip_code: '45400', phone_number: '18008675309', email: 'Oright@gmail.com', points: 100000)
+
+    City.create(name: 'San Diego International Airport', name_abbreviation: 'SAN')
+    City.create(name: 'San Francisco International Airport', name_abbreviation: 'SFO')
+    City.create(name: 'Los Angeles International Airport', name_abbreviation: 'LAX')
+    City.create(name: 'LaGuardia Airport', name_abbreviation: 'LGA')
+    City.create(name: 'Oakland International Airport', name_abbreviation: 'OAK')

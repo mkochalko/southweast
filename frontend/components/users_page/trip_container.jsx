@@ -6,7 +6,17 @@ class TripContainer extends React.Component {
 
         return (
             <div>
-                <h1>Trip Container</h1>
+                <div className="tab-container">
+                    <h1>Number of Upcoming Trips</h1>
+
+                    <section>
+                        <h1>Gray divider section</h1>
+                    </section>
+
+                    <div>
+                        <h1>Flight Content</h1>
+                    </div>
+                </div>
             </div>
         )
     }
