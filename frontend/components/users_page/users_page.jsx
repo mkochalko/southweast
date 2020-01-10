@@ -17,9 +17,10 @@ class UsersPage extends React.Component {
                     <div className="user-info-tab-headers">
                         <ul>
                             <li><span>My</span><br/>Trips</li>
-                            <li>Upcoming</li>
-                            <li>Past</li>
-                            <li>Watchlist</li>
+                            <li tabIndex="1">Upcoming</li>
+                            <li tabIndex="1">Past</li>
+                            <li tabIndex="1">Watchlist</li>
+                            <li></li>
                         </ul>
                     </div>
                     <div className="user-info-tab-content">

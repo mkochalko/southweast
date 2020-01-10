@@ -7,7 +7,7 @@
     margin: 5px auto;
     display: flex;
     flex-direction: column;
-    width: 960px;
+    width: 930px;
 }
 
 .user-info-header {
@@ -18,7 +18,7 @@
 .user-info-tab-section {
     border: 1px solid black;
     display: flex;
-    height: 540px;
+    height: 600px;
 }
 
 .user-info-tab-headers ul {
@@ -33,15 +33,40 @@
 .user-info-tab-headers ul li {
     height: 120px;
     width: 228px;
-    padding: 30px;
-    border: 1px solid black;
+    padding: 50px 0 50px 30px;
+    color: #FFF;
+    text-transform: uppercase;
+    background-color: #304cb2;
+    font-family: Arial;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.42;
+    border-bottom: 1px solid #4468af;
+    transition: background-color .3s linear 0s;
+}
+
+.user-info-tab-headers ul li:hover {
+    background-color: rgb(19, 50, 163);
+}
+
+.user-info-tab-headers ul li:focus {
+    background-color: #1f3173;
+    box-shadow: inset 0 2px 2px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);
 }
 
 .user-info-tab-headers ul li:first-child {
+    cursor: default;
     background-color: #111b40;
     color: #FFF;
     font-size: 22px;
     font-family: Arial;
+    text-transform: none;
+    padding: 30px;
+}
+
+.user-info-tab-headers ul li:last-child:hover {
+    background-color: #304cb2;
 }
 
 .user-info-tab-headers ul li span {
