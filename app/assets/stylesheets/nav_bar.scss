@@ -1,6 +1,6 @@
 header {
     font-family: Arial;
-    color: #304CB2;;
+    color: #304CB2;
 }
 
 li {
@@ -16,7 +16,7 @@ li {
     // border: 1px solid black;
     height: 100px;
     margin: 0 auto;
-    width: 930px
+    width: 930px;
 }
 
 .navbar-buttons {
@@ -115,6 +115,10 @@ li {
 .user-auth-logged-out li span {
     text-decoration: none;
     cursor: default;
+}
+
+.user-auth-logged-out li span:active {
+    opacity: 1
 }
 
 .user-auth-logged-out li:last-child {
