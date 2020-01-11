@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from "./components/root";
 import configureStore from './store/store';
 import * as TripActions from './actions/trip_actions';
-import * as TripApiUtil from './util/trip_api_util';
-
+import { getFlights } from './util/flight_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root")
@@ -25,11 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //testing
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.requestTrips = TripActions.requestTrips
-    window.requestTrip = TripActions.requestTrip
-    window.createTrip = TripActions.createTrip
-    window.updateTrip = TripActions.updateTrip
-    window.cancelTrip = TripActions.cancelTrip
+    window.getFlights = getFlights;
 
     ReactDOM.render(<Root store={store}/>, root)
 })
