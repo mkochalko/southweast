@@ -1,12 +1,21 @@
 import React from 'react'
-import TripContainer from './trip_container.jsx';
+import TripsComponent from './trips_component';
 
 class UsersPage extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { 
+                user: this.props.user,
+                trips: this.props.trips
+            }
+    }
+
+    componentDidMount() {
+        this.props.requestTrips()
+    }
 
     render() {
-
         return (
-
             <div className="user-info-page">   
                 <div className="user-info-header">
                     <h4>My Account</h4>
@@ -24,7 +33,7 @@ class UsersPage extends React.Component {
                         </ul>
                     </div>
                     <div className="user-info-tab-content">
-                        {<TripContainer user={this.props.user}/>}
+                        {this.props.trips.length > 0 ? <TripsComponent user={this.state.user} trips={this.props.trips}/> : null }
                     </div>
                 </section>
             </div>

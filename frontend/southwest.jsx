@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from "./components/root";
 import configureStore from './store/store';
-import { login, logout, signup } from './actions/session_actions';
+import * as TripActions from './actions/trip_actions';
+import * as TripApiUtil from './util/trip_api_util';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,7 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //testing
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.login = login
+    window.requestTrips = TripActions.requestTrips
+    window.requestTrip = TripActions.requestTrip
+    window.createTrip = TripActions.createTrip
+    window.updateTrip = TripActions.updateTrip
+    window.cancelTrip = TripActions.cancelTrip
 
     ReactDOM.render(<Root store={store}/>, root)
 })

@@ -1,6 +1,7 @@
 import React from 'react';
+import TripIndex from './trip_index';
 
-class TripContainer extends React.Component {
+class TripsComponent extends React.Component {
 
     render() {
 
@@ -14,7 +15,7 @@ class TripContainer extends React.Component {
                     </section>
 
                     <div>
-                        <h1>Flight Content</h1>
+                        <TripIndex trips={this.props.trips}/>
                     </div>
                 </div>
             </div>
@@ -22,4 +23,4 @@ class TripContainer extends React.Component {
     }
 }
 
-export default TripContainer;
+export default TripsComponent;

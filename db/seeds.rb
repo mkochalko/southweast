@@ -14,3 +14,4 @@
     City.create(name: 'Los Angeles International Airport', name_abbreviation: 'LAX')
     City.create(name: 'LaGuardia Airport', name_abbreviation: 'LGA')
     City.create(name: 'Oakland International Airport', name_abbreviation: 'OAK')
+
