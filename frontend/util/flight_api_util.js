@@ -5,3 +5,10 @@ export const getFlights = (flightInfo) => (
         data: { flightInfo }
     })
 )
+
+export const getFlight = (flightId) => (
+    $.ajax({
+        method: "GET",
+        url: `/api/flights/${flightId}`
+    })
+)

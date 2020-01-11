@@ -1,6 +1,6 @@
 class Flight < ApplicationRecord
 
-    validates :departure_city_id, :arrival_city_id, :duration, :departure_datetime, presence: true
+    validates :departure_city_id, :arrival_city_id, :duration, :departure_date, presence: true
 
     belongs_to :departure_city,
         primary_key: :id,

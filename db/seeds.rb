@@ -15,3 +15,11 @@
     City.create(name: 'LaGuardia Airport', name_abbreviation: 'LGA')
     City.create(name: 'Oakland International Airport', name_abbreviation: 'OAK')
 
+    Flight.create(departure_city_id: 1, arrival_city_id: 2, departure_date: '2020-03-21', duration: 80, departure_time: '10:30:00')
+    Flight.create(departure_city_id: 2, arrival_city_id: 1, departure_date: '2020-03-23', duration: 80, departure_time: '12:45:00')
+    Flight.create(departure_city_id: 3, arrival_city_id: 4, departure_date: '2020-03-21', duration: 360, departure_time: '10:30:00')
+    Flight.create(departure_city_id: 4, arrival_city_id: 3, departure_date: '2020-03-23', duration: 360, departure_time: '12:45:00')
+
+    Trip.create(user_id: 1, trip_code: "KMBR392", departure_flight_id: 1, return_flight_id: 2)
+    Trip.create(user_id: 1, trip_code: "KMBR3922", departure_flight_id: 3, return_flight_id: 4)
+
