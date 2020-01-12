@@ -5,7 +5,6 @@ export default (state ={}, action) => {
     let newState = Object.assign({}, state)
     switch (action.type) {
         case RECEIVE_FLIGHTS:
-            console.log(action.flights)
             newState = action.flights
             return newState;
         case RECEIVE_FLIGHT:

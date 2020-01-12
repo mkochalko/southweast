@@ -1,5 +1,5 @@
 import React from 'react';
-import TripIndex from './trip_index';
+import TripIndexContainer from './trip_index_container';
 
 class TripsComponent extends React.Component {
 
@@ -8,14 +8,16 @@ class TripsComponent extends React.Component {
         return (
             <div>
                 <div className="tab-container">
-                    <h1>Number of Upcoming Trips</h1>
+                    <div className='tab-container-header'>
+                        <h1>Upcoming Trips</h1>
+                    </div>
 
-                    <section>
-                        <h1>Gray divider section</h1>
+                    <section className='tab-divider-section'>
+                        <h1>Carousel Section Placeholder</h1>
                     </section>
 
                     <div>
-                        <TripIndex trips={this.props.trips}/>
+                        <TripIndexContainer trips={this.props.trips}/>
                     </div>
                 </div>
             </div>

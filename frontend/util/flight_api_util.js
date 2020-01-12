@@ -1,8 +1,7 @@
-export const getFlights = (flightInfo) => (
+export const getFlights = () => (
     $.ajax({
         method: "GET",
         url: "/api/flights",
-        data: { flightInfo }
     })
 )
 
@@ -10,5 +9,12 @@ export const getFlight = (flightId) => (
     $.ajax({
         method: "GET",
         url: `/api/flights/${flightId}`
+    })
+)
+
+export const getCities = () => (
+    $.ajax({
+        method: "GET",
+        url: '/api/cities'
     })
 )

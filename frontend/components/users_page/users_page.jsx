@@ -12,6 +12,8 @@ class UsersPage extends React.Component {
 
     componentDidMount() {
         this.props.requestTrips()
+        this.props.requestFlights()
+        this.props.requestCities()
     }
 
     render() {

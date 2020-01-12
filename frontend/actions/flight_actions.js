@@ -2,6 +2,7 @@ import * as FlightApiUtil from '../util/flight_api_util';
 
 export const RECEIVE_FLIGHTS = "RECEIVE_FLIGHTS";
 export const RECEIVE_FLIGHT = "RECEIVE_FLIGHT";
+export const RECEIVE_CITIES = "RECEIVE_CITIES";
 
 const receiveFlights = flights => ({
     type: RECEIVE_FLIGHTS,
@@ -13,6 +14,11 @@ const receiveFlight = flight => ({
     flight
 })
 
+const receiveCities = cities => ({
+    type: RECEIVE_CITIES,
+    cities
+})
+
 const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
     errors
@@ -22,8 +28,8 @@ const receiveErrors = errors => ({
 //     type: CLEAR_ERRORS
 // })
 
-export const requestFlights = (flightInfo) => dispatch => (
-    FlightApiUtil.getFlights(flightInfo).then(flights => dispatch(receiveFlights(flights)),
+export const requestFlights = () => dispatch => (
+    FlightApiUtil.getFlights().then(flights => dispatch(receiveFlights(flights)),
     err => (
         dispatch(receiveErrors(err.resonseJson))
     ))
@@ -34,4 +40,11 @@ export const requestFlight = (flightId) => dispatch => (
     err => (
         dispatch(receiveErrors(err.resonseJson))
     ))
+)
+
+export const requestCities = () => dispatch => (
+    FlightApiUtil.getCities().then(cities => dispatch(receiveCities(cities)),
+        err => (
+            dispatch(receiveErrors(err.resonseJson))
+        ))
 )
