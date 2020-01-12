@@ -27,11 +27,36 @@
     font-size: 16px;
 }
 
+.tab-divider-section > h1 i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.tab-divider-section > h1 i.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.tab-divider-section > h1 i.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
 .tab-trip-index {
     background-color: #e6e7e8;
     display: flex;
     overflow: hidden;
+    left: 0;
+    transition: left 0.4s ease-out;
+    animation: carousel-right 0.3s;
 }
+
+// @keyframes carousel-right {
+//     from {left: 0}
+//     to {left: -230px}
+// }
 
 .tab-trip-info-index-item {
     display: flex;
@@ -49,6 +74,8 @@
     color: #636363;
     height: 425px;
 }
+
+
 
 .tab-trip-index-dates {
     display: flex;
@@ -101,3 +128,4 @@
     font-style: normal;
     font-weight: bold;
 }
+
