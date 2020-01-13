@@ -7,7 +7,6 @@ body {
     width: 100%;
 }
 .user-info-page {
-    border: 1px solid black;
     margin: 5px auto;
     display: flex;
     flex-direction: column;
@@ -29,7 +28,6 @@ body {
 }
 
 .user-info-tab-section {
-    border: 1px solid black;
     display: flex;
     height: 600px;
 }
@@ -40,7 +38,7 @@ body {
 
 .user-info-tab-content {
     width: 710px;
-    
+    overflow: hidden;
 }
 
 .user-info-tab-headers ul li {
@@ -86,3 +84,4 @@ body {
     color: #ffbf27;
     font-style: italic;
 }
+

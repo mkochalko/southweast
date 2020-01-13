@@ -6,8 +6,23 @@ class UsersPage extends React.Component {
         super(props)
         this.state = { 
                 user: this.props.user,
-                trips: this.props.trips
+                trips: this.props.trips,
+                tab: 'upcoming'
             }
+            
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(e) {
+        this.setState({ tab: e.currentTarget.className})
+        const currentTab = document.getElementsByClassName("tab-pointer")
+        if (e.currentTarget.className === 'upcoming-carousel') {
+            $(currentTab).css({ top: '80px' });
+        } else if (e.currentTarget.className === "past-carousel") {
+            $(currentTab).css({ top: '200px' });
+        } else if (e.currentTarget.className === "watchlist-carousel") {
+            $(currentTab).css({ top: '320px' });
+        }
     }
 
     componentDidMount() {
@@ -36,15 +51,15 @@ class UsersPage extends React.Component {
                 <section className="user-info-tab-section">
                     <div className="user-info-tab-headers">
                         <ul>
-                            <li><span>My</span><br/>Trips</li>
-                            <li tabIndex="1">Upcoming</li>
-                            <li tabIndex="1">Past</li>
-                            <li tabIndex="1">Watchlist</li>
+                            <li><span>My</span><br />Trips<div className="tab-pointer"></div></li>
+                            <li onClick={this.handleClick} id="test" tabIndex="1" className="upcoming-carousel">Upcoming</li>
+                            <li onClick={this.handleClick} tabIndex="1" className="past-carousel">Past</li>
+                            <li onClick={this.handleClick} tabIndex="1" className="watchlist-carousel">Watchlist</li>
                             <li></li>
                         </ul>
                     </div>
                     <div className="user-info-tab-content">
-                        {this.props.trips.length > 0 ? <TripsComponent user={this.state.user} trips={this.props.trips}/> : null }
+                        {this.props.trips.length > 0 && this.props.flights.length > 0 ? <TripsComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights}/> : null }
                     </div>
                 </section>
             </div>

@@ -7,7 +7,8 @@ import { requestCities, requestFlights } from '../../actions/flight_actions';
 
 const mapStateToProps = state => ({
     user: state.entities.users[state.session.currentUser],
-    trips: Object.values(state.entities.trips)
+    trips: Object.values(state.entities.trips),
+    flights: Object.values(state.entities.flights)
     })
 
 const mapDispatchToProps = dispatch => ({
