@@ -51,14 +51,14 @@ class NavBar extends React.Component {
         return (
             <header>
                 <div className="navbar">
-                    <Link to='/'><h1>SouthWeast<img className="patrick-img" src="http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430" alt="southweast" /></h1></Link>
+                    <Link to='/'><h1>SouthWeast<img className="patrick-img" src={window.patrickStarURL} /></h1></Link>
                     <div className="navbar-buttons">
 
                         {
                             this.props.location.pathname === '/signup' ? <span></span> : (this.props.currentUser ? loggedInMessage() : loggedOutMessage())
                         }
 
-                        <ul className="navbar-links">
+                        <ul id="navbar-links" className="navbar-links">
                             <li>FLIGHT</li>
                             <li><a target="_blank" rel="noopener noreferrer" href="https://www.hotels.com/?intlid=HOME+%3A%3A+header_main_section">
                                 HOTEL

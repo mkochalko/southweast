@@ -13,10 +13,10 @@ li {
 .navbar {
     display: flex;
     justify-content: space-between;
-    // border: 1px solid black;
     height: 100px;
     margin: 0 auto;
     width: 930px;
+    margin-bottom: 30px;
 }
 
 .navbar-buttons {
@@ -40,11 +40,12 @@ li {
 }
 
 .patrick-img {
-    display: flex;
+    display: block;
     height: 40px;
     width: 27px;
     padding-bottom: 4px;
     padding-left: 2px;
+    background: transparent;
 }
 
 
@@ -65,8 +66,8 @@ li {
     border-right: 2px solid blue;
 }
 
-.navbar-links li:last-child {
-    border: none;
+#navbar-links li:last-child {
+    border: none  !important;
     padding-right: 0;
 }
 

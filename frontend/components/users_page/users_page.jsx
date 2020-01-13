@@ -29,18 +29,35 @@ class UsersPage extends React.Component {
         this.props.requestTrips()
         this.props.requestFlights()
         this.props.requestCities()
+        //Background Image
         const body = document.getElementsByTagName("body");
-        
         $(body).css("background", 'url("https://live.staticflickr.com/2693/4453498888_f576a9afd5_b.jpg") no-repeat')
         $(body).css("background-size", 'cover')
+        //NavBar Text Color
+        const navBarText = document.getElementsByClassName("navbar")
+        $(navBarText).css("color", "white")
+        //NavBar Link Borders 
+        const navBarLinkBorder = document.getElementById("navbar-links").getElementsByTagName("li")
+        $(navBarLinkBorder).css("border-right", "2px solid white")
+        //NavBar LoggedIn Greeting Border
+        const navBarLoggedIn = document.getElementsByClassName("logged-in-account-link")
+        $(navBarLoggedIn).css("border-right", "1px solid white")
     }
 
     componentWillUnmount() {
         const body = document.getElementsByTagName("body");
         $(body).css("background", "transparent")
+        const navBarText = document.getElementsByClassName("navbar")
+        $(navBarText).css("color", "#304CB2")
+        const navBarLinkBorder = document.getElementById("navbar-links").getElementsByTagName("li")
+        $(navBarLinkBorder).css("border-right", "2px solid blue")
+        const navBarLoggedIn = document.getElementsByClassName("logged-in-account-link")
+        $(navBarLoggedIn).css("border-right", "1px solid blue")
     }
 
     render() {
+        console.log(this.state.user)
+
         return (
             <div className="user-info-page">   
                 <div className="user-info-header">
@@ -60,6 +77,65 @@ class UsersPage extends React.Component {
                     </div>
                     <div className="user-info-tab-content">
                         {this.props.trips.length > 0 && this.props.flights.length > 0 ? <TripsComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights}/> : null }
+                    </div>
+                </section>
+                <section className="user-info-tab-section">
+                    <div id="personal-tab" className="user-info-tab-headers">
+                        <ul>
+                            <li><span>My</span><br />Preferences<div className="tab-pointer"></div></li>
+                            <li>Personal</li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div className="user-info-tab-content">
+                        <div id="upcoming-trips" className="tab-container">
+                            <div className='tab-container-header'>
+                                <h1>Personal</h1>
+                            </div>
+
+                            <section className='tab-divider-section'>
+                                <h1></h1>
+                            </section>
+
+                            <div id="upcoming-carousel">
+                                <div className="tab-trip-index-container">
+                                    <div className="profile-information">
+                                        <h2>Profile information</h2>
+                                        <div className="profile-information-name-birthdate">
+                                            <div className="profile-information-sections">
+                                                <h6>FULL NAME</h6>
+                                                <h3>{`${this.state.user.firstName} ${this.state.user.middleName || ""} ${this.state.user.lastName}`}</h3>
+                                            </div>
+                                            <div className="profile-information-sections birthdate">
+                                                <h6>DATE OF BIRTH</h6>
+                                                <h3>{this.state.user.birthdate}</h3>
+                                            </div>
+                                        </div>
+                                        <div className="profile-information-sections">
+                                            <h6>USERNAME</h6>
+                                            <h4>{this.state.user.username}</h4>
+                                        </div>
+                                        <div className="profile-information-sections">
+                                            <h6>STREET ADDRESS</h6>
+                                            <h4>{this.state.user.address}</h4>
+                                            <h4>{this.state.user.city}, {this.state.user.state} {this.state.user.zipCode}</h4>
+                                        </div>
+                                        <div className="profile-information-contact-info">
+                                            <div className="profile-information-sections">
+                                                <h6>E-MAIL</h6>
+                                                <h4>{this.state.user.email}</h4>
+                                            </div>
+                                            <div className="profile-information-sections phone">
+                                                <h6>PHONE</h6>
+                                                <h4>{this.state.user.phoneNumber}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
