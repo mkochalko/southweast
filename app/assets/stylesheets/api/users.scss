@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+    height: 100%;
+    width: 100%;
+}
 .user-info-page {
     border: 1px solid black;
     margin: 5px auto;
@@ -11,8 +15,17 @@
 }
 
 .user-info-header {
-    width: 228px;
+    width: 930px;
     margin: 0;
+    padding: 0 20px 20px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+.user-info-header h4 {
+    text-transform: uppercase;
+}
+.user-info-header h2 {
+    font-size: 27px;
 }
 
 .user-info-tab-section {

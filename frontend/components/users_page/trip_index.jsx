@@ -9,7 +9,7 @@ class TripIndex extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="tab-trip-index-container">
                 <ul className="tab-trip-index">
                     {
                         this.props.trips.map((trip) => (
