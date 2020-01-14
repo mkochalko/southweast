@@ -75,7 +75,7 @@ class UsersPage extends React.Component {
                         </ul>
                     </div>
                     <div className="user-info-tab-content">
-                        {this.props.trips.length > 0 && this.props.flights.length > 0 ? <TripsComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights}/> : null }
+                        {Object.keys(this.props.trips).length > 0 && Object.keys(this.props.flights).length > 0 ? <TripsComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights}/> : null }
                     </div>
                 </section>
                 <section className="user-info-tab-section">

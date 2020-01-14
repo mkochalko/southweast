@@ -26,4 +26,5 @@
     Trip.create(user_id: 1, trip_code: "KMBR3922", departure_flight_id: 3, return_flight_id: 4)
     Trip.create(user_id: 1, trip_code: "KFBR39", departure_flight_id: 5, return_flight_id: 6)
     Trip.create(user_id: 1, trip_code: "KFBR3922", departure_flight_id: 6, return_flight_id: 5)
+    Trip.create(user_id: 1, trip_code: "KFBR392", departure_flight_id: 2, return_flight_id: 1)
 
