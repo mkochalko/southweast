@@ -7,7 +7,7 @@ class UsersPage extends React.Component {
         this.state = { 
                 user: this.props.user,
                 trips: this.props.trips,
-                tab: 'upcoming'
+                tab: 'upcoming-carousel'
             }
             
         this.handleClick = this.handleClick.bind(this)
@@ -56,7 +56,6 @@ class UsersPage extends React.Component {
     }
 
     render() {
-        console.log(this.state.user)
 
         return (
             <div className="user-info-page">   

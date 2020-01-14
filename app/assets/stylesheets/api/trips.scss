@@ -7,7 +7,7 @@
 
 #tab-carousel {
     position: relative;
-    top: 0;
+    top: 0px;
     transition: top 0.4s ease-out;
 }
 
@@ -30,29 +30,40 @@
 
 .tab-divider-section > h1 {
     text-align: center;
-    padding-top: 11px;
+    padding-top: 15px;
     font-size: 16px;
 }
 
 .tab-divider-section > h1 input {
   border-width: 0 3px 3px 0;
+  border-color: #304cb2;
   display: inline-block;
   padding: 3px;
   height: 10px;
 }
 
-.tab-divider-section > h1 i .disabled {
-    border: solid gray;
+.tab-divider-section > h1 span {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.tab-divider-section > h1 > input.disabled {
+    border-color: gray;
+    cursor: default !important;
 }
 
 .tab-divider-section > h1 input.right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+  padding: 5px;
+  cursor: pointer;
 }
 
 .tab-divider-section > h1 input.left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+  padding: 5px;
+  cursor: pointer;
 }
 
 .tab-trip-index-container {
