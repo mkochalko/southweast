@@ -78,9 +78,15 @@ class TripsComponent extends React.Component {
         let date = new Date
         const upcoming = [];
         const past = [];
-        let flightId;
-        for (let i = 0; i < this.props.trips.length - 1; i++) {
-            flightId = this.props.flights[this.props.trips[i].departureFlightId].departureDate
+        let flightObj;
+        for (let i = 0; i < this.props.trips.length; i++) {
+            flightObj = this.props.trips[i].departureFlightId
+            let flightDate;
+            for (let i = 0; i < this.props.flights.length; i++) {
+                if (this.props.flights[i].id === flightObj) {
+                    flightDate = this.props.flights[i].departureDate
+                }
+            }
             let dateArr = date.toLocaleDateString('zh-Hans-CN').split("/")
             let dateIntString = dateArr.map((item, i) => {
                 if (i === 1 && item < 10) {
@@ -90,7 +96,7 @@ class TripsComponent extends React.Component {
                 }
             })
             let dateInt = parseInt(dateIntString)
-            let flightDateInt = parseInt(flightId.split("-").join(""))
+            let flightDateInt = parseInt(flightDate.split("-").join(""))
             if (flightDateInt > dateInt) {
                 upcoming.push(this.props.trips[i])
             } else {
