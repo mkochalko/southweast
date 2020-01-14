@@ -1,6 +1,6 @@
 import React from 'react'
 
-class TripIndexItem extends React.Component {
+class PastTripIndexItem extends React.Component {
 
     render() {
         let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Nov', 'Dev']
@@ -40,20 +40,9 @@ class TripIndexItem extends React.Component {
                         </div>
                      ) : ""
                 }
-                {/* {this.props.cities && this.props.departureFlight ? this.props.cities[this.props.departureFlight.departureCityId].nameAbbreviation : ""}
-                <br/>
-                {this.props.cities && this.props.departureFlight ? this.props.cities[this.props.departureFlight.arrivalCityId].nameAbbreviation : ""}
-                <br/>
-                {this.props.cities && this.props.returnFlight ? this.props.cities[this.props.returnFlight.departureCityId].nameAbbreviation : ""}
-                <br/>
-                {this.props.cities && this.props.returnFlight ? this.props.cities[this.props.returnFlight.arrivalCityId].nameAbbreviation : ""}
-                <br/> 
-                <div>{this.props.cities[this.props.returnFlight.departureCityId].nameAbbreviation}</div>
-                <div>{this.props.cities[this.props.returnFlight.arrivalCityId].nameAbbreviation}</div>
-                */}
             </li>
         )
     }
 }
 
-export default TripIndexItem;
+export default PastTripIndexItem;

@@ -10,20 +10,19 @@ class TripsComponent extends React.Component {
             past: [],
             watchlist: [],
             count: 0,
-            upcomingCarouselTabs: 0
+            carouselTabs: 0
         }
 
-        this.onLeftClick = this.onLeftClick.bind(this);
-        this.onRightClick = this.onRightClick.bind(this);
-        this.handleCarousel = this.handleCarousel.bind(this);
+        this.onLeftClickPast = this.onLeftClickPast.bind(this);
+        this.onRightClickPast = this.onRightClickPast.bind(this);
+        this.handleCarouselPastFlights = this.handleCarouselPastFlights.bind(this);
         this.separateTrips = this.separateTrips.bind(this);
         this.handleTabCarousel = this.handleTabCarousel.bind(this);
     }
 
     componentDidMount() {
         this.separateTrips()
-        this.handleCarousel()
-        this.setState({ upcomingCarouselTabs: document.getElementById(this.props.tab).getElementsByClassName("tab-trip-li")})
+        this.setState({ carouselTabs: document.getElementById(this.props.tab).getElementsByClassName("tab-trip-li") }, this.handleCarouselPastFlights)
     }
 
     handleTabCarousel() {
@@ -37,12 +36,13 @@ class TripsComponent extends React.Component {
         }
     }
 
-    handleCarousel() {
-        const items = this.state.upcomingCarouselTabs.length > 3 ? Math.ceil(this.state.upcomingCarouselTabs.lenght / 3) : 0
-        
+    handleCarouselPastFlights() {
+        const items = this.state.carouselTabs.length > 3 ? Math.ceil(this.state.carouselTabs.length / 3) : 0
+        console.log(items)
+        console.log(this.state.carouselTabs.length)
         let leftPointer = document.getElementsByClassName("left");
         let rightPointer = document.getElementsByClassName("right");
-        if (this.state.count === items) {
+        if (this.state.count === 0 && items - 1 === 0) {
             document.getElementById("tab-divider-section-left-button").disabled = true
             document.getElementById("tab-divider-section-right-button").disabled = true
             $(leftPointer).addClass("disabled")
@@ -50,9 +50,13 @@ class TripsComponent extends React.Component {
         } else if (this.state.count === 0) {
             document.getElementById("tab-divider-section-left-button").disabled = true
             $(leftPointer).addClass("disabled")
+            document.getElementById("tab-divider-section-right-button").removeAttribute("disabled")
+            $(rightPointer).removeClass("disabled")
         } else if (this.state.count === (items - 1)) {
             document.getElementById("tab-divider-section-right-button").disabled = true
             $(rightPointer).addClass("disabled")
+            document.getElementById("tab-divider-section-left-button").removeAttribute("disabled")
+            $(leftPointer).removeClass("disabled")
         } else {
             document.getElementById("tab-divider-section-left-button").removeAttribute("disabled")
             document.getElementById("tab-divider-section-right-button").removeAttribute("disabled")
@@ -61,16 +65,16 @@ class TripsComponent extends React.Component {
         }
     }
 
-    onLeftClick() {
+    onLeftClickPast() {
         const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ count: (this.state.count - 1) }, this.handleCarousel)
+        this.setState({ count: (this.state.count - 1) }, this.handleCarouselPastFlights)
         
         $(tabUl).css('left', '+=702');
     }
 
-    onRightClick() {
+    onRightClickPast() {
         const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ count: (this.state.count + 1) }, this.handleCarousel)
+        this.setState({ count: (this.state.count + 1) }, this.handleCarouselPastFlights)
         $(tabUl).css('left', '-=702');
     }
 
@@ -118,7 +122,7 @@ class TripsComponent extends React.Component {
                     <section className='tab-divider-section'>
                         <h1>
                             <input type="button" className="arrow left" id="tab-divider-section-left-button" onClick={this.onLeftClick}></input>
-                            <span>Page</span> {this.state.count + 1} <span>of</span> {this.state.upcomingCarouselTabs.length > 3 ? Math.ceil(this.state.upcomingCarouselTabs.lenght / 3) : 1}
+                            <span>Page</span> {this.state.count + 1} <span>of</span> {this.state.carouselTabs.length > 3 ? Math.ceil(this.state.carouselTabs.length / 3) : 1}
                             <input type="button" className="arrow right" id="tab-divider-section-right-button" onClick={this.onRightClick}></input>
                         </h1>
                     </section>
@@ -134,9 +138,9 @@ class TripsComponent extends React.Component {
 
                     <section className='tab-divider-section'>
                         <h1>
-                            <input type="button" className="arrow left" id="tab-divider-section-left-button" onClick={this.onLeftClick}></input>
-                            Carousel Section Placeholder
-                            <input type="button" className="arrow right" id="tab-divider-section-right-button" onClick={this.onRightClick}></input>
+                            <input type="button" className="arrow left" id="tab-divider-section-left-button" onClick={this.onLeftClickPast}></input>
+                            <span>Page</span> {this.state.count + 1} <span>of</span> {this.state.upcomingCarouselTabs.length > 3 ? Math.ceil(this.state.upcomingCarouselTabs.length / 3) : 1}
+                            <input type="button" className="arrow right" id="tab-divider-section-right-button" onClick={this.onRightClickPast}></input>
                         </h1>
                     </section>
 
