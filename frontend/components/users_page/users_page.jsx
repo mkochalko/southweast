@@ -81,7 +81,7 @@ class UsersPage extends React.Component {
                 <section className="user-info-tab-section">
                     <div id="personal-tab" className="user-info-tab-headers">
                         <ul>
-                            <li><span>My</span><br />Preferences<div className="tab-pointer"></div></li>
+                            <li><span>My</span><br />Preferences<div className="tab-pointer-still"></div></li>
                             <li>Personal</li>
                             <li></li>
                             <li></li>

@@ -11,7 +11,7 @@ class PastTripIndexItem extends React.Component {
                 {
                     Object.keys(this.props.cities).length > 0 && this.props.departureFlight && this.props.returnFlight ? (
                         <div className="tab-trip-info-index-item">
-                            <div className="tab-trip-info-top-line">
+                            <div className="tab-trip-info-top-line-past">
                                 <div className="tab-trip-index-dates">
                                     <div>{this.props.departureFlight.departureDate}</div>
                                     <div className="tab-trip-index-dates-separator">-</div>

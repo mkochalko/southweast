@@ -7,6 +7,7 @@ import UsersShowContainer from './users_page/users_container';
 import Home from './home';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Helmet } from 'react-helmet';
+import BookFlightContainer from './flights/book_flight_container';
 
 const TITLE = "SouthWeast"
 // <img src = 'http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430' alt = 'southweast' height = '18px' width = '15px' />
@@ -20,6 +21,7 @@ const App = () => (
         </header>
         <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='/book' component={BookFlightContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <ProtectedRoute path="/users/:userId" component={UsersShowContainer} />
         </Switch>

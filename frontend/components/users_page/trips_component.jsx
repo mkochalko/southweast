@@ -9,20 +9,31 @@ class TripsComponent extends React.Component {
             upcoming: [],
             past: [],
             watchlist: [],
-            count: 0,
-            carouselTabs: 0
+            upcomingTripCount: 0,
+            pastTripCount: 0,
+            upcomingCarouselTabs: 0,
+            pastCarouselTabs: 0
         }
 
         this.onLeftClickPast = this.onLeftClickPast.bind(this);
         this.onRightClickPast = this.onRightClickPast.bind(this);
+        this.onLeftClickUpcoming = this.onLeftClickUpcoming.bind(this);
+        this.onRightClickUpcoming = this.onRightClickUpcoming.bind(this);
         this.handleCarouselPastFlights = this.handleCarouselPastFlights.bind(this);
+        this.handleCarouselUpcomingFlights = this.handleCarouselUpcomingFlights.bind(this);
         this.separateTrips = this.separateTrips.bind(this);
         this.handleTabCarousel = this.handleTabCarousel.bind(this);
     }
 
     componentDidMount() {
         this.separateTrips()
-        this.setState({ carouselTabs: document.getElementById(this.props.tab).getElementsByClassName("tab-trip-li") }, this.handleCarouselPastFlights)
+        this.setState({ 
+            upcomingCarouselTabs: document.getElementById("upcoming-carousel").getElementsByClassName("tab-trip-li"),
+            pastCarouselTabs: document.getElementById("past-carousel").getElementsByClassName("tab-trip-li")
+        }, () => {
+            this.handleCarouselPastFlights();
+            this.handleCarouselUpcomingFlights();
+        })
     }
 
     handleTabCarousel() {
@@ -34,32 +45,59 @@ class TripsComponent extends React.Component {
         } else if (this.props.tab === "watchlist-carousel") {
             $(tabComponent).css({top: '-1200px'});
         }
+        
     }
 
     handleCarouselPastFlights() {
-        const items = this.state.carouselTabs.length > 3 ? Math.ceil(this.state.carouselTabs.length / 3) : 0
-        console.log(items)
-        console.log(this.state.carouselTabs.length)
-        let leftPointer = document.getElementsByClassName("left");
-        let rightPointer = document.getElementsByClassName("right");
-        if (this.state.count === 0 && items - 1 === 0) {
-            document.getElementById("tab-divider-section-left-button").disabled = true
-            document.getElementById("tab-divider-section-right-button").disabled = true
+        const items = this.state.pastCarouselTabs.length > 3 ? Math.ceil(this.state.pastCarouselTabs.length / 3) : 0
+
+        let leftPointer = document.getElementsByClassName("left past");
+        let rightPointer = document.getElementsByClassName("right past");
+        if (this.state.pastTripCount === 0 && items === 0) {
+            document.getElementById("tab-divider-section-left-button past-left").disabled = true
+            document.getElementById("tab-divider-section-right-button past-right").disabled = true
             $(leftPointer).addClass("disabled")
             $(rightPointer).addClass("disabled")
-        } else if (this.state.count === 0) {
-            document.getElementById("tab-divider-section-left-button").disabled = true
+        } else if (this.state.pastTripCount === 0) {
+            document.getElementById("tab-divider-section-left-button past-left").disabled = true
             $(leftPointer).addClass("disabled")
-            document.getElementById("tab-divider-section-right-button").removeAttribute("disabled")
+            document.getElementById("tab-divider-section-right-button past-right").removeAttribute("disabled")
             $(rightPointer).removeClass("disabled")
-        } else if (this.state.count === (items - 1)) {
-            document.getElementById("tab-divider-section-right-button").disabled = true
+        } else if (this.state.pastTripCount === (items - 1)) {
+            document.getElementById("tab-divider-section-right-button past-right").disabled = true
             $(rightPointer).addClass("disabled")
-            document.getElementById("tab-divider-section-left-button").removeAttribute("disabled")
+            document.getElementById("tab-divider-section-left-button past-left").removeAttribute("disabled")
             $(leftPointer).removeClass("disabled")
         } else {
-            document.getElementById("tab-divider-section-left-button").removeAttribute("disabled")
-            document.getElementById("tab-divider-section-right-button").removeAttribute("disabled")
+            document.getElementById("tab-divider-section-left-button past-left").removeAttribute("disabled")
+            document.getElementById("tab-divider-section-right-button past-right").removeAttribute("disabled")
+            $(leftPointer).removeClass("disabled")
+            $(rightPointer).removeClass("disabled")
+        }
+    }
+    handleCarouselUpcomingFlights() {
+        const items = this.state.upcomingCarouselTabs.length > 2 ? Math.ceil(this.state.upcomingCarouselTabs.length / 2) : 0
+
+        let leftPointer = document.getElementsByClassName("left upcoming");
+        let rightPointer = document.getElementsByClassName("right upcoming");
+        if (this.state.upcomingTripCount === 0 && items === 0) {
+            document.getElementById("tab-divider-section-left-button upcoming-left").disabled = true
+            document.getElementById("tab-divider-section-right-button upcoming-right").disabled = true
+            $(leftPointer).addClass("disabled")
+            $(rightPointer).addClass("disabled")
+        } else if (this.state.upcomingTripCount === 0) {
+            document.getElementById("tab-divider-section-left-button upcoming-left").disabled = true
+            $(leftPointer).addClass("disabled")
+            document.getElementById("tab-divider-section-right-button upcoming-right").removeAttribute("disabled")
+            $(rightPointer).removeClass("disabled")
+        } else if (this.state.upcomingTripCount === (items - 1)) {
+            document.getElementById("tab-divider-section-right-button upcoming-right").disabled = true
+            $(rightPointer).addClass("disabled")
+            document.getElementById("tab-divider-section-left-button upcoming-left").removeAttribute("disabled")
+            $(leftPointer).removeClass("disabled")
+        } else {
+            document.getElementById("tab-divider-section-left-button upcoming-left").removeAttribute("disabled")
+            document.getElementById("tab-divider-section-right-button upcoming-right").removeAttribute("disabled")
             $(leftPointer).removeClass("disabled")
             $(rightPointer).removeClass("disabled")
         }
@@ -67,14 +105,28 @@ class TripsComponent extends React.Component {
 
     onLeftClickPast() {
         const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ count: (this.state.count - 1) }, this.handleCarouselPastFlights)
+        this.setState({ pastTripCount: (this.state.pastTripCount - 1) }, this.handleCarouselPastFlights)
+        
+        $(tabUl).css('left', '+=702');
+    }
+
+    onLeftClickUpcoming() {
+        const tabUl = document.getElementsByClassName("tab-trip-index")
+        this.setState({ upcomingTripCount: (this.state.upcomingTripCount - 1) }, this.handleCarouselUpcomingFlights)
         
         $(tabUl).css('left', '+=702');
     }
 
     onRightClickPast() {
         const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ count: (this.state.count + 1) }, this.handleCarouselPastFlights)
+        this.setState({ pastTripCount: (this.state.pastTripCount + 1) }, this.handleCarouselPastFlights)
+        $(tabUl).css('left', '-=702');
+    }
+
+    onRightClickUpcoming() {
+        const tabUl = document.getElementsByClassName("tab-trip-index")
+        this.setState({ upcomingTripCount: (this.state.upcomingTripCount + 1) }, this.handleCarouselUpcomingFlights)
+
         $(tabUl).css('left', '-=702');
     }
 
@@ -99,7 +151,7 @@ class TripsComponent extends React.Component {
                     return item
                 }
             })
-            let dateInt = parseInt(dateIntString)
+            let dateInt = parseInt(dateIntString.join(""))
             let flightDateInt = parseInt(flightDate.split("-").join(""))
             if (flightDateInt > dateInt) {
                 upcoming.push(this.props.trips[i])
@@ -114,38 +166,38 @@ class TripsComponent extends React.Component {
         this.handleTabCarousel();
         return (
             <div id="tab-carousel">
-                <div id="upcoming-trips" className="tab-container">
+                <div id="upcoming-carousel" className="tab-container">
                     <div className='tab-container-header'>
                         <h1>{this.state.upcoming.length} Upcoming Trips</h1>
                     </div>
 
                     <section className='tab-divider-section'>
                         <h1>
-                            <input type="button" className="arrow left" id="tab-divider-section-left-button" onClick={this.onLeftClick}></input>
-                            <span>Page</span> {this.state.count + 1} <span>of</span> {this.state.carouselTabs.length > 3 ? Math.ceil(this.state.carouselTabs.length / 3) : 1}
-                            <input type="button" className="arrow right" id="tab-divider-section-right-button" onClick={this.onRightClick}></input>
+                            <input type="button" className="arrow left upcoming" id="tab-divider-section-left-button upcoming-left" onClick={this.onLeftClickUpcoming}></input>
+                            <span>Page</span> {this.state.upcomingTripCount + 1} <span>of</span> {this.state.upcomingCarouselTabs.length > 2 ? Math.ceil(this.state.upcomingCarouselTabs.length / 2) : 1}
+                            <input type="button" className="arrow right upcoming" id="tab-divider-section-right-button upcoming-right" onClick={this.onRightClickUpcoming}></input>
                         </h1>
                     </section>
 
-                    <div id="upcoming-carousel">
-                        <TripIndex trips={this.state.upcoming}/>
+                    <div>
+                        <TripIndex typeKey="upcoming" trips={this.state.upcoming}/>
                     </div>
                 </div>
-                <div id="past-trips" className="tab-container">
+                <div id="past-carousel" className="tab-container">
                     <div className='tab-container-header'>
                         <h1>{this.state.past.length} Past Trips</h1>
                     </div>
 
                     <section className='tab-divider-section'>
                         <h1>
-                            <input type="button" className="arrow left" id="tab-divider-section-left-button" onClick={this.onLeftClickPast}></input>
-                            <span>Page</span> {this.state.count + 1} <span>of</span> {this.state.upcomingCarouselTabs.length > 3 ? Math.ceil(this.state.upcomingCarouselTabs.length / 3) : 1}
-                            <input type="button" className="arrow right" id="tab-divider-section-right-button" onClick={this.onRightClickPast}></input>
+                            <input type="button" className="arrow left past" id="tab-divider-section-left-button past-left" onClick={this.onLeftClickPast}></input>
+                            <span>Page</span> {this.state.pastTripCount + 1} <span>of</span> {this.state.pastCarouselTabs.length > 3 ? Math.ceil(this.state.pastCarouselTabs.length / 3) : 1}
+                            <input type="button" className="arrow right past" id="tab-divider-section-right-button past-right" onClick={this.onRightClickPast}></input>
                         </h1>
                     </section>
 
                     <div>
-                        <TripIndex trips={this.state.past}/>
+                        <TripIndex typeKey="past" trips={this.state.past}/>
                     </div>
                 </div>
                 <div id="watch-list" className="tab-container">

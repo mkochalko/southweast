@@ -92,6 +92,16 @@
     height: 100%;
 }
 
+.tab-trip-info-index-item-upcoming{
+    display: flex;
+    width: 348px;
+    flex-direction: column;
+    padding: 0 20px;
+    align-items: space-between;
+    justify-content: space-between;
+    height: 100%;
+}
+
 .tab-trip-li {
     margin: 2px 4px 0 0;
     background-color: white;
@@ -110,6 +120,12 @@
 }
 
 .tab-trip-info-top-line {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.tab-trip-info-top-line-past {
     display: flex;
     justify-content: space-between;
     margin-top: 22px;
@@ -165,4 +181,59 @@
     background-color: #fff;
     z-index: 200;
     transition: top 0.4s ease-out;
+}
+
+.tab-pointer-still {
+    left: 190px;
+    top: 80px;
+    position: relative;
+    height: 14px;
+    width: 14px;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    transform: rotate(-45deg);
+    background-color: #fff;
+    z-index: 200;
+    transition: top 0.4s ease-out;
+}
+
+.tab-trip-info-city-name {
+    height: 50px;
+    color: #304cb2;
+    font-size: 42px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.tab-trip-upcoming-info {
+    padding: 0 5px;
+}
+
+.tab-trip-upcoming-info:first-child {
+    padding-right: 15px;
+    width: 110px;
+}
+
+.tab-trip-upcoming-info h4 {
+    color: #111b40;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.tab-trip-upcoming-info h5 {
+    margin: 0;
+    line-height: 20px;
+    font-size: 16px;
+    color: #111b40;
+    font-family: Arial;
+    font-weight: normal;
+}
+
+.tab-trip-up-next {
+    margin-bottom: 0;
+    color: #008020;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 22px;
+    font-family: Arial;
 }

@@ -59,7 +59,7 @@ class NavBar extends React.Component {
                         }
 
                         <ul id="navbar-links" className="navbar-links">
-                            <li>FLIGHT</li>
+                            <li><Link to="/book">FLIGHT</Link></li>
                             <li><a target="_blank" rel="noopener noreferrer" href="https://www.hotels.com/?intlid=HOME+%3A%3A+header_main_section">
                                 HOTEL
                                 </a>

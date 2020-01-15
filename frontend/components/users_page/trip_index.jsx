@@ -1,5 +1,6 @@
 import React from 'react';
-import TripIndexItemContainer from './trip_index_item_container';
+import PastTripIndexItemContainer from './past_trip_index_item_container';
+import UpcomingTripIndexItemContainer from './upcoming_trip_index_item_container';
 
 class TripIndex extends React.Component {
     constructor(props) {
@@ -10,13 +11,25 @@ class TripIndex extends React.Component {
     render() {
         return (
             <div className="tab-trip-index-container">
-                <ul className="tab-trip-index">
-                    {
-                        this.props.trips.map((trip) => (
-                            <TripIndexItemContainer  key={trip.id} trip={trip}/>
-                        ))
-                    }
-                </ul>
+                { this.props.typeKey === 'upcoming' ? (
+                    <ul className="tab-trip-index">
+                        {
+                            this.props.trips.map((trip) => (
+                                <UpcomingTripIndexItemContainer key={trip.id} trip={trip} />
+                            ))
+                        }
+                    </ul>
+                ) : (
+                    <ul className="tab-trip-index">
+                        {
+                            this.props.trips.map((trip) => (
+                                <PastTripIndexItemContainer key={trip.id} trip={trip} />
+                            ))
+                        }
+                    </ul>
+                )
+                }
+                
             </div>
         )
     }
