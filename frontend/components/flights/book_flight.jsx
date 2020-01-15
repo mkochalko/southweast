@@ -2,6 +2,10 @@ import React from 'react';
 
 class BookFlight extends React.Component {
 
+    calander() {
+        
+    }
+
     render() {
 
         return (
@@ -16,17 +20,30 @@ class BookFlight extends React.Component {
                 </div>
                 <form className="flight-search-form-container">
                     <div className="flight-search-form">
-                        <label>Depart
-                            <input type="text"/>
-                        </label>
-                        <label>Passengers
-                            <select>
-                                <option value="1">1</option>
-                            </select>
-                        </label>
+                        <div>
+                            <label>Depart
+                                <input type="text"/>
+                            </label>
+                            <label>Depart Date
+                                <input type="text" id="datepicker" />
+                            </label>
+                            <label>Passengers
+                                <select>
+                                    <option value="1">1</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>Arrive
+                                <input type="text" />
+                            </label>
+                            <label>Return Date
+                                <input type="text" id="datepicker" />
+                            </label>
+                        </div>
                     </div>
                     <div className="flight-search-submit-button">
-
+                        <input type="submit" value="Search"/>
                     </div>
                 </form>
             </div>
