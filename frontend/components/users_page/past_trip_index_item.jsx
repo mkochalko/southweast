@@ -3,9 +3,6 @@ import React from 'react'
 class PastTripIndexItem extends React.Component {
 
     render() {
-        let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Nov', 'Dev']
-        // let month = this.props.departureFlight.departureDate.slice(5)
-        // console.log(month)
         return(
             <li className="tab-trip-li">
                 {
