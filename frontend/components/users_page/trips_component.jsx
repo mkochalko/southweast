@@ -174,7 +174,7 @@ class TripsComponent extends React.Component {
                     <section className='tab-divider-section'>
                         <h1>
                             <input type="button" className="arrow left upcoming" id="tab-divider-section-left-button upcoming-left" onClick={this.onLeftClickUpcoming}></input>
-                            <span>Page</span> {this.state.upcomingTripCount + 1} <span>of</span> {this.state.upcomingCarouselTabs.length > 2 ? Math.ceil(this.state.upcomingCarouselTabs.length / 2) : 1}
+                            <span>Page</span> <span>{this.state.upcomingTripCount + 1}</span> <span>of</span><span>{this.state.upcomingCarouselTabs.length > 2 ? Math.ceil(this.state.upcomingCarouselTabs.length / 2) : 1}</span>
                             <input type="button" className="arrow right upcoming" id="tab-divider-section-right-button upcoming-right" onClick={this.onRightClickUpcoming}></input>
                         </h1>
                     </section>
@@ -191,7 +191,7 @@ class TripsComponent extends React.Component {
                     <section className='tab-divider-section'>
                         <h1>
                             <input type="button" className="arrow left past" id="tab-divider-section-left-button past-left" onClick={this.onLeftClickPast}></input>
-                            <span>Page</span> {this.state.pastTripCount + 1} <span>of</span> {this.state.pastCarouselTabs.length > 3 ? Math.ceil(this.state.pastCarouselTabs.length / 3) : 1}
+                            <span>Page</span> {this.state.pastTripCount + 1} <span>of</span> <span>{this.state.pastCarouselTabs.length > 3 ? Math.ceil(this.state.pastCarouselTabs.length / 3) : 1}</span>
                             <input type="button" className="arrow right past" id="tab-divider-section-right-button past-right" onClick={this.onRightClickPast}></input>
                         </h1>
                     </section>
