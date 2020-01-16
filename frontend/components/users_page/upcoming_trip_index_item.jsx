@@ -1,6 +1,6 @@
 import React from 'react'
 
-class PastTripIndexItem extends React.Component {
+class UpcomingTripIndexItem extends React.Component {
 
     render() {
         // Departure and Arrival Time Setup
@@ -69,4 +69,4 @@ class PastTripIndexItem extends React.Component {
     }
 }
 
-export default PastTripIndexItem;
+export default UpcomingTripIndexItem;
