@@ -26,9 +26,10 @@ export const clearErrors = () => ({
 export const login = user => dispatch => (
     ApiUtil.logIn(user)
         .then(user => (dispatch(receiveCurrentUser(user))
-        ), err => (
-            dispatch(receiveErrors(err.responseJSON))
-        )));
+        ), err => {
+            debugger;
+            return dispatch(receiveErrors(err.responseJSON))
+        }));
 
 export const logout = () => dispatch => (ApiUtil.logOut()
     .then(() => dispatch(logoutCurrentUser())));
