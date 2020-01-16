@@ -1,5 +1,6 @@
 import React from 'react'
 import TripsComponent from './trips_component';
+import EmptyTripComponent from './empty_trip_component';
 
 class UsersPage extends React.Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class UsersPage extends React.Component {
                 tab: 'upcoming-carousel'
             }
             
-        this.handleClick = this.handleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this);
+        this.configurePhoneNumber = this.configurePhoneNumber.bind(this);
     }
 
     handleClick(e) {
@@ -55,13 +57,27 @@ class UsersPage extends React.Component {
         $(navBarLoggedIn).css("border-right", "1px solid blue")
     }
 
-    render() {
+    configurePhoneNumber(number) {
+        let numString = number.toString();
+        if (numString.length === 7) {
+            return numString.slice(0, 3) + '-' + numString.slice(3)
+        } else if (numString.length === 10) {
+            return '(' + numString.slice(0, 3) + ')' + numString.slice(3, 6) + '-' + numString.slice(6)
+        } else if (numString.length === 11) {
+            return numString.slice(0,1) + ' (' + numString.slice(1, 4) + ')' + numString.slice(4, 7) + '-' + numString.slice(7)
+        } else {
+            return numString.slice(0, 3) + '-' + numString.slice(3)
+        }
+    }
 
+    render() {
+        console.log(this.props)
         return (
             <div className="user-info-page">   
                 <div className="user-info-header">
                     <h4>My Account</h4>
                     <h2>Hi, {this.props.user.firstName}</h2>
+                    <h5>Member since {this.props.user.createdAt.slice(0, 4)}</h5>
                 </div>
 
                 <section className="user-info-tab-section">
@@ -75,7 +91,7 @@ class UsersPage extends React.Component {
                         </ul>
                     </div>
                     <div className="user-info-tab-content">
-                        {Object.keys(this.props.trips).length > 0 && Object.keys(this.props.flights).length > 0 ? <TripsComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights}/> : null }
+                        {Object.keys(this.props.trips).length > 0 && Object.keys(this.props.flights).length > 0 ? <TripsComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights} /> : <EmptyTripComponent tab={this.state.tab} user={this.state.user} trips={this.props.trips} flights={this.props.flights} /> }
                     </div>
                 </section>
                 <section className="user-info-tab-section">
@@ -128,7 +144,7 @@ class UsersPage extends React.Component {
                                             </div>
                                             <div className="profile-information-sections phone">
                                                 <h6>PHONE</h6>
-                                                <h4>{this.state.user.phoneNumber}</h4>
+                                                <h4>{this.configurePhoneNumber(this.state.user.phoneNumber)}</h4>
                                             </div>
                                         </div>
                                     </div>

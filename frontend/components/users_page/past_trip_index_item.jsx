@@ -3,6 +3,10 @@ import React from 'react'
 class PastTripIndexItem extends React.Component {
 
     render() {
+        let departureDate = new Date(this.props.departureFlight.departureDate)
+        let departureDateString = departureDate.toDateString()
+        let returnDate = new Date(this.props.returnFlight.departureDate)
+        let returnDateString = returnDate.toDateString()
         return(
             <li className="tab-trip-li">
                 {
@@ -10,9 +14,9 @@ class PastTripIndexItem extends React.Component {
                         <div className="tab-trip-info-index-item">
                             <div className="tab-trip-info-top-line-past">
                                 <div className="tab-trip-index-dates">
-                                    <div>{this.props.departureFlight.departureDate}</div>
+                                    <div>{departureDateString.slice(4, 10)}</div>
                                     <div className="tab-trip-index-dates-separator">-</div>
-                                    <div> {this.props.returnFlight.departureDate}</div>
+                                    <div> {returnDateString.slice(4, 10)}</div>
                                 </div>
                                 <div className="tab-trip-index-dates-airplane">
                                     <img src="https://image.flaticon.com/icons/svg/723/723955.svg" alt="airplane" height="15" width="15"/>
