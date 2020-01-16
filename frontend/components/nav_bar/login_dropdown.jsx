@@ -40,7 +40,6 @@ class LoginDropDown extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         this.props.login(this.state)
     }
 

@@ -1,5 +1,7 @@
 class Api::UsersController < ApplicationController
 
+    skip_before_action :verify_authenticity_token
+
     def show
         @user = User.find(params[:id])
         render 'api/users/show'
@@ -19,6 +21,6 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params 
-        params.require(:user).permit(:username, :password, :first_name, :middle_name, :last_name, :birthdate, :address, :city, :state, :zip_code, :phone_number, :email, :points, :created_at)
+        params.require(:user).permit(:username, :password, :first_name, :middle_name, :last_name, :birthdate, :address, :city, :state, :zip_code, :phone_number, :email, :points)
     end
 end

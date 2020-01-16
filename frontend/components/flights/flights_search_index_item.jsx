@@ -34,8 +34,6 @@ class FlightSearchIndexItem extends React.Component {
     }
 
     render() {
-        console.log(this.props.duration)
-        // debugger
         return(
             <li className="flights-search-item-container">
                 <div className="flights-search-times-container">

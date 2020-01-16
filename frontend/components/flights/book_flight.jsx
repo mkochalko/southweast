@@ -12,7 +12,6 @@ class BookFlight extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger;
         this.props.createFlightSession(this.state)
         this.props.history.push("/flights_search")
     }
