@@ -3,9 +3,15 @@ import * as FlightApiUtil from '../util/flight_api_util';
 export const RECEIVE_FLIGHTS = "RECEIVE_FLIGHTS";
 export const RECEIVE_FLIGHT = "RECEIVE_FLIGHT";
 export const RECEIVE_CITIES = "RECEIVE_CITIES";
+export const RECEIVE_API_FLIGHTS = "RECEIVE_API_FLIGHTS";
 
 const receiveFlights = flights => ({
     type: RECEIVE_FLIGHTS,
+    flights
+})
+
+const receiveApiFlights = flights => ({
+    type: RECEIVE_API_FLIGHTS,
     flights
 })
 
@@ -48,3 +54,12 @@ export const requestCities = () => dispatch => (
             dispatch(receiveErrors(err.resonseJson))
         ))
 )
+
+export const createFlightSession = (flightInfo) => dispatch => (
+    FlightApiUtil.createFlightSession(flightInfo).then(flightSession => {
+        return FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid)
+    })
+        .then(flights => dispatch(receiveApiFlights(flights)))
+)
+
+// dispatch(receiveApiFlights(flights))
