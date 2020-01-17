@@ -35,7 +35,7 @@ export const createFlightSession = (flightInfo) => {
         },
         headers: {
             "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-            "x-rapidapi-key": "53f3140725msh6186c4c7588b04bp1fd2b5jsn857f8c7025f1"
+            "x-rapidapi-key": window.tripAdvisorAPIKey
         }
     }))
 }
@@ -53,7 +53,7 @@ export const fetchFlightsApi = (sid) => (
         method: "GET",
         headers: {
             "x-rapidapi-host": "tripadvisor1.p.rapidapi.com",
-            "x-rapidapi-key": "53f3140725msh6186c4c7588b04bp1fd2b5jsn857f8c7025f1"
+            "x-rapidapi-key": window.tripAdvisorAPIKey
         }
     })
 )
