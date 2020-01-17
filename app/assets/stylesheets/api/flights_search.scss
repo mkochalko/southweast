@@ -132,6 +132,7 @@
 
 .flights-search-header-large-info {
     display: flex;
+    align-items: center;
 }
 
 .flights-search-header-large-info h1 {
@@ -161,18 +162,22 @@
     padding-left: 10px;
 }
 
-.flights-search-header-into-with-prices {
+.flights-search-header-info-with-prices {
     font-family: Arial;
+    align-items: center;
 }
 
 .flight-search-header-airport-codes {
     display: flex;
     padding-left: 15px;
     font-weight: normal;
+    align-items: center;
 }
 
 .flight-search-header-airport-codes h1{
     font-weight: normal;
+    margin-right: 15px;
+
 }
 
 .flight-search-header-airport-codes img {

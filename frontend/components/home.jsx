@@ -1,4 +1,5 @@
 import React from 'react';
+import BookFlightContainer from '../components/flights/book_flight_container';
 
 class Home extends React.Component {
 
@@ -6,6 +7,7 @@ class Home extends React.Component {
 
         return (
             <div>
+                <BookFlightContainer />
             </div>
         )
     }

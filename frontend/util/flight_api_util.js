@@ -48,7 +48,8 @@ export const fetchFlightsApi = (sid) => (
         url: "https://tripadvisor1.p.rapidapi.com/flights/poll",
         data: {
             sid: sid,
-            ns: "NON_STOP"
+            ns: "NON_STOP",
+            so: "EARLIEST_OUTBOUND_DEPARTURE"
         },
         method: "GET",
         headers: {
