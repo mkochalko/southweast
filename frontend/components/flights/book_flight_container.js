@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
         dd1: "",
         returnDate: "",
         ta: ""
-    }
+    },
+    flightsApi: state.entities.flightsApi
 })
 
 const mapDispatchToProps = dispatch => ({

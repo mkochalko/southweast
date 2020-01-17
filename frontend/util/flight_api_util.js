@@ -20,7 +20,6 @@ export const getCities = () => (
 )
 
 export const createFlightSession = (flightInfo) => {
-    console.log(flightInfo)
     return ($.ajax({
         async: true,
         crossDomain: true,

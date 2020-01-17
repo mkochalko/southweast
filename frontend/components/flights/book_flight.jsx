@@ -12,8 +12,9 @@ class BookFlight extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createFlightSession(this.state)
-        this.props.history.push("/flights_search")
+        // console.log(this.props.flightsApi)
+        this.props.createFlightSession(this.state).then()
+        setTimeout( () => Object.keys(this.props.flightsApi).length > 0 ? this.props.history.push("/flights_search") : "", 2000 )
     }
 
     onChange(form) {
