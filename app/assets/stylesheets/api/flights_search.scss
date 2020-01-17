@@ -1,11 +1,64 @@
-
+.flights-search-header-container {
+    width: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
 
 .flights-search-item-container {
     display: flex;
+    margin: 0 auto;
+    width: 930px;
+    height: 70px;
+    justify-content: space-between;
+    position: relative;
 }
 
 .flights-search-times-container {
     display: flex;
+    color: #111B40;
+    font: bold 30px Arial;
+    align-items: center;
+    width: 250px;
+    justify-content: space-between;
+}
+
+.flights-search-single-time-item span{
+    display: flex;
+    color: #111B40;
+    font: normal 13px Arial;
+    align-items: end;
+    padding-bottom: 5px;
+}
+
+.flights-search-single-time-item {
+    display: flex;
+    align-items: flex-end;
+    width: 100px;
+}
+
+.flight-search-stops-and-flight-number {
+    position: absolute;
+    top: -5px;
+    padding: 2px 2px 2px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.flight-search-stops-and-flight-number p {
+    background-color: #0076A5;
+    color: #fff;
+    width: 56px;
+    height: 14px;
+    margin: 0;
+    margin-right: 5px;
+    text-align: center;
+    font-family: Arial;
+}
+
+.flight-search-stops-and-flight-number span {
+    color: #0076A5;
+    font-weight: normal;
+    font-family: Arial;
 }
 
 .flights-search-times-container img {
@@ -37,4 +90,92 @@
 .flight-search-times-duration-shapes {
     display: flex;
     align-items: center;
+    padding-top: 14px;
+}
+
+.flight-search-times-duration h5 {
+    color: #636363;
+    width: 49px;
+    font: 11px Arial;
+    margin-bottom: 3px;
+}
+
+.flight-search-times-duration h6 {
+    color: #111B40;
+    font: bold 12px Arial;
+    margin: 0;
+}
+
+.flight-search-times-price {
+    width: 93px;
+    height: 55px;
+    border: 1px solid #A4BAF2;
+    border-bottom-color: #FFBF27;
+    border-bottom-width: 2px;
+    border-radius: 2px;
+    color: #304CB2;
+    cursor: pointer;
+    font: bold 22px Arial;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.flight-search-times-price h4 {
+    margin: 0;
+}
+
+.flight-search-times-price h4 span{
+    position: relative;
+    font-size: 12px;
+    top: -7px;
+}
+
+.flights-search-header-large-info {
+    display: flex;
+}
+
+.flights-search-header-large-info h1 {
+    color: #111B40;
+    font-weight: bold;
+    font-size: 42px;
+}
+
+.flights-search-header-large-info img{
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+}
+
+.flights-search-header-small-info {
+    display: flex;
+    font-family: Arial;
+    margin-left: 50px;
+
+}
+
+.flights-search-header-small-info h1 {
+    padding-right: 10px;
+}
+
+.flights-search-header-small-info h1:last-child {
+    padding-left: 10px;
+}
+
+.flights-search-header-into-with-prices {
+    font-family: Arial;
+}
+
+.flight-search-header-airport-codes {
+    display: flex;
+    padding-left: 15px;
+    font-weight: normal;
+}
+
+.flight-search-header-airport-codes h1{
+    font-weight: normal;
+}
+
+.flight-search-header-airport-codes img {
+    height: 20px;
+    width: 20px;
 }

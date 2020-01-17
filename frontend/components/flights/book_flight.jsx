@@ -21,34 +21,40 @@ class BookFlight extends React.Component {
     }
 
     render() {
-
         return (
             <section className="flight-search-container-background">
                 <div className="flight-search-container">
-                    <div className="flight-search-oneway-radio">
-                        <label> 
-                            <input type="radio" name="roundtrip" id=""/>Roundtrip
-                        </label>
-                        <label> 
-                            <input type="radio" name="roundtrip" id=""/>One-way
-                        </label>
-                    </div>
                     <form onSubmit={this.handleSubmit} className="flight-search-form-container">
+                        <div className="flight-search-oneway-radio">
+                            <section id="group1">
+                                <input type="radio" value="roundtrip" name="group1" /><span className="flight-search-radio-labels">Roundtrip</span>
+                                <input type="radio" value="roundtrip" name="group1" /><span className="flight-search-radio-labels">One-way</span>
+                            </section>
+                            <section id="group2">
+                                <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Dollars</span>
+                                <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Points</span>
+                            </section>
+                        </div>
                         <div className="flight-search-form">
-                            <div>
-                                <label>Depart
+                            <div className="flight-search-form-input-grouping">
+                                <div className="flight-search-form-single-input-grouping">
+                                    <h4>Depart</h4>
                                     <input type="text"
                                         onChange={this.onChange("o1")}
                                         value={this.state.o1}
                                     />
-                                </label>
-                                <label>Depart Date
+                                </div>
+
+                                <div className="flight-search-form-single-input-grouping datepicker">
+                                    <h4>Depart Date</h4>
                                     <input type="date" 
+                                        className="flight-search-departure-datepicker"
                                         onChange={this.onChange("dd1")}
                                         value={this.state.dd1}
                                     />
-                                </label>
-                                <label>Passengers
+                                </div>
+                                <div className="flight-search-form-single-input-grouping">
+                                    <h4>Passengers</h4>
                                     <select onChange={this.onChange("ta")}>
                                         <option value="1">1</option> 
                                         <option value="2">2</option> 
@@ -58,32 +64,46 @@ class BookFlight extends React.Component {
                                         <option value="6">6</option> 
                                         <option value="7">7</option> 
                                         <option value="8">8</option> 
-                                        <option value="9">9</option> 
+                                        <option value="9">9</option>
                                     </select>
-                                </label>
+                                </div>
                             </div>
                             <input type="hidden" name="currency" value="USD"/>
                             <input type="hidden" name="passengers" value="1"/>
-                            <div>
-                                <label>Arrive
+                            <div className="flight-search-form-input-grouping">
+                                <div className="flight-search-form-single-input-grouping">
+                                    <h4>Arrive</h4>
                                     <input type="text" 
                                         onChange={this.onChange("d1")}
                                         value={this.state.d1}
                                     />
-                                </label>
-                                <label>Return Date
-                                    <input type="text" 
-                                        id="datepicker" 
+                                </div>
+                                <div className="flight-search-form-single-input-grouping datepicker">
+                                    <h4>Return Date</h4>
+                                    <input type="date"
                                         onChange={this.onChange("returnDate")}
                                         value={this.state.returnDate}
                                     />
-                                </label>
+                                </div>
                             </div>
                         </div>
                         <div className="flight-search-submit-button">
                             <input type="submit" value="Search"/>
                         </div>
                     </form>
+                    <div className="flight-search-weast-message-container">
+                        <div className="flight-search-weast-message-section">
+                            <img src={window.compassURL}/>
+                            <p>West</p>
+                        </div>
+
+                        <div className="flight-search-weast-message-section">
+                            <img src={window.weastCompassURL}/>
+                            <p>I thought you said Weast</p>
+                        </div>
+
+                        <div className="flight-search-message-slanted-section"></div>
+                    </div>
                 </div>
             </section>
         )

@@ -7,6 +7,7 @@ class FlightSearchIndexItem extends React.Component {
 
         this.configureTime = this.configureTime.bind(this);
         this.configureDuration = this.configureDuration.bind(this);
+        this.configureAMPM = this.configureAMPM.bind(this);
     }
 
     configureTime(time) {
@@ -15,9 +16,21 @@ class FlightSearchIndexItem extends React.Component {
         let minutes = departureTime.slice(3, 5);
         let configuredTime;
         if (hours > 12) {
-            configuredTime = hours - 12 + ":" + minutes + " PM"
+            configuredTime = hours - 12 + ":" + minutes
         } else {
-            configuredTime = departureTime + " AM"
+            configuredTime = departureTime
+        }
+        return configuredTime
+    }
+
+    configureAMPM(time) {
+        let departureTime = time.slice(11, 16);
+        let hours = parseInt(departureTime.slice(0, 2));
+        let configuredTime;
+        if (hours > 12) {
+            configuredTime = " PM"
+        } else {
+            configuredTime = " AM"
         }
         return configuredTime
     }
@@ -33,17 +46,27 @@ class FlightSearchIndexItem extends React.Component {
         return hours + "h " + durationMinutes + "m"
     }
 
+    
+
     render() {
         return(
             <li className="flights-search-item-container">
+                <div className="flight-search-stops-and-flight-number">
+                    <p>Nonstop</p> 
+                    <span># {this.props.flight.f[0].l[0].f}</span>
+                </div>
                 <div className="flights-search-times-container">
-                    {this.configureTime(this.props.flight.f[0].l[0].dd)}
+                    <div className="flights-search-single-time-item">
+                        {this.configureTime(this.props.flight.f[0].l[0].dd)}<span>{this.configureAMPM(this.props.flight.f[0].l[0].dd)}</span>
+                    </div>
                     <img src="https://image.flaticon.com/icons/svg/271/271226.svg" alt="arrow"/>
-                    {this.configureTime(this.props.flight.f[0].l[0].ad)}
+                    <div className="flights-search-single-time-item">
+                        {this.configureTime(this.props.flight.f[0].l[0].ad)}<span>{this.configureAMPM(this.props.flight.f[0].l[0].ad)}</span>
+                    </div>
                 </div>
                 <div className="flight-search-times-duration">
                     <div>
-                        <h6>Duration</h6>
+                        <h5>Duration</h5>
                         <h6>{this.configureDuration(this.props.duration)}</h6>
                     </div>
                     <div className="flight-search-times-duration-shapes">
@@ -52,8 +75,8 @@ class FlightSearchIndexItem extends React.Component {
                         <span className="flight-search-times-duration-circle"></span>
                     </div>
                 </div>
-                <div>
-                    <h4>{this.props.price}</h4>
+                <div className="flight-search-times-price">
+                    <h4><span>$</span>{this.props.price.slice(1)}</h4>
                 </div>
             </li>
         )
