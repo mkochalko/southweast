@@ -33,9 +33,9 @@ As trips are booked and trips are taken, all upcoming and past trips will be sav
 
 ![](https://github.com/mkochalko/southweast/blob/master/app/assets/images/upcoming_trip_carousel.gif "Upcoming Trips Carousel")
 
-# Gif of past trips carousel
+![](https://github.com/mkochalko/southweast/blob/master/app/assets/images/past_trip_carousel.gif "Past Trips Carousel")
 
-# git of my trips tabs carousel
+![](https://github.com/mkochalko/southweast/blob/master/app/assets/images/trip_tab_carousel.gif "Tab Carousel")
 
 As mentioned above, once development is complete, users will be able to book trips, which update in the user profile, edit trips, and 'purchase' flights directly on the site. This will allow for a complete flight/trip creation as one would expect on a normal airlines web application. 
 
