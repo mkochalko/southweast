@@ -71,7 +71,6 @@ class UsersPage extends React.Component {
     }
 
     render() {
-        // console.log(this.props)
         return (
             <div className="user-info-page">   
                 <div className="user-info-header">
