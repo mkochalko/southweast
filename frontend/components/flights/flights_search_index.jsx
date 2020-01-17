@@ -9,7 +9,6 @@ import FlightSearchIndexItem from './flights_search_index_item';
 class FlightsSearchIndex extends React.Component {
 
     render() {
-        console.log(this.props.flightInfo)
         return (
             <div>
                 <div className="flights-search-header-container">
@@ -18,9 +17,9 @@ class FlightsSearchIndex extends React.Component {
                             <img src="https://image.flaticon.com/icons/svg/181/181545.svg" alt="airplane" />
                             <h1>Depart:</h1>
                             <div className="flight-search-header-airport-codes">
-                                <h1>{this.props.flightInfo.airports[1][1].c}</h1>
+                                <h1>{this.props.flightInfo.airports[1].c}</h1>
                                 <img src="https://image.flaticon.com/icons/svg/61/61212.svg" alt=""/>
-                                <h1>{this.props.flightInfo.airports[0][0].c}</h1>
+                                <h1>{this.props.flightInfo.airports[0].c}</h1>
                             </div>
                         </div>
                         <div className="flights-search-header-price-options">
@@ -28,9 +27,9 @@ class FlightsSearchIndex extends React.Component {
                         </div>
                     </div>
                     <div className="flights-search-header-small-info">
-                        <h1>{this.props.flightInfo.airports[1][1].cn} - {this.props.flightInfo.airports[1][1].c}</h1> 
+                        <h1>{this.props.flightInfo.airports[1].cn} - {this.props.flightInfo.airports[1].c}</h1> 
                         <span>to</span>
-                        <h1>{this.props.flightInfo.airports[0][0].cn} - {this.props.flightInfo.airports[0][0].c}</h1>
+                        <h1>{this.props.flightInfo.airports[0].cn} - {this.props.flightInfo.airports[0].c}</h1>
                     </div>
                 </div>
                 <ul>
