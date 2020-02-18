@@ -8,7 +8,7 @@ export default (state ={}, action) => {
             newState = action.flights
             return newState;
         case RECEIVE_FLIGHT:
-            newState[action.type.id] = action.type
+            newState[action.flight.id] = action.flight
             return newState;
         default:
             return state;

@@ -8,16 +8,37 @@ class BookFlight extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.roundTrip = this.roundTrip.bind(this);
+        this.oneWayTrip = this.oneWayTrip.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createFlightSession(this.state).then()
-        setTimeout( () => Object.keys(this.props.flightsApi).length > 0 ? this.props.history.push("/flights_search") : "", 2000 )
+        this.props.createFlightSession(this.state)
+            .then(() => {
+                if (this.props.trip.dd2.length > 2) {
+                    this.props.createReturnFlightSession(this.state)
+                }
+            })
+            .then(() => this.props.updatePassengers(this.state.ta))
+            .then(() => this.props.history.push("/flights_search"))
+        // setTimeout( () => Object.keys(this.props.flightsApi).length > 0 ? this.props.history.push("/flights_search") : "", 2000 )
     }
 
     onChange(form) {
         return (e) => this.setState({ [form]: e.currentTarget.value})
+    }
+
+    roundTrip() {
+        let returnDate = document.getElementById("return-date")
+        returnDate.removeAttribute("disabled")
+        returnDate.className = 'return-date-enabled'
+    }
+
+    oneWayTrip() {
+        let returnDate = document.getElementById("return-date")
+        returnDate.setAttribute("disabled", "true")
+        returnDate.className = 'return-date-disabled'
     }
 
     render() {
@@ -27,12 +48,12 @@ class BookFlight extends React.Component {
                     <form onSubmit={this.handleSubmit} className="flight-search-form-container">
                         <div className="flight-search-oneway-radio">
                             <section id="group1">
-                                <input type="radio" value="roundtrip" name="group1" /><span className="flight-search-radio-labels">Roundtrip</span>
-                                <input type="radio" value="roundtrip" name="group1" /><span className="flight-search-radio-labels">One-way</span>
+                                <input type="radio" value="roundtrip" name="group1" onClick={this.roundTrip} checked/><span className="flight-search-radio-labels">Roundtrip</span>
+                                <input type="radio" value="roundtrip" name="group1" onClick={this.oneWayTrip}  /><span className="flight-search-radio-labels">One-way</span>
                             </section>
                             <section id="group2">
-                                <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Dollars</span>
-                                <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Points</span>
+                                {/* <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Dollars</span> */}
+                                <input type="radio" value="pricing" name="group2" checked/><span className="flight-search-radio-labels">Points</span>
                             </section>
                         </div>
                         <div className="flight-search-form">
@@ -81,8 +102,10 @@ class BookFlight extends React.Component {
                                 <div className="flight-search-form-single-input-grouping datepicker">
                                     <h4>Return Date</h4>
                                     <input type="date"
-                                        onChange={this.onChange("returnDate")}
-                                        value={this.state.returnDate}
+                                        className="return-date-enabled"
+                                        id="return-date"
+                                        onChange={this.onChange("dd2")}
+                                        value={this.state.dd2}
                                     />
                                 </div>
                             </div>

@@ -15,6 +15,22 @@ class Api::FlightsController < ApplicationController
 
         render :show
     end
+
+    def create 
+        @flight = Flight.new(flight_params)
+
+        if @flight.save
+            render :show
+        else
+            render json: @flight.errors.full_messages, status: 422
+        end
+    end
+
+    private
+
+    def flight_params
+        params.require(:flight).permit(:departure_city_id, :arrival_city_id, :passengers, :departure_date, :duration, :departure_time)
+    end
 end
 
 

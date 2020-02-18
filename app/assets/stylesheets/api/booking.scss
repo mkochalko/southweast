@@ -87,6 +87,7 @@
 }
 
 .flight-search-departure-datepicker {
+    color: #304CB2;
     height: 48px;
     width: 300px;
     -webkit-appearance: none;
@@ -150,4 +151,13 @@
     left: 100%;
     position: absolute;
     width: 0;
+}
+
+.return-date-disabled {
+    background-color: lightgray;
+    color: lightgray;
+}
+
+.return-date-enabled {
+    color: #304CB2;
 }

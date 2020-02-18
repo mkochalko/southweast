@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import FlightsSearchIndex from './flights_search_index';
+import { postFlight } from '../../actions/flight_actions';
 // flightInfo: state.entities.flightsApi
 
 const mapStateToProps = state => ({
-    flightInfo: state.entities.flightsApi
+    flightInfo: Object.values(state.entities.flightsApi),
+    passengerCount: state.entities.passenger
 })
 
 
 const mapDispatchToProps = dispatch => ({
-
+    postFlight: (flightInfo) => dispatch(postFlight(flightInfo))
 })
 
 export default connect(

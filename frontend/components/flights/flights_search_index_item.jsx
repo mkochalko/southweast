@@ -50,7 +50,7 @@ class FlightSearchIndexItem extends React.Component {
 
     render() {
         return(
-            <li className="flights-search-item-container">
+            <div className="flights-search-item-container">
                 <div className="flight-search-stops-and-flight-number">
                     <p>Nonstop</p> 
                     <span># {this.props.flight.f[0].l[0].f}</span>
@@ -75,10 +75,10 @@ class FlightSearchIndexItem extends React.Component {
                         <span className="flight-search-times-duration-circle"></span>
                     </div>
                 </div>
-                <div className="flight-search-times-price">
+                <div onClick={this.props.departurePrice} className="flight-search-times-price">
                     <h4><span>$</span>{this.props.price.slice(1)}</h4>
                 </div>
-            </li>
+            </div>
         )
     }
 }

@@ -4,13 +4,15 @@ import tripsReducer from './trips_reducer';
 import flightsReducer from './flight_reducer';
 import citiesReducer from './cities_reducer';
 import flightsApiReducer from './flight_api_reducer';
+import passengerReducer from './passengers_reducer';
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
     trips: tripsReducer,
     flights: flightsReducer,
     flightsApi: flightsApiReducer,
-    cities: citiesReducer
+    cities: citiesReducer,
+    passenger: passengerReducer
 })
 
 export default entitiesReducer;

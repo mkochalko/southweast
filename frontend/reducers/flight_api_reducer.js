@@ -5,7 +5,7 @@ export default (state = {}, action) => {
     let newState = Object.assign({}, state)
     switch (action.type) {
         case RECEIVE_API_FLIGHTS:
-            newState = action.flights
+            newState[Object.keys(newState).length] = action.flights
             return newState;
         default:
             return state;

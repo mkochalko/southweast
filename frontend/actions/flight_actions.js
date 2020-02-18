@@ -4,6 +4,7 @@ export const RECEIVE_FLIGHTS = "RECEIVE_FLIGHTS";
 export const RECEIVE_FLIGHT = "RECEIVE_FLIGHT";
 export const RECEIVE_CITIES = "RECEIVE_CITIES";
 export const RECEIVE_API_FLIGHTS = "RECEIVE_API_FLIGHTS";
+export const RECEIVE_PASENGERS = 'RECEIVE_PASENGERS';
 
 const receiveFlights = flights => ({
     type: RECEIVE_FLIGHTS,
@@ -30,9 +31,21 @@ const receiveErrors = errors => ({
     errors
 })
 
+const passengerCount = passenger => ({
+    type: RECEIVE_PASENGERS,
+    passenger
+})
+
 // export const clearErrors = () => ({
 //     type: CLEAR_ERRORS
 // })
+
+export const postFlight = (flight) => dispatch => (
+    FlightApiUtil.postFlight(flight)
+        .then(flight => {
+            debugger;
+            return dispatch(receiveFlight(flight))})
+)
 
 export const requestFlights = () => dispatch => (
     FlightApiUtil.getFlights().then(flights => dispatch(receiveFlights(flights)),
@@ -56,10 +69,23 @@ export const requestCities = () => dispatch => (
 )
 
 export const createFlightSession = (flightInfo) => dispatch => (
-    FlightApiUtil.createFlightSession(flightInfo).then(flightSession => {
-        return FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid)
-    })
-        .then(flights => dispatch(receiveApiFlights(flights)))
+    FlightApiUtil.createFlightSession(flightInfo)
+        .then(flightSession => FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid))
+        .then(flights => {
+            return dispatch(receiveApiFlights(flights))})
+        .then(flights => flights.flights)
+)
+
+export const createReturnFlightSession = (flightInfo) => dispatch => (
+    FlightApiUtil.createReturnFlightSession(flightInfo)
+        .then(flightSession => FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid))
+        .then(flights => {
+            return dispatch(receiveApiFlights(flights))})
+        .then(flights => flights.flights)
+)
+
+export const updatePassengers = passenger => dispatch => (
+    dispatch(passengerCount(passenger))
 )
 
 // dispatch(receiveApiFlights(flights))
