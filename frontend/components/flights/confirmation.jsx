@@ -67,13 +67,9 @@ class Confirmation extends React.Component {
 
     configureDate(date) {
         let tempDate = date + 'T00:00'
-        console.log(tempDate)
         let longDate = new Date(tempDate)
-        console.log(longDate)
         let dateArray = longDate.toDateString().split(" ")
-        console.log(dateArray)
         let newDate = dateArray.slice(0, 3)
-        console.log(newDate)
         return newDate.join(" ")
     }
 
