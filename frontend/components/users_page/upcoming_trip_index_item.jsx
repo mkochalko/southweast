@@ -35,7 +35,7 @@ class UpcomingTripIndexItem extends React.Component {
                                     </div>
                                 </div>
                                 <div className="tab-trip-info-city-name">
-                                    <h1>{this.props.cities[this.props.departureFlight.departureCityId].name}</h1>
+                                    <h1>{this.props.departureFlight.departureCityId}</h1>
                                 </div>
                             </div>
                             <div className="tap-trip-info-city-container">
@@ -46,7 +46,7 @@ class UpcomingTripIndexItem extends React.Component {
                                 </div>
                                 <div className="tab-trip-upcoming-info">
                                     DEPARTS
-                                    <h4>{this.props.cities[this.props.departureFlight.departureCityId].nameAbbreviation}</h4>
+                                    <h4>{this.props.departureFlight.departureCityId}</h4>
                                     <h5>{slicedDepTime}</h5>
                                 </div>
                                 <div className="tap-trip-info-city-airplane">
@@ -54,7 +54,7 @@ class UpcomingTripIndexItem extends React.Component {
                                 </div>
                                 <div className="tab-trip-upcoming-info">
                                     ARRIVES
-                                    <h4>{this.props.cities[this.props.departureFlight.arrivalCityId].nameAbbreviation}</h4>
+                                    <h4>{this.props.departureFlight.arrivalCityId}</h4>
                                     <h5>{slicedArrTime}</h5>
                                 </div>
                             </div>

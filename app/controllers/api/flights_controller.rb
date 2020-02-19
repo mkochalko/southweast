@@ -29,7 +29,7 @@ class Api::FlightsController < ApplicationController
     private
 
     def flight_params
-        params.require(:flight).permit(:departure_city_id, :arrival_city_id, :passengers, :departure_date, :duration, :departure_time)
+        params.require(:flight).permit(:departure_city_id, :arrival_city_id, :passengers, :departure_date, :duration, :departure_time, :price)
     end
 end
 

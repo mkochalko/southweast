@@ -15,7 +15,7 @@ export const getTrip = (tripId) => (
 export const createTrip = trip => (
     $.ajax({
         method: "POST",
-        url: "api/trips",
+        url: "/api/trips",
         data: { trip }
     })
 )

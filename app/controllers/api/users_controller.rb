@@ -18,9 +18,25 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    # def edit
+    #     @user = User.find_by(id: current_user.id)
+
+    #     render :edit
+    # end
+
+    def update 
+        @user = User.find_by(id: current_user.id)
+        # puts params
+        # puts user_params
+        # debugger;
+        @user.points = user_params[:points]
+        @user.save!
+        render :show
+    end
+
     private
 
     def user_params 
-        params.require(:user).permit(:username, :password, :first_name, :middle_name, :last_name, :birthdate, :address, :city, :state, :zip_code, :phone_number, :email, :points)
+        params.require(:user).permit(:id, :username, :password, :first_name, :middle_name, :last_name, :birthdate, :address, :city, :state, :zip_code, :phone_number, :email, :points)
     end
 end

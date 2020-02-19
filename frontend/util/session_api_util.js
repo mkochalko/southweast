@@ -20,3 +20,11 @@ export const logOut = () => (
         url: '/api/session',
     })
 )
+
+export const updatePoints = (user) => (
+    $.ajax({
+        method: 'PUT',
+        url: `/api/users/${user.id}`,
+        data: { user }
+    })
+)

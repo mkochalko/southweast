@@ -40,3 +40,8 @@ export const signup = user => dispatch => (
         ), err => (
             dispatch(receiveErrors(err.responseJSON))
         )));
+
+export const buyFlight = user => dispatch => (
+    ApiUtil.updatePoints(user)
+        .then(user => dispatch(receiveCurrentUser(user)))
+)

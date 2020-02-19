@@ -14,19 +14,22 @@ class BookFlight extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createFlightSession(this.state)
-            .then(() => {
-                if (this.props.trip.dd2.length > 2) {
-                    this.props.createReturnFlightSession(this.state)
-                }
-            })
-            .then(() => this.props.updatePassengers(this.state.ta))
-            .then(() => this.props.history.push("/flights_search"))
+        console.log(this.state.dd2.length)
+        if (this.state.dd2.length > 0) {
+            this.props.createFlightSession(this.state)
+                .then(() => this.props.createReturnFlightSession(this.state))
+                .then(() => this.props.updatePassengers(this.state.ta))
+                .then(() => this.props.history.push("/flights_search"))
+        } else {
+            this.props.createFlightSession(this.state)
+                .then(() => this.props.updatePassengers(this.state.ta))
+                .then(() => this.props.history.push("/flights_search"))
+        }
         // setTimeout( () => Object.keys(this.props.flightsApi).length > 0 ? this.props.history.push("/flights_search") : "", 2000 )
     }
 
     onChange(form) {
-        return (e) => this.setState({ [form]: e.currentTarget.value})
+        return (e) => this.setState({ [form]: e.currentTarget.value}, () => console.log(this.state))
     }
 
     roundTrip() {
@@ -48,12 +51,13 @@ class BookFlight extends React.Component {
                     <form onSubmit={this.handleSubmit} className="flight-search-form-container">
                         <div className="flight-search-oneway-radio">
                             <section id="group1">
-                                <input type="radio" value="roundtrip" name="group1" onClick={this.roundTrip} checked/><span className="flight-search-radio-labels">Roundtrip</span>
-                                <input type="radio" value="roundtrip" name="group1" onClick={this.oneWayTrip}  /><span className="flight-search-radio-labels">One-way</span>
+                                <input type="radio" value="roundtrip" name="group1" onChange={this.roundTrip} checked/><span className="flight-search-radio-labels">Roundtrip</span>
+                                <input type="radio" value="roundtrip" name="group1" onChange={this.oneWayTrip}  /><span className="flight-search-radio-labels">One-way</span>
                             </section>
                             <section id="group2">
                                 {/* <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Dollars</span> */}
-                                <input type="radio" value="pricing" name="group2" checked/><span className="flight-search-radio-labels">Points</span>
+                                {/* <input type="radio" value="pricing" name="group2" checked/> */}
+                                <span className="flight-search-radio-labels">Points</span>
                             </section>
                         </div>
                         <div className="flight-search-form">

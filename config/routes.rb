@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
 
   namespace :api, defaults: { format: :json } do 
-    resources :users, only: [:show, :create]
+    resources :users, only: [:show, :create, :edit, :update]
     resources :trips, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :flights, only: [:index, :show, :create]
     resources :cities, only: [:index]

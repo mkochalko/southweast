@@ -42,9 +42,7 @@ const passengerCount = passenger => ({
 
 export const postFlight = (flight) => dispatch => (
     FlightApiUtil.postFlight(flight)
-        .then(flight => {
-            debugger;
-            return dispatch(receiveFlight(flight))})
+        .then(flight => dispatch(receiveFlight(flight)))
 )
 
 export const requestFlights = () => dispatch => (
