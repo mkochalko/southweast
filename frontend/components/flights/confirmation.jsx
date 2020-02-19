@@ -10,6 +10,23 @@ class Confirmation extends React.Component {
         this.configureTime = this.configureTime.bind(this);
         this.configureAMPM = this.configureAMPM.bind(this);
         this.configureDate = this.configureDate.bind(this);
+        this.createTripCode = this.createTripCode.bind(this);
+    }
+
+    createTripCode(id, departureDate, departureTime) {
+        let rawNumbers = id.toString() + departureDate + departureTime
+        let codeNumbers = rawNumbers.split(/[-.:0TXZ]/).join("")
+        let alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+        let tripCode = '';
+        for (let i = 0; i < codeNumbers.length - 4; i++) {
+            tripCode += alpha[codeNumbers[i]]
+        }
+        for (let j = codeNumbers.length - 4; j < codeNumbers.length; j++) {
+            let number = parseInt(codeNumbers[j])
+            let modNumber = 9 - number;
+            tripCode += modNumber.toString()
+        }
+        return tripCode
     }
 
     createTrip() {
@@ -18,7 +35,7 @@ class Confirmation extends React.Component {
         updatedUser[1].points -= this.props.flights[0].price + this.props.flights[1].price
         this.props.postTrip({
             userId: this.props.user.id,
-            tripCode: 'TestBooking22',
+            tripCode: this.createTripCode(this.props.flights[0].id, this.props.flights[0].departureDate, this.props.flights[0].departureTime),
             departureFlightId: this.props.flights[0].id,
             returnFlightId: this.props.flights.length > 1 ? this.props.flights[1].id : ''
         })
@@ -75,40 +92,94 @@ class Confirmation extends React.Component {
 
     render() {
         console.log(this.props.user)
-        console.log(this.props.flights)
+        console.log(this.props.flights[0].departureDate)
         return (
             <div>
-                <h1>Trip Price & Confirmation</h1>
+                <div className="trip-confirmation-header">
+                    <h1>Trip Price & Confirmation</h1>
+                </div>
+        
                 <div className="trip-confirmation-container">
-                    <h3>Flight</h3>
-                    <div>
-                        {this.configureDate(this.props.flights[0].departureDate)}
-                        {this.props.flights[0].departureCityId}
-                        {this.props.flights[0].arrivalCityId}
-                        {this.configureTime(this.props.flights[0].departureTime)}{this.configureAMPM(this.props.flights[0].departureTime)}
-                        {this.configureDuration(this.props.flights[0].duration)}
-                        <span>Nonstop</span>
-                        {this.props.flights[0].passengers}
+                    <div className="trip-confirmation-container-header-section">
+                        <img className="trip-confirmation-airplane-icon" src={window.confirmationIcon} alt="airplane" />
+                        <h3>Flight</h3>
                     </div>
-
-                    {
-                        this.props.flights.length > 1 ? (
-                            <div>
-                                {this.configureDate(this.props.flights[1].departureDate)}
-                                {this.props.flights[1].departureCityId}
-                                {this.props.flights[1].arrivalCityId}
-                                {this.configureTime(this.props.flights[1].departureTime)}{this.configureAMPM(this.props.flights[1].departureTime)}
-                                {this.configureDuration(this.props.flights[1].duration)}
-                                <span>Nonstop</span>
-                                {this.props.flights[1].passengers}
+                    <div className="trip-confirmation-overview-container">
+                        <section className="trip-confirmation-info-container">
+                            <div className="trip-confirmation-flight-info">
+                                <div className="trip-confirmation-icon-date">
+                                    <img className="trip-confirmation-departure-flight-airplane-icon" src="https://image.flaticon.com/icons/svg/181/181545.svg" alt="airplane" />
+                                    {this.configureDate(this.props.flights[0].departureDate)}
+                                </div>
+                                <div className="trip-confirmation-city-info">
+                                    {this.props.flights[0].departureCityId}
+                                    <img className="trip-confirmation-right-arrow" src={window.rightArrow} />
+                                    {this.props.flights[0].arrivalCityId}
+                                </div>
+                                <div className="trip-confirmation-time-duration">
+                                    <span>{this.configureTime(this.props.flights[0].departureTime)}{this.configureAMPM(this.props.flights[0].departureTime)}</span>
+                                    {this.configureDuration(this.props.flights[0].duration)}
+                                    <span>Nonstop</span>
+                                </div>
                             </div>
-                        ) : ""
-                    }
+
+                            {
+                                this.props.flights.length > 1 ? (
+                                    <div className="trip-confirmation-flight-info">
+                                        <div className="trip-confirmation-icon-date">
+                                            <img className="return-flight-icon" src={window.returnFlightIcon} />
+                                            {this.configureDate(this.props.flights[1].departureDate)}
+                                        </div>
+                                        <div className="trip-confirmation-city-info">
+                                            {this.props.flights[1].departureCityId}
+                                            <img className="trip-confirmation-right-arrow" src={window.rightArrow} />
+                                            {this.props.flights[1].arrivalCityId}
+                                        </div>
+                                        <div className="trip-confirmation-time-duration">
+                                            <span>{this.configureTime(this.props.flights[1].departureTime)}{this.configureAMPM(this.props.flights[1].departureTime)}</span>
+                                            {this.configureDuration(this.props.flights[1].duration)}
+                                            <span>Nonstop</span>
+                                        </div>
+                                    </div>
+                                ) : ""
+                            }
+                        </section>
+                        <section className="trip-price-container">
+                            <div className="trip-price-line">
+                                <h6>Departure Price Per Ticket</h6>
+                                <h5>${this.props.flights[0].price}</h5>
+                            </div>
+                            <div className="trip-price-line">
+                                <h6>Return Price Per Ticket</h6>
+                                <h5>${this.props.flights[1].price}</h5>
+                            </div>
+                            <div className="trip-price-line">
+                                <h6>Passenger(s)</h6>
+                                <h5>x {this.props.flights[0].passengers}</h5>
+                            </div>
+                            <div className="trip-price-line">
+                                <h6>Flight Total</h6>
+                                <h5>${(this.props.flights[0].price + this.props.flights[1].price) * this.props.flights[0].passengers}</h5>
+                            </div>
+                        </section>
+                    </div>
                 </div>
 
+                <div className="trip-confirmation-submit-button">
+                    <button onClick={this.createTrip}>Confirm Booking</button>
+                </div>
                 
-                <button onClick={this.createTrip}>Confirm Booking</button>
-                
+                <section className="trip-confirmation-filler-container">
+                    <div className="trip-confirmation-filler-header">
+                        <h4>Why Fly SouthWeast?</h4>
+                    </div>
+                    <ul className="trip-confirmation-filler-list">
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark}/>No Delays</li>
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />No Baggage Fee</li>
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />All Ficiton</li>
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />Won't Spend a Dime</li>
+                    </ul>
+                </section>
             </div>
         )
     }
