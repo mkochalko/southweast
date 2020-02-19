@@ -17,6 +17,7 @@
       window.patrickStarURL = "<%= image_url('patrickStar.png') %>";
       window.weastCompassURL = "<%= image_url('weast.png') %>";
       window.compassURL = "<%= image_url('compass.png') %>";
+      window.tripAdvisorAPIKey = "<%= Rails.application.credentials.tripAdvisor[:api_key] %>"
     </script>
     <%= yield %>
   </body>
