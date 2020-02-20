@@ -188,3 +188,29 @@
     height: 20px;
     width: 20px;
 }
+
+.flight-select-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 930px;
+    margin: 30px auto;
+}
+
+.flight-select-button {
+    background-color: #FFBF27;
+    border: 1px solid #FFBF27;
+    border-radius: 2px;
+    box-shadow: 0 1px #8F8F8F;
+    color: #111B40;
+    font: bold 17px Arial;
+    padding: 0 20px;
+    min-height: 48px;
+}
+
+.departure-flight-price {
+    background-color: #FFBF27;
+}
+
+.return-flight-price {
+    background-color: #FFBF27;
+}

@@ -177,19 +177,18 @@
     padding: 15px;
     padding-left: 25px;
     margin: 0;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .trip-confirmation-filler-list {
     padding: 15px;
     padding-left: 25px;
-    font-size: 18px;
 }
 
 .trip-confirmation-filler-list li {
-    font-size: 18px;
+    font-size: 24px;
     display: flex;
-    padding: 5px;
+    padding: 15px 5px;
 }
 
 .trip-confirmation-filler-checkmark {
@@ -197,3 +196,54 @@
     width: 20px;
     margin: 0 10px;
 }
+
+.trip-confirmation-filler-photo {
+    margin: 40px 0;
+}
+
+.trip-confirmation-filler-photo img {
+    width: 930px;
+    margin: 0 auto;
+}
+
+#loading {
+    height: 100vh;
+    width: 100vw;
+    background-color: #f5f5f5;
+    position: absolute;
+    z-index: 100;
+    display: none;
+}
+
+.on {
+    display: block;
+
+}
+
+.confirmation-redirecting-container {
+    width: 40vw;
+    margin: 0 auto;
+    margin-top: 30vh;
+    text-align: center;
+    background-color: white;
+    border-radius: 25px;
+    color: #304cb2;
+    padding: 25px;
+
+}
+
+.confirmation-redirecting-container h2 {
+    font-size: 36px;
+}
+
+.confirmation-redirecting-container h4 {
+    font-size: 42px;
+}
+
+.confirmation-redirecting-container img {
+    text-align: center;
+    margin: 0 auto;
+    width: 100px;
+    height: 25px;
+}
+

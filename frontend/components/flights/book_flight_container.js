@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
         dd2: "",
         ta: 1
     },
-    flightsApi: state.entities.flightsApi
+    flightsApi: state.entities.flightsApi,
+    errors: Object.values(state.errors.flightAPI)
 })
 
 const mapDispatchToProps = dispatch => ({

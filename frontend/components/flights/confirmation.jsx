@@ -31,7 +31,6 @@ class Confirmation extends React.Component {
 
     createTrip() {
         let updatedUser = this.props.user
-        console.log(updatedUser[1].points)
         updatedUser[1].points -= this.props.flights[0].price + this.props.flights[1].price
         this.props.postTrip({
             userId: this.props.user.id,
@@ -40,6 +39,15 @@ class Confirmation extends React.Component {
             returnFlightId: this.props.flights.length > 1 ? this.props.flights[1].id : ''
         })
         this.props.buyFlight(updatedUser[1])
+        let loading = document.getElementById("loading")
+        loading.style.display = "block";
+        loading.innerHTML = `<div class='confirmation-redirecting-container'><h2>Thank you for Booking with SouthWeast!</h2><h4>Redirecting to Account Page</h4><img src=${window.waitingDots} /></div>`
+        let that = this;
+        // debugger;
+        setTimeout(() => {
+            loading.style.display = 'none'
+            that.props.history.push(`/users/${Object.values(that.props.user)[0].id}`)
+        }, 2000);
     }
 
     configureTime(time) {
@@ -91,8 +99,6 @@ class Confirmation extends React.Component {
     }
 
     render() {
-        console.log(this.props.user)
-        console.log(this.props.flights[0].departureDate)
         return (
             <div>
                 <div className="trip-confirmation-header">
@@ -174,11 +180,14 @@ class Confirmation extends React.Component {
                         <h4>Why Fly SouthWeast?</h4>
                     </div>
                     <ul className="trip-confirmation-filler-list">
-                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark}/>No Delays</li>
-                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />No Baggage Fee</li>
-                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />All Ficiton</li>
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark}/>It's Fun</li>
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />No Emotional Baggage Fee</li>
+                        <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />Animals are Welcome</li>
                         <li><img className="trip-confirmation-filler-checkmark" src={window.checkmark} />Won't Spend a Dime</li>
                     </ul>
+                </section>
+                <section className="trip-confirmation-filler-photo">
+                    <img src="https://media.foxbusiness.com/BrightCove/854081161001/201910/3182/854081161001_6098433809001_6098440147001-vs.jpg" alt="Doc with Chairs"/>
                 </section>
             </div>
         )

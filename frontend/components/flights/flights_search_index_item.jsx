@@ -8,6 +8,7 @@ class FlightSearchIndexItem extends React.Component {
         this.configureTime = this.configureTime.bind(this);
         this.configureDuration = this.configureDuration.bind(this);
         this.configureAMPM = this.configureAMPM.bind(this);
+        this.hightlightSelectedPrice = this.hightlightSelectedPrice.bind(this);
     }
 
     configureTime(time) {
@@ -47,6 +48,24 @@ class FlightSearchIndexItem extends React.Component {
     }
 
     
+    hightlightSelectedPrice(e) {
+        if(this.props.label === 'departure') {
+            let prices = Array.from(document.getElementsByClassName("departure"))
+            for (let i = 0; i < prices.length; i++) {
+                // console.log(prices[i])
+                prices[i].style.backgroundColor = 'white';
+            }
+        } else if (this.props.label === 'return') {
+            let prices = Array.from(document.getElementsByClassName("return"))
+            for (let i = 0; i < prices.length; i++) {
+                // console.log(prices[i])
+                prices[i].style.backgroundColor = 'white';
+            }
+        }
+        // console.log(e.currentTarget)
+        e.currentTarget.style.backgroundColor = '#FFBF27';
+    }
+    
 
     render() {
         return(
@@ -75,7 +94,7 @@ class FlightSearchIndexItem extends React.Component {
                         <span className="flight-search-times-duration-circle"></span>
                     </div>
                 </div>
-                <div onClick={this.props.departurePrice} className="flight-search-times-price">
+                <div onClick={this.hightlightSelectedPrice} className={`flight-search-times-price ${this.props.label}`}>
                     <h4><span>$</span>{this.props.price.slice(1)}</h4>
                 </div>
             </div>

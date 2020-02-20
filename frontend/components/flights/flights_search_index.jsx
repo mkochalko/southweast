@@ -10,6 +10,7 @@ class FlightsSearchIndex extends React.Component {
 
     constructor(props) {
         super(props)
+
         let price = parseInt(this.props.flightInfo[0].summary.pd.slice(1))
         this.state = {
             departureFlight: {
@@ -38,6 +39,10 @@ class FlightsSearchIndex extends React.Component {
         this.createFlights = this.createFlights.bind(this);
     }
 
+    componentDidMount() {
+        
+    }
+
     selectDeparturePrice(e) {
         console.log(e.currentTarget)
     }
@@ -53,14 +58,10 @@ class FlightsSearchIndex extends React.Component {
     }
 
     updateReturnFlightState(e) {
-        console.log(e.currentTarget.innerHTML)
         let returnTime = e.currentTarget.innerHTML.toString().split('<div class="flights-search-single-time-item">')
-        console.log(returnTime)
         let newReturnTime = returnTime[1].slice(0, 5)
         let price = this.props.flightInfo[1].summary.pd.slice(1)
-        console.log(price)
-        console.log(parseInt(price))
-        this.setState(() => { this.state = {
+        this.setState((prevState) => ({ ...prevState, 
             departureFlight: this.state.departureFlight,
             returnFlight: {
                 departureCityId: this.props.flightInfo[1].summary.op[0].k,
@@ -71,8 +72,7 @@ class FlightsSearchIndex extends React.Component {
                 departureTime: newReturnTime,
                 price: price
             }
-        } 
-        }, () => console.log(this.state))
+        }), () => console.log(this.state))
     }
 
     createFlights() {
@@ -87,7 +87,9 @@ class FlightsSearchIndex extends React.Component {
     }
 
     render() {
-        console.log(this.props.flightInfo)
+        if (this.props.flightInfo.length === 0) {
+            this.props.history.push('/book')
+        }
         return (
             <div>
                 <div className="flights-search-header-container">
@@ -114,7 +116,7 @@ class FlightsSearchIndex extends React.Component {
                 <ul>
                     { this.props.flightInfo.length > 0 ? (
                         this.props.flightInfo[0].itineraries.map((flight, idx) => (
-                            <li key={idx} onClick={this.updateFlightState}><FlightSearchIndexItem flight={flight} departurePrice={this.selectDeparturePrice} duration={this.props.flightInfo[0].summary.dn} price={this.props.flightInfo[0].summary.pd} /></li>
+                            <li key={idx} onClick={this.updateFlightState}><FlightSearchIndexItem label="departure" flight={flight} departurePrice={this.selectDeparturePrice} duration={this.props.flightInfo[0].summary.dn} price={this.props.flightInfo[0].summary.pd} /></li>
                         ))
                     ) : ""
                     }
@@ -125,7 +127,7 @@ class FlightsSearchIndex extends React.Component {
                             <div className="flights-search-header-container">
                                 <div className="flights-search-header-info-with-prices">
                                     <div className="flights-search-header-large-info">
-                                        <img src="https://image.flaticon.com/icons/svg/181/181545.svg" alt="airplane" />
+                                        <img className="return-flight-icon" src={window.returnFlightIcon} />
                                         <h1>Return:</h1>
                                         <div className="flight-search-header-airport-codes">
                                             <h1>{this.props.flightInfo[1].summary.op[0].k}</h1>
@@ -146,7 +148,7 @@ class FlightsSearchIndex extends React.Component {
                             <ul>
                                 { this.props.flightInfo.length > 1 ? (
                                     this.props.flightInfo[1].itineraries.map((flight, idx) => (
-                                        <li key={idx} onClick={this.updateReturnFlightState}><FlightSearchIndexItem flight={flight} duration={this.props.flightInfo[1].summary.dn} price={this.props.flightInfo[1].summary.pd} /></li>
+                                        <li key={idx} onClick={this.updateReturnFlightState}><FlightSearchIndexItem label="return" flight={flight} duration={this.props.flightInfo[1].summary.dn} price={this.props.flightInfo[1].summary.pd} /></li>
                                     ))
                                 ) : ""
                                 }
@@ -154,8 +156,9 @@ class FlightsSearchIndex extends React.Component {
                         </div>
                     ) : ""
                 }
-
-                <button onClick={this.createFlights}>Continue</button>
+                <div className="flight-select-container">
+                    <button className="flight-select-button" onClick={this.createFlights}>Continue</button>
+                </div>
             </div>
         )
     }
