@@ -9,7 +9,6 @@
     <%= javascript_include_tag 'application' %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
   </head>
 
   <body>
@@ -22,6 +21,7 @@
       window.rightArrow = "<%= image_url('right-arrow.png') %>";
       window.checkmark = "<%= image_url('checkmark.png') %>";
       window.waitingDots = "<%= image_url('waitingDots.gif') %>";
+      window.loadingDots = "<%= image_url('searchLoading.gif') %>";
       window.tripAdvisorAPIKey = "<%= Rails.application.credentials.tripAdvisor[:api_key] %>"
     </script>
     <%= yield %>

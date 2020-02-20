@@ -1,3 +1,6 @@
+import { format, parseISO } from 'date-fns';
+
+
 export const getFlights = () => (
     $.ajax({
         method: "GET",
@@ -27,6 +30,11 @@ export const getCities = () => (
     })
 )
 
+function formatDate(date) {
+    let formattedDate = format(date, 'yyyy-MM-dd')
+    return formattedDate
+}
+
 export const createFlightSession = (flightInfo) => {
     return ($.ajax({
         async: true,
@@ -36,7 +44,7 @@ export const createFlightSession = (flightInfo) => {
         data: {
             d1: flightInfo.d1,
             o1: flightInfo.o1,
-            dd1: flightInfo.dd1,
+            dd1: formatDate(flightInfo.dd1),
             currency: "USD",
             ta: 1,
             c: 0
@@ -57,7 +65,7 @@ export const createReturnFlightSession = (flightInfo) => {
         data: {
             d1: flightInfo.o1,
             o1: flightInfo.d1,
-            dd1: flightInfo.dd2,
+            dd1: formatDate(flightInfo.dd2),
             currency: "USD",
             ta: 1,
             c: 0

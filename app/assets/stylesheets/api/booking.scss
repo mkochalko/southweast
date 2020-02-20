@@ -117,6 +117,26 @@
     font-size: 14px;
     font-family: Arial;
     min-height: 32px;
+    width: 86px;
+    padding: 0 20px 1px;
+}
+
+.flight-search-button-gif {
+    // background-image: url('../../images/waitingDots.gif');
+}
+
+#flight-search-button-loading {
+    display: none;
+    // display: flex;
+    align-items: center;
+    background-color: #e8e9e9;
+    width: 86px;
+    border-radius: 2px;
+    box-shadow: 0 1px #8F8F8F;
+    min-height: 32px;
+}
+
+#flight-search-button-loading > img {
     padding: 0 20px 1px;
 }
 

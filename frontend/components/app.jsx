@@ -7,7 +7,7 @@ import UsersShowContainer from './users_page/users_container';
 import Home from './home';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Helmet } from 'react-helmet';
-import BookFlightContainer from './flights/book_flight_container';
+import BookingComponent from './flights/booking_component';
 import FlightsSearchContainer from './flights/flights_search_container';
 import ConfirmationContainer from './flights/confirmation_container';
 
@@ -23,7 +23,7 @@ const App = () => (
         </header>
         <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/book' component={BookFlightContainer} />
+            <Route path='/book' component={BookingComponent} />
             <Route path='/flights_search' component={FlightsSearchContainer} />
             <Route path='/confirmation' component={ConfirmationContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />

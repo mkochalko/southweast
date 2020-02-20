@@ -6,6 +6,7 @@ export const RECEIVE_CITIES = "RECEIVE_CITIES";
 export const RECEIVE_API_FLIGHTS = "RECEIVE_API_FLIGHTS";
 export const RECEIVE_PASENGERS = 'RECEIVE_PASENGERS';
 export const RECEIVE_FLIGHT_API_ERRORS = 'RECEIVE_FLIGHT_API_ERRORS';
+export const CLEAR_BOOKING_ERRORS = 'CLEAR_BOOKING_ERRORS';
 
 const receiveFlights = flights => ({
     type: RECEIVE_FLIGHTS,
@@ -37,9 +38,9 @@ const passengerCount = passenger => ({
     passenger
 })
 
-// export const clearErrors = () => ({
-//     type: CLEAR_ERRORS
-// })
+const clearSearchErrors = () => ({
+    type: CLEAR_BOOKING_ERRORS
+})
 
 export const postFlight = (flight) => dispatch => (
     FlightApiUtil.postFlight(flight)
@@ -70,13 +71,14 @@ export const requestCities = () => dispatch => (
 export const createFlightSession = (flightInfo) => dispatch => (
     FlightApiUtil.createFlightSession(flightInfo)
         .then(flightSession => FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid),
-            err => (
-                dispatch(receiveErrors(err)
-            )))
+            err => {
+                dispatch(receiveErrors(err));
+                return err
+        })
         .then(flights => {
             return dispatch(receiveApiFlights(flights))})
         .then(flights => flights.flights)
-        // .catch(err => dispatch(receiveErrors(err)))
+        .catch(err => dispatch(receiveErrors(err)))
 )
 
 export const createReturnFlightSession = (flightInfo) => dispatch => (
@@ -88,11 +90,13 @@ export const createReturnFlightSession = (flightInfo) => dispatch => (
         .then(flights => {
             return dispatch(receiveApiFlights(flights))})
         .then(flights => flights.flights)
-        // .catch(err => dispatch(receiveErrors(err)))
+        .catch(err => dispatch(receiveErrors(err)))
 )
 
 export const updatePassengers = passenger => dispatch => (
     dispatch(passengerCount(passenger))
 )
 
-// dispatch(receiveApiFlights(flights))
+export const clearBookingErrors = () => dispatch => (
+    dispatch(clearSearchErrors())
+)

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import BookFlight from './book_flight';
-import { createFlightSession, createReturnFlightSession, updatePassengers } from '../../actions/flight_actions';
+import { createFlightSession, createReturnFlightSession, updatePassengers, clearBookingErrors } from '../../actions/flight_actions';
 
 const mapStateToProps = state => ({
     trip: {
@@ -17,7 +17,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     createFlightSession: flightInfo => dispatch(createFlightSession(flightInfo)),
     createReturnFlightSession: flightInfo => dispatch(createReturnFlightSession(flightInfo)),
-    updatePassengers: passengers => dispatch(updatePassengers(passengers))
+    updatePassengers: passengers => dispatch(updatePassengers(passengers)),
+    clearBookingErrors: () => dispatch(clearBookingErrors())
 })
 
 export default connect(

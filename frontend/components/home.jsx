@@ -1,5 +1,5 @@
 import React from 'react';
-import BookFlightContainer from '../components/flights/book_flight_container';
+import BookFlightContainer from './flights/book_flight_container';
 
 class Home extends React.Component {
 
@@ -7,7 +7,7 @@ class Home extends React.Component {
 
         return (
             <div>
-                <BookFlightContainer />
+                <BookFlightContainer props={this.props}/>
 
                 <div className="home-fluff">
                     <div className="home-fluff-photo-container">
