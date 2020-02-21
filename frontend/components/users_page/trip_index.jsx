@@ -20,7 +20,7 @@ class TripIndex extends React.Component {
                         }
                     </ul>
                 ) : (
-                    <ul className="tab-trip-index">
+                    <ul className="tab-trip-index-past">
                         {
                             this.props.trips.map((trip) => (
                                 <PastTripIndexItemContainer key={trip.id} trip={trip} />

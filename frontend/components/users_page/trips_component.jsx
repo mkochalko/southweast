@@ -104,28 +104,64 @@ class TripsComponent extends React.Component {
     }
 
     onLeftClickPast() {
-        const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ pastTripCount: (this.state.pastTripCount - 1) }, this.handleCarouselPastFlights)
+        let leftPointer = document.getElementsByClassName("left past");
+        $(leftPointer).addClass("disabled")
+        document.getElementById("tab-divider-section-left-button past-left").disabled = true
+
+        setTimeout(() => {
+            $(leftPointer).removeClass("disabled")
+            document.getElementById("tab-divider-section-left-button past-left").removeAttribute("disabled")
+        }, 300)
+        
+        const tabUl = document.getElementsByClassName("tab-trip-index-past")
+        this.setState({ pastTripCount: (this.state.pastTripCount - 1) }, () => setTimeout(() => this.handleCarouselPastFlights(), 310))
         
         $(tabUl).css('left', '+=702');
     }
 
     onLeftClickUpcoming() {
+        let leftPointer = document.getElementsByClassName("left upcoming");
+        $(leftPointer).addClass("disabled")
+        document.getElementById("tab-divider-section-left-button upcoming-left").disabled = true
+
+        setTimeout(() => {
+            $(leftPointer).removeClass("disabled")
+            document.getElementById("tab-divider-section-left-button upcoming-left").removeAttribute("disabled")
+        }, 300)
+
         const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ upcomingTripCount: (this.state.upcomingTripCount - 1) }, this.handleCarouselUpcomingFlights)
+        this.setState({ upcomingTripCount: (this.state.upcomingTripCount - 1) }, () => setTimeout(() => this.handleCarouselUpcomingFlights(), 310))
         
         $(tabUl).css('left', '+=702');
     }
 
     onRightClickPast() {
-        const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ pastTripCount: (this.state.pastTripCount + 1) }, this.handleCarouselPastFlights)
+        let rightPointer = document.getElementsByClassName("right past");
+        $(rightPointer).addClass("disabled")
+        document.getElementById("tab-divider-section-right-button past-right").disabled = true
+
+        setTimeout(() => {
+            $(rightPointer).removeClass("disabled")
+            document.getElementById("tab-divider-section-right-button past-right").removeAttribute("disabled")
+        }, 300)
+
+        const tabUl = document.getElementsByClassName("tab-trip-index-past")
+        this.setState({ pastTripCount: (this.state.pastTripCount + 1) }, () => setTimeout(() => this.handleCarouselPastFlights(), 310))
         $(tabUl).css('left', '-=702');
     }
 
     onRightClickUpcoming() {
+        let rightPointer = document.getElementsByClassName("right upcoming");
+        $(rightPointer).addClass("disabled")
+        document.getElementById("tab-divider-section-right-button upcoming-right").disabled = true
+
+        setTimeout(() => {
+            $(rightPointer).removeClass("disabled")
+            document.getElementById("tab-divider-section-right-button upcoming-right").removeAttribute("disabled")
+        }, 300)
+
         const tabUl = document.getElementsByClassName("tab-trip-index")
-        this.setState({ upcomingTripCount: (this.state.upcomingTripCount + 1) }, this.handleCarouselUpcomingFlights)
+        this.setState({ upcomingTripCount: (this.state.upcomingTripCount + 1) }, () => setTimeout(() => this.handleCarouselUpcomingFlights(), 310))
 
         $(tabUl).css('left', '-=702');
     }

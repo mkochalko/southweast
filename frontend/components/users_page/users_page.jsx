@@ -38,6 +38,7 @@ class UsersPage extends React.Component {
         //NavBar Text Color
         const navBarText = document.getElementsByClassName("navbar")
         $(navBarText).css("color", "white")
+        $(navBarText).css("backgroun-color", "transparent")
         //NavBar Link Borders 
         const navBarLinkBorder = document.getElementById("navbar-links").getElementsByTagName("li")
         $(navBarLinkBorder).css("border-right", "2px solid white")

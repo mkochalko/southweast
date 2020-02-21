@@ -9,7 +9,10 @@ class FlightSearchIndexItem extends React.Component {
         this.configureDuration = this.configureDuration.bind(this);
         this.configureAMPM = this.configureAMPM.bind(this);
         this.hightlightSelectedPrice = this.hightlightSelectedPrice.bind(this);
+        this.generatePrice = this.generatePrice.bind(this);
     }
+
+    
 
     configureTime(time) {
         let departureTime = time.slice(11, 16);
@@ -66,6 +69,19 @@ class FlightSearchIndexItem extends React.Component {
         e.currentTarget.style.backgroundColor = '#FFBF27';
     }
     
+    generatePrice(duration) {
+
+        let randomFactor = Math.random()
+        let randomSignNumber = Math.round(Math.random())
+        let randomSign = 1;
+        if (randomSignNumber === 0) {
+            randomSign = -1;
+        } else {
+            randomSign = 1;
+        }
+        let price = Math.floor(duration * ( 2 + (randomFactor * randomSign)))
+        return price
+    }
 
     render() {
         return(
@@ -95,7 +111,7 @@ class FlightSearchIndexItem extends React.Component {
                     </div>
                 </div>
                 <div onClick={this.hightlightSelectedPrice} className={`flight-search-times-price ${this.props.label}`}>
-                    <h4><span>$</span>{this.props.price.slice(1)}</h4>
+                    <h4><span>$</span>{this.props.price}</h4>
                 </div>
             </div>
         )

@@ -13,6 +13,34 @@ class Confirmation extends React.Component {
         this.createTripCode = this.createTripCode.bind(this);
     }
 
+    componentDidMount() {
+        const header = document.getElementsByTagName("header")
+        $(header).css("background-color", "#2f4cb2")
+        const navBarText = document.getElementsByClassName("navbar")
+        $(navBarText).css("color", "white")
+        $(navBarText).css("background-color", "#2f4cb2")
+        //NavBar Link Borders 
+        const navBarLinkBorder = document.getElementById("navbar-links").getElementsByTagName("li")
+        $(navBarLinkBorder).css("border-right", "2px solid white")
+        //NavBar LoggedIn Greeting Border
+        const navBarLoggedIn = document.getElementsByClassName("logged-in-account-link")
+        $(navBarLoggedIn).css("border-right", "1px solid white")
+    }
+
+    componentWillUnmount() {
+        const header = document.getElementsByTagName("header")
+        $(header).css("background-color", "transparent")
+        const body = document.getElementsByTagName("body");
+        $(body).css("background", "transparent")
+        const navBarText = document.getElementsByClassName("navbar")
+        $(navBarText).css("color", "#304CB2")
+        $(navBarText).css("background-color", "transparent")
+        const navBarLinkBorder = document.getElementById("navbar-links").getElementsByTagName("li")
+        $(navBarLinkBorder).css("border-right", "2px solid blue")
+        const navBarLoggedIn = document.getElementsByClassName("logged-in-account-link")
+        $(navBarLoggedIn).css("border-right", "1px solid blue")
+    }
+
     createTripCode(id, departureDate, departureTime) {
         let rawNumbers = id.toString() + departureDate + departureTime
         let codeNumbers = rawNumbers.split(/[-.:0TXZ]/).join("")
@@ -41,7 +69,7 @@ class Confirmation extends React.Component {
         this.props.buyFlight(updatedUser[1])
         let loading = document.getElementById("loading")
         loading.style.display = "block";
-        loading.innerHTML = `<div class='confirmation-redirecting-container'><h2>Thank you for Booking with SouthWeast!</h2><h4>Redirecting to Account Page</h4><img src=${window.waitingDots} /></div>`
+        loading.innerHTML = `<div class='confirmation-redirecting-container'><h4>We can't wait for takeoff</h4><h4>Thank you for Booking with SouthWeast!</h4><h4>Redirecting to Account Page</h4><img src=${window.waitingDots} /></div>`
         let that = this;
         // debugger;
         setTimeout(() => {

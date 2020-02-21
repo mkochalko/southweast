@@ -25,14 +25,14 @@ class PastTripIndexItem extends React.Component {
                             <div className="tap-trip-info-city-container">
                                 <div>
                                     DEPARTS
-                                    <h4>{this.props.cities[this.props.departureFlight.departureCityId].nameAbbreviation}</h4>
+                                    <h4>{this.props.departureFlight.departureCityId}</h4>
                                 </div>
                                 <div className="tap-trip-info-city-airplane">
                                     <img src="https://image.flaticon.com/icons/svg/61/61212.svg" alt="airplane"/>
                                 </div>
                                 <div>
                                     ARRIVES
-                                    <h4>{this.props.cities[this.props.departureFlight.arrivalCityId].nameAbbreviation}</h4>
+                                    <h4>{this.props.departureFlight.arrivalCityId}</h4>
                                 </div>
                             </div>
                             <div className="tap-trip-info-confirmation">

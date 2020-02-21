@@ -214,3 +214,43 @@
 .return-flight-price {
     background-color: #FFBF27;
 }
+
+.flights-search-break-info {
+    width: 930px;
+    height: 40px;
+    margin: 0 auto;
+    margin-bottom: 45px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #E6E7E8;
+    border-bottom: 1px solid #E6E7E8;
+    color: #111B40;
+}
+
+.flight-search-break-banner {
+    display: inline-block;
+    font: bold 13px/1 Arial;
+    width: 95px;
+    text-align: center;
+}
+
+.flight-search-break-banner h3 {
+    background-color: #FFBF27;
+    padding: 5px;
+    height: 40px;
+}
+
+.flight-search-break-banner-trangle {
+    // background-color: #FFBF27;
+    width: 0; 
+    height: 0; 
+    border-left: 48px solid transparent;
+    border-right: 47px solid transparent;
+    
+    border-top: 10px solid #FFBF27;
+}
+
+.flights-search-break-header {
+    font: bold 20px/1 Arial;
+    padding-top: 10px;
+}

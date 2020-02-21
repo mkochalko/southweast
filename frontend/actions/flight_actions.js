@@ -50,8 +50,7 @@ export const postFlight = (flight) => dispatch => (
 export const requestFlights = () => dispatch => (
     FlightApiUtil.getFlights()
         .then(flights => dispatch(receiveFlights(flights))
-        .catch(err =>  dispatch(receiveErrors(err.resonseJson))
-    ))
+    )
 )
 
 export const requestFlight = (flightId) => dispatch => (
