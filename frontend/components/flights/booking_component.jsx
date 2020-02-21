@@ -1,10 +1,13 @@
 import React from 'react';
+import { withRouter, History } from 'react-router';
 import BookFlightContainer from './book_flight_container';
 
 class BookingComponent extends React.Component {
 
     render() {
-
+        console.log(this.props.history)
+        // this.props.history.push('/')
+        console.log(localStorage)
         return (
             <div>
                 <BookFlightContainer props={this.props} />
@@ -20,4 +23,4 @@ class BookingComponent extends React.Component {
     }
 }
 
-export default BookingComponent;
+export default withRouter(BookingComponent);

@@ -4,7 +4,7 @@ import BookFlightContainer from './flights/book_flight_container';
 class Home extends React.Component {
 
     render() {
-
+        console.log(this.props)
         return (
             <div>
                 <BookFlightContainer props={this.props}/>

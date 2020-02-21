@@ -23,6 +23,7 @@ class BookFlight extends React.Component {
         searchButton.style.display = "none"
         searchLoading.style.display = 'flex'
         this.props.clearBookingErrors()
+        localStorage.setItem('prevLocation', this.props.props.history.location.pathname)
         e.preventDefault();
         if (this.state.dd2.length > 0) {
             this.props.createFlightSession(this.state)
@@ -34,12 +35,14 @@ class BookFlight extends React.Component {
                 .then(() => this.props.updatePassengers(this.state.ta))
                 .then(() => this.props.props.history.push("/flights_search"))
         }
+        
         // setTimeout( () => Object.keys(this.props.flightsApi).length > 0 ? this.props.history.push("/flights_search") : "", 2000 )
     }
 
     componentWillUnmount() {
         document.getElementById("flight-search-button").style.display = "flex";
         document.getElementById("flight-search-button-loading").style.display = "none"
+        
     }
 
     onDateChange(form) {
@@ -65,6 +68,7 @@ class BookFlight extends React.Component {
     }
 
     render() {
+        // console.log(this.props)
         if (this.props.errors.length > 0) {
             document.getElementById("flight-search-button").style.display = "flex";
             document.getElementById("flight-search-button-loading").style.display = "none"

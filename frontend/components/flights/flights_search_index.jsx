@@ -11,6 +11,10 @@ class FlightsSearchIndex extends React.Component {
     constructor(props) {
         super(props)
 
+        // if (localStorage.prevLocation !== "/book" || localStorage.prevLocation !== "/") {
+        //     this.props.history.push('/book')
+        // }
+
         let price = parseInt(this.props.flightInfo[0].summary.pd.slice(1))
         this.state = {
             departureFlight: {
@@ -87,9 +91,10 @@ class FlightsSearchIndex extends React.Component {
     }
 
     render() {
-        if (this.props.flightInfo.length === 0) {
-            this.props.history.push('/book')
-        }
+        console.log(localStorage)
+        // if (this.props.flightInfo.length === 0) {
+        //     this.props.history.push('/book')
+        // }
         return (
             <div>
                 <div className="flights-search-header-container">

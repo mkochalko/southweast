@@ -71,26 +71,27 @@ export const requestCities = () => dispatch => (
 export const createFlightSession = (flightInfo) => dispatch => (
     FlightApiUtil.createFlightSession(flightInfo)
         .then(flightSession => FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid),
-            err => {
-                dispatch(receiveErrors(err));
-                return err
-        })
-        .then(flights => {
-            return dispatch(receiveApiFlights(flights))})
+            err => (
+                dispatch(receiveErrors(err))
+            ))
+        .then(flights => dispatch(receiveApiFlights(flights)),
+            err => (
+                dispatch(receiveErrors(err))
+            ))
         .then(flights => flights.flights)
-        .catch(err => dispatch(receiveErrors(err)))
 )
 
 export const createReturnFlightSession = (flightInfo) => dispatch => (
     FlightApiUtil.createReturnFlightSession(flightInfo)
         .then(flightSession => FlightApiUtil.fetchFlightsApi(flightSession.search_params.sid),
             err => (
-                dispatch(receiveErrors(err)
-            )))
-        .then(flights => {
-            return dispatch(receiveApiFlights(flights))})
+                dispatch(receiveErrors(err))
+            ))
+        .then(flights => dispatch(receiveApiFlights(flights)),
+            err => (
+                dispatch(receiveErrors(err))
+            ))
         .then(flights => flights.flights)
-        .catch(err => dispatch(receiveErrors(err)))
 )
 
 export const updatePassengers = passenger => dispatch => (
