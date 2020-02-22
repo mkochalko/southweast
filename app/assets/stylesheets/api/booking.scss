@@ -28,6 +28,7 @@
 
 .flight-search-form-single-input-grouping {
     display: flex;
+    position: relative;
     flex-direction: column;
     margin-right: 28px;
 }
@@ -121,10 +122,6 @@
     padding: 0 20px 1px;
 }
 
-.flight-search-button-gif {
-    // background-image: url('../../images/waitingDots.gif');
-}
-
 #flight-search-button-loading {
     display: none;
     // display: flex;
@@ -200,4 +197,68 @@
 
 .flight-booking-fluff {
     background-color: #f5f5f5;
+}
+
+.airport-dropdown {
+    display: none;
+	position: absolute;
+	top: 70px;
+	background-color: #fff;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+	padding: 10px;
+    width: 210px;
+    height: 200px;
+    z-index: 1;
+    color: darkgrey;
+    overflow: auto;
+	font-family: Arial;
+	text-align: left;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);
+    font-weight: initial;
+    transition: width 0.3s ease-out, height 1s ease-out;
+    border-color: rgba(82,168,236,0.8);
+    animation: airportSlide 0.3s;
+}
+
+@keyframes airportSlide {
+  from {top: 100px;}
+  to {top:70px;}
+}
+
+.airport-dropdown-ul {
+    color: #304CB2;
+    font: bold 24px Arial;
+}
+
+.airport-arrival-dropdown {
+    display: none;
+	position: absolute;
+	top: 70px;
+	background-color: #fff;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+	padding: 10px;
+    width: 210px;
+    height: 200px;
+    z-index: 1;
+    color: darkgrey;
+    overflow: auto;
+	font-family: Arial;
+	text-align: left;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(82,168,236,0.6);
+    font-weight: initial;
+    transition: width 0.3s ease-out, height 1s ease-out;
+    border-color: rgba(82,168,236,0.8);
+    animation: airportSlide 0.3s;
+}
+
+@keyframes airportSlide {
+  from {top: 100px;}
+  to {top:70px;}
+}
+
+.airport-arrival-dropdown-ul {
+    color: #304CB2;
+    font: bold 24px Arial;
 }
