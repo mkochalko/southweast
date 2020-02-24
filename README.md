@@ -41,7 +41,7 @@ Southweast is an airlines website inspired by the Southwest Airlines website. Th
 
 The home page immidiately shows one of the main features of the app which is searching for future available flights. This allows the user to select their departure airport(based on the codes provided in an autocomplete feature) and destination airport along with the departure date and number of passengers. Since the API retrieving the flight information requires the airport search parameters to be provided as the airport code, an autocomplete feature was implemented that requires the user to select the airport from the downdown list, which will convert the input into the proper format before the search. 
 
-![]()
+![](https://github.com/mkochalko/southweast/blob/master/app/assets/images/autocomplete.gif)
 
 The code below is how this autocomplete was implemented. `onInput` in the text field, triggered `airportDropdown()` function. 
 
