@@ -1,6 +1,19 @@
 import React from 'react'
 
 class UpcomingTripIndexItem extends React.Component {
+    constructor(props) {
+        super(props) 
+
+        this.configureDate = this.configureDate.bind(this);
+    }
+
+    configureDate(date) {
+        let tempDate = date + 'T00:00'
+        let longDate = new Date(tempDate)
+        let dateArray = longDate.toDateString().split(" ")
+        let newDate = dateArray.slice(0, 3)
+        return newDate.join(" ")
+    }
 
     render() {
         // Departure and Arrival Time Setup
@@ -15,9 +28,10 @@ class UpcomingTripIndexItem extends React.Component {
         let departureDateString = departureDate.toDateString()
         let returnDateString = ''
         if (this.props.returnFlight !== undefined) {
-            let returnDate = new Date(this.props.returnFlight.departureDate)
-            returnDateString = returnDate.toDateString()
+            let returnDate = this.configureDate(this.props.returnFlight.departureDate)
+            returnDateString = returnDate.slice(4, 10)
         }
+
         return (
             <li className="tab-trip-li">
                 {
@@ -29,9 +43,9 @@ class UpcomingTripIndexItem extends React.Component {
                                 </div>
                                 <div className="tab-trip-info-top-line">
                                     <div className="tab-trip-index-dates">
-                                        <div>{departureDateString.slice(4, 10)}</div>
+                                        <div>{this.configureDate(this.props.departureFlight.departureDate).slice(4, 10)}</div>
                                         <div className="tab-trip-index-dates-separator">-</div>
-                                        <div> {returnDateString.slice(4, 10)}</div>
+                                        <div> {returnDateString}</div>
                                     </div>
                                     <div className="tab-trip-index-dates-airplane">
                                         <img src="https://image.flaticon.com/icons/svg/723/723955.svg" alt="airplane" height="15" width="15" />
@@ -45,7 +59,7 @@ class UpcomingTripIndexItem extends React.Component {
                                 <div className="tab-trip-upcoming-info">
                                     OUTBOUND
                                     <h4>{this.props.departureFlight.departureDate.slice(5).split("-").join("/")}</h4>
-                                    <h5>{departureDateString.slice(0, 3)}</h5>
+                                    <h5>{this.configureDate(this.props.departureFlight.departureDate).slice(0, 3)}</h5>
                                 </div>
                                 <div className="tab-trip-upcoming-info">
                                     DEPARTS
