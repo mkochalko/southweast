@@ -133,6 +133,13 @@ class BookFlight extends React.Component {
             }
         }
     }
+    
+    airportDropdown(e) {
+        this.filterAirportDropdown(e.currentTarget.value)
+        let dropdown = document.getElementsByClassName("airport-dropdown")
+        $(dropdown).css("display", 'block')
+
+    }
 
     filterAirportArrivalDropdown(text) {
         let filter = text.toUpperCase();
@@ -148,13 +155,6 @@ class BookFlight extends React.Component {
                 li[i].style.display = "none";
             }
         }
-    }
-
-    airportDropdown(e) {
-        this.filterAirportDropdown(e.currentTarget.value)
-        let dropdown = document.getElementsByClassName("airport-dropdown")
-        $(dropdown).css("display", 'block')
-
     }
 
     airportArrivalDropdown(e) {
