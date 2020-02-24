@@ -13,12 +13,15 @@ class UpcomingTripIndexItem extends React.Component {
         // Departure Date setup
         let departureDate = new Date(this.props.departureFlight.departureDate)
         let departureDateString = departureDate.toDateString()
-        let returnDate = new Date(this.props.returnFlight.departureDate)
-        let returnDateString = returnDate.toDateString()
+        let returnDateString = ''
+        if (this.props.returnFlight !== undefined) {
+            let returnDate = new Date(this.props.returnFlight.departureDate)
+            returnDateString = returnDate.toDateString()
+        }
         return (
             <li className="tab-trip-li">
                 {
-                    Object.keys(this.props.cities).length > 0 && this.props.departureFlight && this.props.returnFlight ? (
+                    this.props.departureFlight ? (
                         <div className="tab-trip-info-index-item-upcoming">
                             <div>
                                 <div className="tab-trip-up-next">

@@ -5,6 +5,7 @@ export const RECEIVE_TRIP = 'RECEIVE_TRIP';
 export const REMOVE_TRIP = 'REMOVE_TRIP';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const CLEAR_TRIPS_INFO = 'CLEAR_TRIPS_INFO';
 
 const receiveTrips = trips => ({
     type: RECEIVE_TRIPS,
@@ -24,6 +25,10 @@ const removeTrip = tripId => ({
 const receiveErrors = errors => ({
     type: RECEIVE_ERRORS,
     errors
+})
+
+const clearTripsInfo = () => ({
+    type: CLEAR_TRIPS_INFO
 })
 
 export const clearErrors = () => ({
@@ -64,6 +69,10 @@ export const cancelTrip = tripId => dispatch => (
         dispatch(receiveErrors(err.responseJSON))
     ))
 );
+
+export const clearTrips = () => dispatch => (
+    dispatch(clearTripsInfo())
+)
 
 
 

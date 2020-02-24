@@ -34,7 +34,7 @@ class Footer extends React.Component {
                                 </a>
                             </li>
                             <li className="personal-site">
-                                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/mkochalko/">
+                                <a target="_blank" rel="noopener noreferrer" href="https://angel.co/matthew-kochalko">
                                     <img src="https://image.flaticon.com/icons/svg/747/747376.svg" alt="Matt's Personal Site" />
                                 </a> 
                             </li>

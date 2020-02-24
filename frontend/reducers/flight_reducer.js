@@ -1,4 +1,4 @@
-import { RECEIVE_FLIGHTS, RECEIVE_FLIGHT } from '../actions/flight_actions';
+import { RECEIVE_FLIGHTS, RECEIVE_FLIGHT, CLEAR_FLIGHTS_INFO } from '../actions/flight_actions';
 
 export default (state ={}, action) => {
     Object.freeze(state)
@@ -9,6 +9,9 @@ export default (state ={}, action) => {
             return newState;
         case RECEIVE_FLIGHT:
             newState[action.flight.id] = action.flight
+            return newState;
+        case CLEAR_FLIGHTS_INFO:
+            newState = {};
             return newState;
         default:
             return state;

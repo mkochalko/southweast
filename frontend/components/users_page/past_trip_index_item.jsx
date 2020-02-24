@@ -10,7 +10,7 @@ class PastTripIndexItem extends React.Component {
         return(
             <li className="tab-trip-li">
                 {
-                    Object.keys(this.props.cities).length > 0 && this.props.departureFlight && this.props.returnFlight ? (
+                    this.props.departureFlight && this.props.returnFlight ? (
                         <div className="tab-trip-info-index-item">
                             <div className="tab-trip-info-top-line-past">
                                 <div className="tab-trip-index-dates">

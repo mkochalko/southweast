@@ -7,6 +7,7 @@ export const RECEIVE_API_FLIGHTS = "RECEIVE_API_FLIGHTS";
 export const RECEIVE_PASENGERS = 'RECEIVE_PASENGERS';
 export const RECEIVE_FLIGHT_API_ERRORS = 'RECEIVE_FLIGHT_API_ERRORS';
 export const CLEAR_BOOKING_ERRORS = 'CLEAR_BOOKING_ERRORS';
+export const CLEAR_FLIGHTS_INFO = 'CLEAR_FLIGHTS_INFO';
 
 const receiveFlights = flights => ({
     type: RECEIVE_FLIGHTS,
@@ -40,6 +41,10 @@ const passengerCount = passenger => ({
 
 const clearSearchErrors = () => ({
     type: CLEAR_BOOKING_ERRORS
+})
+
+const clearFlightsInfo = () => ({
+    type: CLEAR_FLIGHTS_INFO
 })
 
 export const postFlight = (flight) => dispatch => (
@@ -100,3 +105,8 @@ export const updatePassengers = passenger => dispatch => (
 export const clearBookingErrors = () => dispatch => (
     dispatch(clearSearchErrors())
 )
+
+export const clearFlights = () => dispatch => {
+    // debugger
+    return dispatch(clearFlightsInfo())
+}

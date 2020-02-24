@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import Confirmation from './confirmation';
-import { createTrip } from  '../../actions/trip_actions';
+import { createTrip, clearTrips } from  '../../actions/trip_actions';
 import { buyFlight } from  '../../actions/session_actions';
 
 const mapStateToProps = state => ({
-    flights: flights,
+    flights: Object.values(state.entities.flights),
     user: state.entities.users
 })
 
 const mapDispatchToProps = dispatch => ({
     postTrip: (tripInfo) => dispatch(createTrip(tripInfo)),
-    buyFlight: (user) => dispatch(buyFlight(user))
+    buyFlight: (user) => dispatch(buyFlight(user)),
+    clearTrips: () => dispatch(clearTrips())
 })
 
 export default connect(

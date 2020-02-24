@@ -1,5 +1,6 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import ExceededAPIComponent from './exceeded_api_component';
 import { format, parseISO } from 'date-fns';
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -63,22 +64,29 @@ class BookFlight extends React.Component {
     }
 
     handleSubmit(e) {
-        let searchButton = document.getElementById("flight-search-button")
-        let searchLoading = document.getElementById("flight-search-button-loading")
-        searchButton.style.display = "none"
-        searchLoading.style.display = 'flex'
-        this.props.clearBookingErrors()
-        localStorage.setItem('prevLocation', this.props.props.history.location.pathname)
+        console.log(this.props)
         e.preventDefault();
-        if (this.state.dd2.length > 0) {
-            this.props.createFlightSession(this.state)
-                .then(() => this.props.createReturnFlightSession(this.state))
-                .then(() => this.props.updatePassengers(this.state.ta))
-                .then(() => this.props.props.history.push("/flights_search"))
+        this.props.clearBookingErrors()
+        let test = (this.state.dd1 ? this.state.dd1 : 'lost')
+        if (test === 'lost') {
+            let departureDateError = document.getElementById("flight-search-departure-error-message")
+            $(departureDateError).css("display", "block")
         } else {
-            this.props.createFlightSession(this.state)
-                .then(() => this.props.updatePassengers(this.state.ta))
-                .then(() => this.props.props.history.push("/flights_search"))
+            let searchButton = document.getElementById("flight-search-button")
+            let searchLoading = document.getElementById("flight-search-button-loading")
+            searchButton.style.display = "none"
+            searchLoading.style.display = 'flex'
+            localStorage.setItem('prevLocation', this.props.props.history.location.pathname)
+            if (this.state.dd2.length > 0) {
+                this.props.createFlightSession(this.state)
+                    .then(() => this.props.createReturnFlightSession(this.state))
+                    .then(() => this.props.updatePassengers(this.state.ta))
+                    .then(() => this.props.props.history.push("/flights_search"))
+            } else {
+                this.props.createFlightSession(this.state)
+                    .then(() => this.props.updatePassengers(this.state.ta))
+                    .then(() => this.props.props.history.push("/flights_search"))
+            }
         }
         
         // setTimeout( () => Object.keys(this.props.flightsApi).length > 0 ? this.props.history.push("/flights_search") : "", 2000 )
@@ -87,28 +95,35 @@ class BookFlight extends React.Component {
     componentWillUnmount() {
         document.getElementById("flight-search-button").style.display = "flex";
         document.getElementById("flight-search-button-loading").style.display = "none"
-        
+        this.props.clearBookingErrors()
     }
 
     onDateChange(form) {
+        if (form === 'dd1' && this.state.dd1) {
+            let departureDateError = document.getElementById("flight-search-departure-error-message")
+            $(departureDateError).css("display", "none")
+        }
         return (e) => {
-            this.setState({ [form]: e}, () => console.log(this.state))
+            this.setState({ [form]: e})
         }
     }
 
     onChange(form) {
-        return (e) => this.setState({ [form]: e.currentTarget.value }, () => console.log(this.state))
+        return (e) => this.setState({ [form]: e.currentTarget.value })
     }
 
     roundTrip() {
         let returnDate = document.getElementById("return-date")
-        returnDate.removeAttribute("disabled")
+        // console.log(returnDate)
+        returnDate.setAttribute("disabled", "false")
         returnDate.className = 'return-date-enabled'
     }
 
     oneWayTrip() {
         let returnDate = document.getElementById("return-date")
-        returnDate.setAttribute("disabled", "true")
+        // console.log(returnDate)
+
+        returnDate.removeAttribute("disabled")
         returnDate.className = 'return-date-disabled'
     }
 
@@ -160,11 +175,11 @@ class BookFlight extends React.Component {
 
 
     render() {
-        // console.log(this.props)
         if (this.props.errors.length > 0) {
             document.getElementById("flight-search-button").style.display = "flex";
             document.getElementById("flight-search-button-loading").style.display = "none"
         }
+
         return (
             <div>
                 <section className="flight-search-container-background">
@@ -172,8 +187,8 @@ class BookFlight extends React.Component {
                         <form onSubmit={this.handleSubmit} className="flight-search-form-container">
                             <div className="flight-search-oneway-radio">
                                 <section id="group1">
-                                    <input type="radio" value="roundtrip" name="group1" onChange={this.roundTrip} checked/><span className="flight-search-radio-labels">Roundtrip</span>
-                                    <input type="radio" value="roundtrip" name="group1" onChange={this.oneWayTrip}  /><span className="flight-search-radio-labels">One-way</span>
+                                    <input type="radio" value="roundtrip" name="group1" onClick={this.roundTrip} defaultChecked/><span className="flight-search-radio-labels">Roundtrip</span>
+                                    <input type="radio" value="roundtrip" name="group1" onClick={this.oneWayTrip}  /><span className="flight-search-radio-labels">One-way</span>
                                 </section>
                                 <section id="group2">
                                     {/* <input type="radio" value="pricing" name="group2" /><span className="flight-search-radio-labels">Dollars</span> */}
@@ -197,6 +212,7 @@ class BookFlight extends React.Component {
                                     <div className="flight-search-form-single-input-grouping datepicker">
                                         <h4>Depart Date</h4>
                                         {<DatePicker selected={this.state.dd1} onChange={this.onDateChange("dd1")}/>}
+                                        <p id="flight-search-departure-error-message">Please Enter Departure Date</p>
                                     </div>
                                     <div className="flight-search-form-single-input-grouping">
                                         <h4>Passengers</h4>
@@ -228,12 +244,12 @@ class BookFlight extends React.Component {
                                     </div>
                                     <div className="flight-search-form-single-input-grouping datepicker">
                                         <h4>Return Date</h4>
-                                        {<DatePicker selected={this.state.dd2} onChange={this.onDateChange("dd2")} />}
+                                        {<DatePicker id="return-date" selected={this.state.dd2} onChange={this.onDateChange("dd2")} />}
                                     </div>
                                 </div>
                             </div>
                             <div className="flight-search-submit-button">
-                                <div>{this.props.errors}</div>
+                                <div>{this.props.errors.length > 0 ? (this.props.errors.join('') === 'Too Many Requests' ? <ExceededAPIComponent props={this.props} /> : this.props.errors) : ''}</div>
                                 <input id="flight-search-button" type="submit" value="Search"/>
                                 <div id="flight-search-button-loading"><img src={window.loadingDots} alt="waiting dots"/></div>
                             </div>

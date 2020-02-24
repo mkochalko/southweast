@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
         # puts user_params
         # debugger;
         @user.points = user_params[:points]
-        @user.save!
+        @user.save
         render :show
     end
 

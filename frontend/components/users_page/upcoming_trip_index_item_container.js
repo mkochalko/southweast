@@ -6,8 +6,7 @@ const mapStateToProps = (state, ownProps) => {
     return ({
         trip: state.entities.trips[ownProps.trip.id],
         departureFlight: state.entities.flights[ownProps.trip.departureFlightId],
-        returnFlight: state.entities.flights[ownProps.trip.returnFlightId],
-        cities: state.entities.cities
+        returnFlight: state.entities.flights[ownProps.trip.returnFlightId]
     })
 }
 

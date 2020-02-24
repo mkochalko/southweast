@@ -11,6 +11,8 @@ class Confirmation extends React.Component {
         this.configureAMPM = this.configureAMPM.bind(this);
         this.configureDate = this.configureDate.bind(this);
         this.createTripCode = this.createTripCode.bind(this);
+
+        this.returnPrice = this.props.flights.length > 1 ? this.props.flights[1].price : 0
     }
 
     componentDidMount() {
@@ -28,6 +30,7 @@ class Confirmation extends React.Component {
     }
 
     componentWillUnmount() {
+        this.props.clearTrips()
         const header = document.getElementsByTagName("header")
         $(header).css("background-color", "transparent")
         const body = document.getElementsByTagName("body");
@@ -58,24 +61,26 @@ class Confirmation extends React.Component {
     }
 
     createTrip() {
-        let updatedUser = this.props.user
-        updatedUser[1].points -= this.props.flights[0].price + this.props.flights[1].price
+        let updatedUser = Object.values(this.props.user)[0]
+        updatedUser.points -= this.props.flights[0].price + this.returnPrice
         this.props.postTrip({
             userId: this.props.user.id,
             tripCode: this.createTripCode(this.props.flights[0].id, this.props.flights[0].departureDate, this.props.flights[0].departureTime),
             departureFlightId: this.props.flights[0].id,
-            returnFlightId: this.props.flights.length > 1 ? this.props.flights[1].id : ''
+            returnFlightId: this.props.flights.length > 1 ? this.props.flights[1].id : 'N/A'
         })
-        this.props.buyFlight(updatedUser[1])
         let loading = document.getElementById("loading")
         loading.style.display = "block";
         loading.innerHTML = `<div class='confirmation-redirecting-container'><h4>We can't wait for takeoff</h4><h4>Thank you for Booking with SouthWeast!</h4><h4>Redirecting to Account Page</h4><img src=${window.waitingDots} /></div>`
         let that = this;
         // debugger;
-        setTimeout(() => {
-            loading.style.display = 'none'
-            that.props.history.push(`/users/${Object.values(that.props.user)[0].id}`)
-        }, 2000);
+        this.props.buyFlight(updatedUser).then(() => {
+
+            setTimeout(() => {
+                loading.style.display = 'none'
+                this.props.history.push(`/users/${Object.values(that.props.user)[0].id}`)
+            }, 2000);
+        })
     }
 
     configureTime(time) {
@@ -185,7 +190,7 @@ class Confirmation extends React.Component {
                             </div>
                             <div className="trip-price-line">
                                 <h6>Return Price Per Ticket</h6>
-                                <h5>${this.props.flights[1].price}</h5>
+                                <h5>${this.returnPrice}</h5>
                             </div>
                             <div className="trip-price-line">
                                 <h6>Passenger(s)</h6>
@@ -193,7 +198,7 @@ class Confirmation extends React.Component {
                             </div>
                             <div className="trip-price-line">
                                 <h6>Flight Total</h6>
-                                <h5>${(this.props.flights[0].price + this.props.flights[1].price) * this.props.flights[0].passengers}</h5>
+                                <h5>${(this.props.flights[0].price + this.returnPrice) * this.props.flights[0].passengers}</h5>
                             </div>
                         </section>
                     </div>

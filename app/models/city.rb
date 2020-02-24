@@ -1,5 +1,5 @@
 class City < ApplicationRecord
-    validates :name, :name_abbreviation, presence: true, uniqueness: true
+    # validates :name, :name_abbreviation, presence: true, uniqueness: true
 
     has_many :departing_flights,
         primary_key: :id,

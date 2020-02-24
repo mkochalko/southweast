@@ -20,7 +20,11 @@ class FlightSearchIndexItem extends React.Component {
         let minutes = departureTime.slice(3, 5);
         let configuredTime;
         if (hours > 12) {
-            configuredTime = hours - 12 + ":" + minutes
+            if (hours - 12 > 9) {
+                configuredTime = hours - 12 + ":" + minutes
+            } else {
+                configuredTime = "0" + (hours - 12).toString() + ":" + minutes
+            }
         } else {
             configuredTime = departureTime
         }

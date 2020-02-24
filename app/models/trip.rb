@@ -13,5 +13,6 @@ class Trip < ApplicationRecord
     belongs_to :return_flight,
         primary_key: :id,
         foreign_key: :return_flight_id,
-        class_name: :Flight
+        class_name: :Flight,
+        optional: true
 end

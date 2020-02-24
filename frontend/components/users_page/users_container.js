@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import UsersPage from './users_page';
-import { requestTrips } from '../../actions/trip_actions';
-import { requestCities, requestFlights } from '../../actions/flight_actions';
+import { requestTrips, clearTrips } from '../../actions/trip_actions';
+import { requestCities, requestFlights, clearFlights } from '../../actions/flight_actions';
 
 
 
@@ -14,7 +14,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     requestTrips: () => dispatch(requestTrips()),
     requestFlights: () => dispatch(requestFlights()),
-    requestCities: () => dispatch(requestCities())
+    requestCities: () => dispatch(requestCities()),
+    clearTrips: () => dispatch(clearTrips()),
+    clearFlights: () => dispatch(clearFlights())
 })
 
 export default connect(

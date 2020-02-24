@@ -4,7 +4,7 @@ import { postFlight } from '../../actions/flight_actions';
 // flightInfo: state.entities.flightsApi
 
 const mapStateToProps = state => ({
-    flightInfo: Object.values(flightTestObject),
+    flightInfo: Object.values(state.entities.flightsApi),
     passengerCount: state.entities.passenger
 })
 
@@ -18,7 +18,7 @@ export default connect(
     mapDispatchToProps
 )(FlightsSearchIndex)
 
-// Object.values(state.entities.flightsApi)
+
 
 
 

@@ -14,6 +14,7 @@ class Api::TripsController < ApplicationController
     def create
         @trip = Trip.new(trip_params)
         @trip.user_id = current_user.id
+
         if @trip.save
             render :show
         else

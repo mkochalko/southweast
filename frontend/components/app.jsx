@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 import BookingComponent from './flights/booking_component';
 import FlightsSearchContainer from './flights/flights_search_container';
 import ConfirmationContainer from './flights/confirmation_container';
+import ExceededAPIContainer from './flights/exceeded_api_container';
 
 const TITLE = "SouthWeast"
 // <img src = 'http://cdn.shopify.com/s/files/1/0891/8314/products/Patrick_Star_mem_515a0f9e16255_grande.jpeg?v=1459072430' alt = 'southweast' height = '18px' width = '15px' />
@@ -25,6 +26,7 @@ const App = () => (
             <Route exact path='/' component={Home} />
             <Route path='/book' component={BookingComponent} />
             <Route path='/flights_search' component={FlightsSearchContainer} />
+            <Route path='/demo_flights_search' component={ExceededAPIContainer} />
             <Route path='/confirmation' component={ConfirmationContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <ProtectedRoute path="/users/:userId" component={UsersShowContainer} />

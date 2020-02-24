@@ -1,0 +1,24 @@
+.exceeded-api-container {
+    display: flex;
+    
+}
+
+.exceeded-api-container > p{
+    width: 450px;
+    flex-wrap: wrap;
+
+}
+
+.demo-search-button {
+    min-width: 120px;
+    background-color: #FFBF27;
+    border: 1px solid #FFBF27;
+    border-radius: 2px;
+    box-shadow: 0 1px #8F8F8F;
+    color: #111B40;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial;
+    min-height: 32px;
+    padding: 0 20px 1px;
+}
