@@ -134,10 +134,6 @@ class FlightsSearchIndex extends React.Component {
     }
 
     render() {
-        // console.log(localStorage)
-        // if (this.props.flightInfo.length === 0) {
-        //     this.props.history.push('/book')
-        // }
         if (this.props.flightInfo.length > 0) {
             Object.values(this.props.flightInfo[0].itineraries).map(flight => {
                 this.departurePriceArray.push(this.generatePrice(this.props.flightInfo[0].summary.dn))

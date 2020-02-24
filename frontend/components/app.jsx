@@ -27,7 +27,7 @@ const App = () => (
             <Route path='/book' component={BookingComponent} />
             <Route path='/flights_search' component={FlightsSearchContainer} />
             <Route path='/demo_flights_search' component={ExceededAPIContainer} />
-            <Route path='/confirmation' component={ConfirmationContainer} />
+            <ProtectedRoute path='/confirmation' component={ConfirmationContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
             <ProtectedRoute path="/users/:userId" component={UsersShowContainer} />
         </Switch>
