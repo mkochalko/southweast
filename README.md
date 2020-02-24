@@ -33,7 +33,53 @@ Southweast is an airlines website inspired by the Southwest Airlines website. Th
 
 ### Features
 
-The home page immidiately shows one of the main features of the app which is searching for future available flights. This allows the user to select their departure airport(based on the codes provided in an autocomplete feature) and destination airport along with the departure date and number of passengers.
+The home page immidiately shows one of the main features of the app which is searching for future available flights. This allows the user to select their departure airport(based on the codes provided in an autocomplete feature) and destination airport along with the departure date and number of passengers. Since the API retrieving the flight information requires the airport search parameters to be provided as the airport code, an autocomplete feature was implemented that requires the user to select the airport from the downdown list, which will convert the input into the proper format before the search. 
+
+![]()
+
+The code below is how this autocomplete was implemented. `onInput` in the text field, triggered `airportDropdown()` function. 
+
+```
+filterAirportDropdown(text) {
+        let filter = text.toUpperCase();
+        let ul = document.getElementById("airport-dropdown-ul");
+        let li = Array.from(ul.getElementsByTagName('li'));
+        let i;
+
+        for (i = 0; i < li.length; i++) {
+            let txtValue = li[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    
+    airportDropdown(e) {
+        this.filterAirportDropdown(e.currentTarget.value)
+        let dropdown = document.getElementsByClassName("airport-dropdown")
+        $(dropdown).css("display", 'block')
+
+    }
+ ```
+ Each list element in the dropdown had an event handler which would update the state of the flight information.
+ 
+ ```
+ let dropdownUl = document.getElementById("airport-dropdown-ul")
+        for (let i = 0; i < this.airportCodes.length; i++) {
+            dropdownUl.innerHTML += `<li key=${i}>${this.airportCodes[i]}</li>`
+        }
+        dropdownUl.addEventListener("click", (e) => {
+            this.setState({o1: e.target.innerText}, () => {
+                let input = document.getElementById("departure-flight-input")
+                input.value = this.state.o1
+            })
+
+            let dropdown = document.getElementsByClassName("airport-dropdown")
+            $(dropdown).css("display", 'none')
+        })
+```
 
 On submit the user will be taken to the flights search page witch shows the index of available flights, the departure times, duration and flight price. A user can select a flight and proceed to the trip bookings page to 'purchase' flights which will be updated and added to the users profile. 
 
