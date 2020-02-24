@@ -62,29 +62,29 @@ filterAirportDropdown(text) {
         }
     }
     
-    airportDropdown(e) {
-        this.filterAirportDropdown(e.currentTarget.value)
-        let dropdown = document.getElementsByClassName("airport-dropdown")
-        $(dropdown).css("display", 'block')
+airportDropdown(e) {
+	this.filterAirportDropdown(e.currentTarget.value)
+	let dropdown = document.getElementsByClassName("airport-dropdown")
+	$(dropdown).css("display", 'block')
 
     }
  ```
  Each list element in the dropdown had an event handler which would update the state of the flight information.
  
  ```
- let dropdownUl = document.getElementById("airport-dropdown-ul")
-        for (let i = 0; i < this.airportCodes.length; i++) {
-            dropdownUl.innerHTML += `<li key=${i}>${this.airportCodes[i]}</li>`
-        }
-        dropdownUl.addEventListener("click", (e) => {
-            this.setState({o1: e.target.innerText}, () => {
-                let input = document.getElementById("departure-flight-input")
-                input.value = this.state.o1
-            })
+let dropdownUl = document.getElementById("airport-dropdown-ul")
+for (let i = 0; i < this.airportCodes.length; i++) {
+	dropdownUl.innerHTML += `<li key=${i}>${this.airportCodes[i]}</li>`
+}
+dropdownUl.addEventListener("click", (e) => {
+    this.setState({o1: e.target.innerText.slice(0, 3)}, () => {
+	let input = document.getElementById("departure-flight-input")
+	input.value = this.state.o1
+    })
 
-            let dropdown = document.getElementsByClassName("airport-dropdown")
-            $(dropdown).css("display", 'none')
-        })
+    let dropdown = document.getElementsByClassName("airport-dropdown")
+    $(dropdown).css("display", 'none')
+})
 ```
 
 On submit the user will be taken to the flights search page witch shows the index of available flights, the departure times, duration and flight price. A user can select a flight and proceed to the trip bookings page to 'purchase' flights which will be updated and added to the users profile. 
