@@ -13,19 +13,25 @@ Southweast is an airlines website inspired by the Southwest Airlines website. Th
 # Technologies 
 
 * `Ruby on Rails` (version: 5.2.3)
-	** Rails was used for the backend portion of this project. Utalizing PostgreSQL as the database, rails made querys to 		the database to provide information needed for the frontend. 
+	* Rails was used for the backend portion of this project. Utalizing PostgreSQL as the database, rails made querys to 		the database to provide information needed for the frontend. 
+
 * `PostgreSQL` 
-	** This relational database was used to create tables for users, flights, trips, and watchlists to save information 		specific to the user
+	* This relational database was used to create tables for users, flights, trips, and watchlists to save information 		specific to the user
+
 * `jBuilder`
-	** Formatted the backend response to match the state shape my frontend app was anticipating
+	* Formatted the backend response to match the state shape my frontend app was anticipating
+
 * `JavaScript` 
-	** JS was the primary language for all frontend work, this project used both jQuery and Vanilla DOM to manipulate the 		page for great transition affects as seen with the carousels
+	* JS was the primary language for all frontend work, this project used both jQuery and Vanilla DOM to manipulate the 		page for great transition affects as seen with the carousels
+
 * `React` (version: 16.12.0)
-	** Implemented react on the front end to create individual componenets to track  
+	* Implemented react on the front end to create individual componenets to track  
+
 * `Redux` (version: 4.0.5)
-	** Utalized Redux to keep track of state and allow for access to the correct information when needed
+	* Utalized Redux to keep track of state and allow for access to the correct information when needed
+
 * [Trip Advisor Api](https://rapidapi.com/apidojo/api/tripadvisor1/endpoints)
-	** Called the Trip Advisor API to pull flight data that displayed flight information based on the inputs provided 		during the search
+	* Called the Trip Advisor API to pull flight data that displayed flight information based on the inputs provided 		during the search
 
 
 ------------
