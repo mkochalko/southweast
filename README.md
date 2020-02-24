@@ -6,7 +6,7 @@
 
 Southweast is an airlines website inspired by the Southwest Airlines website. The purpose of this project was to create a full stack project with CRUD features, some including searching for flights, booking flights and creating an account.
 
-![Image](https://github.com/mkochalko/southweast/blob/master/app/assets/images/booking.png "Booking Search")
+![Image](https://github.com/mkochalko/southweast/blob/master/app/assets/images/home_page.png "Booking Search")
 
 ------------
 
@@ -89,7 +89,7 @@ filterAirportDropdown(text) {
 
 On submit the user will be taken to the flights search page witch shows the index of available flights, the departure times, duration and flight price. A user can select a flight and proceed to the trip bookings page to 'purchase' flights which will be updated and added to the users profile. 
 
-![](https://github.com/mkochalko/southweast/blob/master/app/assets/images/flight_search_result.png "Flights Search Results")
+![](https://github.com/mkochalko/southweast/blob/master/app/assets/images/flight_search.png "Flights Search Results")
 
 As trips are booked and trips are taken, all upcoming and past trips will be saved on the users profile page. A user will be able cycle through the upcoming trips for the pertinent information as well as the past trips to track where they have gone.
 
