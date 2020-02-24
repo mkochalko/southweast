@@ -172,7 +172,7 @@ class FlightsSearchIndex extends React.Component {
                 </div>
                 <div className="flights-search-break-info">
                     <div className="flights-search-break-header">
-                        <h3>Deparing Flights</h3>
+                        <h3>Departing Flights</h3>
                     </div>
                     <div className="flight-search-break-banner">
                         <h3>First Class Select</h3>
