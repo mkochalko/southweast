@@ -9,18 +9,18 @@ class BookFlight extends React.Component {
         super(props)
 
         this.state = this.props.trip
-        this.airportCodes = ['BHM', 'DHN', 'HSV', 'MOB', 'MGM', 'ANC', 'FAI', 'JNU', 'FLG', 'PHX', 'TUS', 'YUM', 'FYV', 'LIT', 
-        'XNA', 'BUR', 'FAT', 'LGB', 'LAX', 'OAK', 'ONT', 'PSP', 'SMF', 'SAN', 'SFO', 'SJC', 'SNA', 'ASE', 'COS', 'DEN', 'GJT', 
-        'PUB', 'BDL', 'HVN', 'IAD', 'DCA', 'DAB', 'FLL', 'RSW', 'JAX', 'EYW', 'MIA', 'MCO', 'PNS', 'PIE', 'SRQ', 'TPA', 'PBI', 
-        'PFN', 'ATL', 'AGS', 'SAV', 'ITO', 'HNL', 'OGG', 'KOA', 'LIH', 'BOI', 'MDW', 'ORD', 'MLI', 'PIA', 'EVV', 'FWA', 'IND', 
-        'SBN', 'CID', 'DSM', 'ICT', 'LEX', 'SDF', 'BTR', 'MSY', 'SHV', 'AUG', 'BGR', 'PWM', 'BWI', 'BOS', 'HYA', 'ACK', 'ORH', 
-        'BTL', 'DTW', 'DET', 'FNT', 'GRR', 'AZO', 'LAN', 'MBS', 'DLH', 'MSP', 'RST', 'GPT', 'JAN', 'MCI', 'STL', 'SGF', 'BIL', 
-        'LNK', 'OMA', 'LAS', 'RNO', 'MHT', 'ACY', 'EWR', 'TTN', 'ABQ', 'ALM', 'ALB', 'BUF', 'ISP', 'JFK', 'LGA', 'SWF', 'ROC', 
-        'SYR', 'HPN', 'AVL', 'CLT', 'FAY', 'GSO', 'RDU', 'INT', 'BIS', 'FAR', 'CAK', 'CVG', 'CLE', 'CMH', 'DAY', 'TOL', 'OKC', 
-        'TUL', 'EUG', 'PDX', 'HIO', 'SLE', 'ABE', 'ERI', 'MDT', 'PHL', 'PIT', 'AVP', 'PVD', 'CHS', 'CAE', 'GSP', 'MYR', 'PIR', 
-        'RAP', 'FSD', 'TRI', 'CHA', 'TYS', 'MEM', 'BNA', 'AMA', 'AUS', 'CRP', 'DAL', 'DFW', 'ELP', 'HOU', 'IAH', 'LBB', 'MAF', 
-        'SAT', 'SLC', 'BTV', 'MPV', 'RUT', 'IAD', 'PHF', 'ORF', 'RIC', 'ROA', 'PSC', 'SEA', 'GEG', 'CRW', 'CKB', 'HTS', 'GRB', 
-        'MSN', 'MKE', 'CPR', 'CYS', 'JAC', 'RKS',]
+        this.airportCodes = ['BHM - Birmingham International Airport', 'DHN - Dothan Regional Airport', 'HSV - Huntsville International Airport', 'MOB - Mobile', 'MGM - Montgomery', 'ANC - Anchorage International Airport', 'FAI - Fairbanks International Airport', 'JNU - Juneau International Airport', 'FLG - Flagstaff', 'PHX - Phoenix, Phoenix Sky Harbor International Airport', 'TUS - Tucson International Airport', 'YUM - Yuma International Airport', 'FYV - Fayetteville', 'LIT - Little Rock National Airport', 
+            'XNA - Northwest Arkansas Regional Airport', 'BUR - Burbank', 'FAT - Fresno', 'LGB - Long Beach', 'LAX - Los Angeles International Airport', 'OAK - Oakland', 'ONT - Ontario', 'PSP - Palm Springs', 'SMF - Sacramento', 'SAN - San Diego', 'SFO - San Francisco International Airport', 'SJC - San Jose', 'SNA - Santa Ana', 'ASE - Aspen', 'COS - Colorado Springs', 'DEN - Denver International Airport', 'GJT - Grand Junction', 
+            'PUB - Pueblo', 'BDL - Hartford', 'HVN - Tweed New Haven', 'IAD - Washington, Dulles International Airport', 'DCA - Washington National Airport', 'DAB - Daytona Beach', 'FLL - Fort Lauderdale-Hollywood International Airport', 'RSW - Fort Meyers', 'JAX - Jacksonville', 'EYW - Key West International Airport', 'MIA - Miami International Airport', 'MCO - Orlando', 'PNS - Pensacola', 'PIE - St. Petersburg', 'SRQ - Sarasota', 'TPA - Tampa', 'PBI - West Palm Beach', 
+            'PFN - Panama City-Bay County International Airport', 'ATL - Atlanta Hartsfield International Airport', 'AGS - Augusta', 'SAV - Savannah', 'ITO - Hilo', 'HNL - Honolulu International Airport', 'OGG - Kahului', 'KOA - Kailua', 'LIH - Lihue', 'BOI - Boise', 'MDW - Chicago Midway Airport', "ORD - Chicago, O'Hare International Airport Airport", 'MLI - Moline', 'PIA - Peoria', 'EVV - Evansville', 'FWA - Fort Wayne', 'IND - Indianapolis International Airport', 
+            'SBN - South Bend', 'CID - Cedar Rapids', 'DSM - Des Moines', 'ICT - Wichita', 'LEX - Lexington', 'SDF - Louisville', 'BTR - Baton Rouge', 'MSY - New Orleans International Airport', 'SHV - Shreveport', 'AUG - Augusta', 'BGR - Bangor', 'PWM - Portland', 'BWI - Baltimore', 'BOS - Boston, Logan International Airport', 'HYA - Hyannis', 'ACK - Nantucket', 'ORH - Worcester', 
+            'BTL - Battlecreek', 'DTW - Detroit Metropolitan Airport', 'DET - Detroit', 'FNT - Flint', 'GRR - Grand Rapids', 'AZO - Kalamazoo-Battle Creek International Airport', 'LAN - Lansing', 'MBS - Saginaw', 'DLH - Duluth', 'MSP - Minneapolis/St.Paul International Airport', 'RST - Rochester', 'GPT - Gulfport', 'JAN - Jackson', 'MCI - Kansas City', 'STL - St Louis, Lambert International Airport', 'SGF - Springfield', 'BIL - Billings', 
+            'LNK - Lincoln', 'OMA - Omaha', 'LAS - Las Vegas, Las Vegas McCarran International Airport', 'RNO - Reno-Tahoe International Airport', 'MHT - Manchester', 'ACY - Atlantic City International Airport', 'EWR - Newark International Airport', 'TTN - Trenton', 'ABQ - Albuquerque International Airport', 'ALM - Alamogordo', 'ALB - Albany International Airport', 'BUF - Buffalo', 'ISP - Islip', 'JFK - New York, John F Kennedy International Airport', 'LGA - New York, La Guardia Airport', 'SWF - Newburgh', 'ROC - Rochester', 
+            'SYR - Syracuse', 'HPN - Westchester', 'AVL - Asheville', 'CLT - Charlotte/Douglas International Airport', 'FAY - Fayetteville', 'GSO - Greensboro', 'RDU - Raleigh', 'INT - Winston-Salem', 'BIS - Bismark', 'FAR - Fargo', 'CAK - Akron', 'CVG - Cincinnati', 'CLE - Cleveland', 'CMH - Columbus', 'DAY - Dayton', 'TOL - Toledo', 'OKC - Oklahoma City', 
+            'TUL - Tulsa', 'EUG - Eugene', 'PDX - Portland International Airport', 'HIO - Portland, Hillsboro Airport', 'SLE - Salem', 'ABE - Allentown', 'ERI - Erie', 'MDT - Harrisburg', 'PHL - Philadelphia', 'PIT - Pittsburgh', 'AVP - Scranton', 'PVD - Providence - T.F. Green Airport', 'CHS - Charleston', 'CAE - Columbia', 'GSP - Greenville', 'MYR - Myrtle Beach', 'PIR - Pierre', 
+            'RAP - Rapid City', 'FSD - Sioux Falls', 'TRI - Bristol', 'CHA - Chattanooga', 'TYS - Knoxville', 'MEM - Memphis', 'BNA - Nashville', 'AMA - Amarillo', 'AUS - Austin Bergstrom International Airport', 'CRP - Corpus Christi', 'DAL - Dallas Love Field Airport', 'DFW - Dallas/Fort Worth International Airport', 'ELP - El Paso', 'HOU - Houston, William B Hobby Airport', 'IAH - Houston, George Bush Intercontinental Airport', 'LBB - Lubbock', 'MAF - Midland', 
+            'SAT - San Antonio International Airport', 'SLC - Salt Lake City', 'BTV - Burlington', 'MPV - Montpelier', 'RUT - Rutland', 'IAD - Dulles', 'PHF - Newport News', 'ORF - Norfolk', 'RIC - Richmond', 'ROA - Roanoke', 'PSC - Pasco, Pasco/Tri-Cities Airport', 'SEA - Seattle, Tacoma International Airport', 'GEG - Spokane International Airport', 'CRW - Charleston', 'CKB - Clarksburg', 'HTS - Huntington Tri-State Airport', 'GRB - Green Bay', 
+            'MSN - Madison', 'MKE - Milwaukee', 'CPR - Casper', 'CYS - Cheyenne', 'JAC - Jackson Hole', 'RKS - Rock Springs']
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -39,11 +39,8 @@ class BookFlight extends React.Component {
             dropdownUl.innerHTML += `<li key=${i}>${this.airportCodes[i]}</li>`
         }
         dropdownUl.addEventListener("click", (e) => {
-            console.log(e.target.innerText)
-            this.setState({o1: e.target.innerText}, () => {
-                console.log(this.state)
+            this.setState({o1: e.target.innerText.slice(0, 3)}, () => {
                 let input = document.getElementById("departure-flight-input")
-                // console.log(input)
                 input.value = this.state.o1
             })
 
@@ -55,11 +52,8 @@ class BookFlight extends React.Component {
             dropdownArrivalUl.innerHTML += `<li key=${i}>${this.airportCodes[i]}</li>`
         }
         dropdownArrivalUl.addEventListener("click", (e) => {
-            console.log(e.target.innerText)
-            this.setState({d1: e.target.innerText}, () => {
-                console.log(this.state)
+            this.setState({d1: e.target.innerText.slice(0, 3)}, () => {
                 let input = document.getElementById("arrival-flight-input")
-                // console.log(input)
                 input.value = this.state.d1
             })
 
