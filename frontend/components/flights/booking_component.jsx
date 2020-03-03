@@ -5,9 +5,9 @@ import BookFlightContainer from './book_flight_container';
 class BookingComponent extends React.Component {
 
     render() {
-        console.log(this.props.history)
+        // console.log(this.props.history)
         // this.props.history.push('/')
-        console.log(localStorage)
+        // console.log(localStorage)
         return (
             <div>
                 <BookFlightContainer props={this.props} />

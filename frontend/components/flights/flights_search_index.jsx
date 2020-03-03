@@ -86,7 +86,7 @@ class FlightsSearchIndex extends React.Component {
                 departureTime: newDepartureTime,
                 price: price
             }
-        }), () => console.log(this.state))
+        }))
     }
 
     updateReturnFlightState(e) {
@@ -105,7 +105,7 @@ class FlightsSearchIndex extends React.Component {
                 departureTime: newReturnTime,
                 price: price
             }
-        }), () => console.log(this.state))
+        }))
     }
 
     createFlights() {

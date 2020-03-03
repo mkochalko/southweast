@@ -13,7 +13,7 @@ class ExceededAPIComponent extends React.Component {
     }
 
     render() {
-        console.log(this.props.props.props)
+        // console.log(this.props.props.props)
         return (
             <div className="exceeded-api-container">
                 <p>The API limit has been reached this month, please click the 'Demo Search' button to continue the process with seeded data.</p>
